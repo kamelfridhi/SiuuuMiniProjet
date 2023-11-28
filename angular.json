@@ -27,7 +27,15 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/HeroBiz/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/HeroBiz/assets/vendor/aos/aos.js",
+              "src/assets/HeroBiz/assets/vendor/glightbox/js/glightbox.min.js",
+              "src/assets/HeroBiz/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+              "src/assets/HeroBiz/assets/vendor/swiper/swiper-bundle.min.js",
+              "src/assets/HeroBiz/assets/vendor/php-email-form/validate.js",
+              "src/assets/HeroBiz/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
