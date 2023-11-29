@@ -5,7 +5,7 @@ import { UserTemplateComponent } from './components/front/user-template/user-tem
 
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
- { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule)},
+
  {
   path: '',
 component: UserTemplateComponent,
@@ -14,9 +14,10 @@ children: [
   { path: 'Home', component: HomeComponent },
   // add your route for user n3awed lil user kahaw moch admin user kahaw !!!!!!!!
 
+  ]
+ },
+  { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule)},
 
-]
-},
 { path: '**', redirectTo: 'Home' }
 ];
 
