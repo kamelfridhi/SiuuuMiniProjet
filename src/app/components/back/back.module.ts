@@ -8,6 +8,8 @@ import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {AfficherFoyerComponent} from "./foyer/afficher-foyer/afficher-foyer.component";
 import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.component";
 import { FoyerDashComponent } from './foyer/foyer-dash/foyer-dash.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -21,7 +23,10 @@ import { FoyerDashComponent } from './foyer/foyer-dash/foyer-dash.component';
   ],
   imports: [
     CommonModule,
-    BackRoutingModule
+    BackRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class BackModule { }
