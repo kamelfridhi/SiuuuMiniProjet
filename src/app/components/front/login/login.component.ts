@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {EtudiantService} from "../../../_Services/etudiant.service";
-import {Etudiant} from "../../../_Models/etudiant";
 import {Router} from "@angular/router";
+import {EtudiantConnecteService} from "../../../_Services/etudiant-connecte.service";
 
 @Component({
   selector: 'app-login',
@@ -10,11 +10,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  etat!: Boolean;
   private signUpButton: HTMLElement | null;
   private signInButton: HTMLElement | null;
   private container: HTMLElement | null;
 
-  constructor(private elementRef: ElementRef, private etudiantService: EtudiantService,private r:Router) {
+  constructor(private elementRef: ElementRef, private etudiantService: EtudiantService, private r: Router, private etudiantConnecte: EtudiantConnecteService) {
     this.signUpButton = null;
     this.signInButton = null;
     this.container = null;
@@ -37,17 +38,18 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-etat!:Boolean;
+
   addEtudiant(formUser: NgForm) {
     this.etudiantService.addetudiant(formUser.value).subscribe({
-      next: (data) => {this.etat=true;
+      next: (data) => {
+        this.etat = true;
         console.log(this.etat);
         this.r.navigate(['/home']);
 
       },
       error: (err) => {
         console.log(err);
-        this.etat=false;
+        this.etat = false;
         console.log(this.etat);
       }
     })
@@ -55,37 +57,20 @@ etat!:Boolean;
   }
 
 
-
-
-
-
   Loginetudiant(Loginuser: NgForm) {
+    this.etudiantService.loginEtudiant(Loginuser.value).subscribe({
+      next: (data) => {
+        if (data != null) {
+          this.etudiantConnecte.setEtudiantConnecte(data);
+        this.r.navigate(['/home']);
 
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
