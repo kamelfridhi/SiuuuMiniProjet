@@ -4,77 +4,13 @@
     <form #formUser="ngForm" (ngSubmit)="addEtudiant(formUser)">
       <h1>Create Account</h1>
 
-
-      <!-- Nom -->
-      <input type="text" placeholder="Name" ngModel name="nomEt" required minlength="3" pattern="[a-zA-Z ]"
-             [class.error]="formUser.controls['nomEt']?.hasError('required') && formUser.controls['nomEt'].touched ||
-                       formUser.controls['nomEt']?.hasError('minlength') ||
-                       formUser.controls['nomEt']?.hasError('pattern')">
-      <p class="error" *ngIf="formUser.controls['nomEt']?.hasError('required') && formUser.controls['nomEt'].touched" >
-        Name is required.
-      </p>
-      <p class="error" *ngIf="formUser.controls['nomEt']?.hasError('minlength')">
-        Name must be at least 3 characters long.
-      </p>
-      <p class="error" *ngIf="formUser.controls['nomEt']?.hasError('pattern')">
-        Name must contain only letters.
-      </p>
-
-      <!-- Prenom -->
-      <input type="text" placeholder="prenom" ngModel name="prenomet" required minlength="3" pattern="[a-zA-Z ]"
-             [class.error]="formUser.controls['prenomet']?.hasError('required') && formUser.controls['prenomet'].touched ||
-                       formUser.controls['prenomet']?.hasError('minlength') ||
-                       formUser.controls['prenomet']?.hasError('pattern')">
-      <p class="error" *ngIf="formUser.controls['prenomet']?.hasError('required') && formUser.controls['prenomet'].touched">
-        Prenom is required.
-      </p>
-      <p class="error" *ngIf="formUser.controls['prenomet']?.hasError('minlength')">
-        Prenom must be at least 3 characters long.
-      </p>
-      <p class="error" *ngIf="formUser.controls['prenomet']?.hasError('pattern')">
-        Prenom must contain only letters.
-      </p>
-
-      <!-- Email -->
-      <input type="email" placeholder="Email" ngModel name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-             [class.error]="formUser.controls['email']?.hasError('required') && formUser.controls['email'].touched ||
-                       formUser.controls['email']?.hasError('pattern')">
-      <p class="error" *ngIf="formUser.controls['email']?.hasError('required') && formUser.controls['email'].touched">
-         <small>Email is required.</small>
-      </p>
-      <p class="error" *ngIf="formUser.controls['email']?.hasError('pattern')">
-       <small>Invalid email format.</small>
-      </p>
-
-      <!-- Date de naissance -->
-      <input type="date" placeholder="Date de naissance" ngModel name="dateNaissance" required
-             [class.error]="formUser.controls['dateNaissance']?.hasError('required') && formUser.controls['dateNaissance'].touched">
-      <p class="error" *ngIf="formUser.controls['dateNaissance']?.hasError('required') && formUser.controls['dateNaissance'].touched">
-        Date de naissance is required.
-      </p>
-
-      <!-- CIN -->
-      <input type="text" placeholder="CIN" ngModel name="cin" required pattern="[0-9]"
-             [class.error]="formUser.controls['cin']?.hasError('required') && formUser.controls['cin'].touched ||
-                       formUser.controls['cin']?.hasError('pattern')">
-      <p class="error" *ngIf="formUser.controls['cin']?.hasError('required') && formUser.controls['cin'].touched">
-        CIN is required.
-      </p>
-      <p class="error" *ngIf="formUser.controls['cin']?.hasError('pattern')">
-        CIN must contain only numbers.
-      </p>
-
-      <!-- Password -->
-      <input type="password" placeholder="Password" ngModel name="password" required minlength="8"
-             [class.error]="formUser.controls['password']?.hasError('required') && formUser.controls['password'].touched ||
-                       formUser.controls['password']?.hasError('minlength')">
-      <p class="error" *ngIf="formUser.controls['password']?.hasError('required') && formUser.controls['password'].touched">
-        <small>Password is required.</small>
-      </p>
-      <p class="error" *ngIf="formUser.controls['password']?.hasError('minlength')">
-        Password must be at least 8 characters long.
-      </p>
-
+      <span>or use your email for registration</span>
+      <input type="text" placeholder="Name" ngModel name="nomEt" required />
+      <input type="text" placeholder="prenom" ngModel name="prenomet" required />
+      <input type="email" placeholder="Email" ngModel name="email" required/>
+      <input type="date" placeholder="date de naissance"  ngModel name="dateNaissance" required/>
+      <input type="text" placeholder="CIN"  ngModel name="cin" required/>
+      <input type="password" placeholder="Password"   ngModel name="passoword" required/>
       <button>Sign Up</button>
     </form>
 
@@ -84,25 +20,10 @@
       <h1>Sign in</h1>
 
       <span>or use your account</span>
-      <input type="email" placeholder="Email" ngModel name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-             [class.error]="Loginuser.controls['email']?.hasError('required') && Loginuser.controls['email'].touched ||
-                       Loginuser.controls['email']?.hasError('pattern')">
-      <p class="error" *ngIf="Loginuser.controls['email']?.hasError('required') && Loginuser.controls['email'].touched">
-        <small>Email is required.</small>
-      </p>
-      <p class="error" *ngIf="Loginuser.controls['email']?.hasError('pattern')">
-        <small>Invalid email format.</small>
+      <input type="email" placeholder="Email" ngModel name="email" required/>
 
+      <input type="password" placeholder="Password"   ngModel name="passoword" required/>
 
-      </p>     <input type="password" placeholder="Password" ngModel name="password" required minlength="8"
-                      [class.error]="Loginuser.controls['password']?.hasError('required') && Loginuser.controls['password'].touched ||
-                       Loginuser.controls['password']?.hasError('minlength')">
-      <p class="error" *ngIf="Loginuser.controls['password']?.hasError('required') && Loginuser.controls['password'].touched">
-        <small>Password is required.</small>
-      </p>
-      <p class="error" *ngIf="Loginuser.controls['password']?.hasError('minlength')">
-        Password must be at least 8 characters long.
-      </p>
 
       <a href="#">Forgot your password?</a>
       <button>Sign In</button>
