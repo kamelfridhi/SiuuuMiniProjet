@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tous les chambres</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
+               width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Id Chambre</th>
+            <th>Numéro</th>
+            <th>Type</th>
+
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+          </thead>
+          
+          <tbody *ngFor="let chambre of chambres">
+          <tr>
+            <td>{{ chambre.idChambre }}</td>
+            <td>{{ chambre.numeroChambre }}</td>
+            <td>{{ chambre.typeC }}</td>
+
+            <!-- Button Delete -->
+            <td>
+              <a href="" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                <span class="text">Supprimer</span>
+              </a>
+            </td>
+            <!-- Button Delete end-->
+            <!-- Button Edit -->
+            <td>
+              <a href="#" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
+                <span class="text">Modifier</span>
+              </a>
+            </td>
+            <!-- Button Edit end-->
+          </tr>
+
+          </tbody>
+        </table>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+
+</div>

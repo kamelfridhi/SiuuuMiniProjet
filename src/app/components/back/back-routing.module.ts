@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {AfficherchambreComponent} from "./chambres/afficherchambre/afficherchambre.component";
+import {AjouterchambreComponent} from "./chambres/ajouterchambre/ajouterchambre.component";
+import {ModifierchambreComponent} from "./chambres/modifierchambre/modifierchambre.component";
 
 const routes: Routes = [
   {
@@ -10,7 +13,14 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
-      // add your route for admin n3awed for admin
+      { path: 'afficherchambre', component: AfficherchambreComponent },
+      { path: 'ajouterchambre', component: AjouterchambreComponent },
+      { path: 'modifierchambre', component:ModifierchambreComponent },
+      { path: 'supprimerchambre', component: AjouterchambreComponent },
+
+
+
+// add your route for admin n3awed for admin
     ]
   },
   { path: '**', redirectTo: 'Dashboard' }
