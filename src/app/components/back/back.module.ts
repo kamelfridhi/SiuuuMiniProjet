@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { BackRoutingModule } from './back-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateComponent } from './template/template.component';
+import { AdduniversiteComponent } from './universite/adduniversite/adduniversite.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    TemplateComponent
+    TemplateComponent,
+    AdduniversiteComponent
   ],
   imports: [
     CommonModule,
