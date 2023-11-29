@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Afficher tout les Blocs</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
+                    width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id Bloc</th>
+                            <th>Nom du Bloc</th>
+                            <th>Capacité du Bloc</th>
+                            <th>Apaartient a quel Foyer</th>
+                            <th>Supprimer</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id Bloc</th>
+                            <th>Nom du Bloc</th>
+                            <th>Capacité du Bloc</th>
+                            <th>Apaartient a quel Foyer</th>
+                            <th>Supprimer</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </tfoot>
+                    <tbody *ngFor="let bloc of blocs">
+                        <tr>
+                            <td>{{ bloc.blocId }}</td>
+                            <td>{{ bloc.nomBloc }}</td>
+                            <td>{{ bloc.capaciteBloc }}</td>
+                            <td>TO DO</td>
+                            <!-- Button Delete -->
+                            <td>
+                                <a href="" class="btn btn-danger btn-icon-split"
+                                    (click)="deleteBloc($event,bloc.blocId)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text">Supprimer</span>
+                                </a>
+                            </td>
+                            <!-- Button Delete end-->
+                            <!-- Button Edit -->
+                            <td>
+                                <a href="#" class="btn btn-primary btn-icon-split" (click)="editBloc($event,bloc)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
+                                    <span class="text">Modifier</span>
+                                </a>
+                            </td>
+                            <!-- Button Edit end-->
+                        </tr>
+
+                    </tbody>
+                </table>
+                <hr>
+                <!-- form start -->
+                <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="addBloc()">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
+                            [(ngModel)]="nomBloc" name="nomBloc" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
+                            [(ngModel)]="capaciteBloc" name="capaciteBloc" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Ajouter
+                    </button>
+                </form>
+                <!-- form UPD -->
+                <form  class="border-bottom-primary border-left-primary p-1" (ngSubmit)="updateBloc()">
+                    <div class="form-group">
+                        <input type="hidden" name="blocId"
+                            [(ngModel)]="blocForm2.value.blocId">
+                    </div>
+                    <div class="form-group">
+        
+                        <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
+                            [(ngModel)]="blocForm2.value.UPDnomBloc" name="nomBloc" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
+                            [(ngModel)]="blocForm2.value.UPDcapaciteBloc" name="capaciteBloc" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Ajouter
+                    </button>
+                </form>
+                <!-- form end -->
+            </div>
+        </div>
+    </div>
+
+</div>
