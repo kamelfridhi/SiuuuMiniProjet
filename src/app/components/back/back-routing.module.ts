@@ -24,7 +24,7 @@ const routes: Routes = [
           { path:'', redirectTo: 'afficher',pathMatch: 'full',  },
           { path: 'afficher', component: AfficherFoyerComponent  },
           { path: 'ajouter', component: AddFoyerComponent  },
-          { path: 'modifier', component: ModifierFoyerComponent },
+          { path: 'modifier/:id', component: ModifierFoyerComponent },
         ]
       },
       /*END FOYER*/

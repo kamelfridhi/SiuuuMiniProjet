@@ -30,9 +30,8 @@
             <td>{{f.nomFoyer}}</td>
             <td>{{f.capaciteFoyer}}</td>
             <td>
-              <button class="btn btn-warning" (click)="editF(f)">Edit</button>
+              <button class="btn btn-warning" routerLink="/back/foyer/modifier/{{f.idFoyer}}" (click)="editF(f)">Edit</button>
               <button class="btn btn-danger" (click)="deleteF(index,f.idFoyer)">Delete</button>
-
             </td>
           </tr>
           </tbody>
