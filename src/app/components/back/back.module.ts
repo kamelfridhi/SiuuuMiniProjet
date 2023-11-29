@@ -7,6 +7,7 @@ import { TemplateComponent } from './template/template.component';
 import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {AfficherFoyerComponent} from "./foyer/afficher-foyer/afficher-foyer.component";
 import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.component";
+import { FoyerDashComponent } from './foyer/foyer-dash/foyer-dash.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.comp
     TemplateComponent,
     AddFoyerComponent,
     AfficherFoyerComponent,
-    ModifierFoyerComponent
+    ModifierFoyerComponent,
+    FoyerDashComponent
   ],
   imports: [
     CommonModule,

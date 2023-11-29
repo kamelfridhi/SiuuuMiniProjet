@@ -5,21 +5,26 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {AfficherFoyerComponent} from "./foyer/afficher-foyer/afficher-foyer.component";
 import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.component";
+import {FoyerDashComponent} from "./foyer/foyer-dash/foyer-dash.component";
 
 const routes: Routes = [
   {
     path: '',
     component: TemplateComponent,
     children: [
-      { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
-      { path: 'Dashboard', component: DashboardComponent },
+      { path: '', redirectTo: 'Dashboard', pathMatch: 'full'},
+      { path: 'Dashboard',
+        component: DashboardComponent
+      },
       /*BEGIN FOYER*/
       {
-        path: 'all-foyer',
-        component: AfficherFoyerComponent,
+        path: 'foyer',
+        component: FoyerDashComponent,
         children:[
-          { path: 'ajouter-foyer', component: AddFoyerComponent  },
-          { path: 'modifier-foyer', component: ModifierFoyerComponent },
+          { path:'', redirectTo: 'afficher',pathMatch: 'full',  },
+          { path: 'afficher', component: AfficherFoyerComponent  },
+          { path: 'ajouter', component: AddFoyerComponent  },
+          { path: 'modifier', component: ModifierFoyerComponent },
         ]
       },
       /*END FOYER*/
