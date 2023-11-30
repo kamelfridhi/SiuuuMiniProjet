@@ -1,5 +1,5 @@
 export class Etudiant {
-  idEtudiant!: Number;
+  idEtudiant!: number;
   nomEt!: String;
   prenomet!: String;
   cin!: Number;

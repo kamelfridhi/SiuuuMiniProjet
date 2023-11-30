@@ -11,10 +11,10 @@ export class HomeComponent implements OnInit{
   constructor(private etudiantConnecte: EtudiantConnecteService) {
   }
 
-  ngOnInit(): void {
-    console.log(this.etudiantConnecte.getEtudiantConnecte())
-  }
 
+  ngOnInit(): void {
+console.log(this.etudiantConnecte.getData('id'));
+  }
 
 
 }

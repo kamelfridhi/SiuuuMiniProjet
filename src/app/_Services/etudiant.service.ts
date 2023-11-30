@@ -14,6 +14,7 @@ export class EtudiantService {
   }
   private APIURL = "http://localhost:6060/API/Springboot/Etudiant/";
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -23,6 +24,10 @@ export class EtudiantService {
 
   loginEtudiant(etudiant: Etudiant): Observable<Etudiant> {
     return this.http.post<Etudiant>(this.APIURL + 'login', etudiant, this.httpOptions);
+  }
+  getEtudiant(idString: string): Observable<Etudiant> {
+    let id = parseInt(idString,10);
+    return this.http.get<Etudiant>(this.APIURL + 'one/' + id);
   }
 
 

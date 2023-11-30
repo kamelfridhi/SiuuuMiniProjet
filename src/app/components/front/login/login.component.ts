@@ -40,10 +40,12 @@ export class LoginComponent implements OnInit {
   }
 
   addEtudiant(formUser: NgForm) {
+    this.etudiantConnecte.clearData();
     this.etudiantService.addetudiant(formUser.value).subscribe({
       next: (data) => {
         this.etat = true;
         console.log(this.etat);
+this.etudiantConnecte.getData(data.idEtudiant.toString());
         this.r.navigate(['/home']);
 
       },
@@ -58,10 +60,11 @@ export class LoginComponent implements OnInit {
 
 
   Loginetudiant(Loginuser: NgForm) {
+    this.etudiantConnecte.clearData();
     this.etudiantService.loginEtudiant(Loginuser.value).subscribe({
       next: (data) => {
         if (data != null) {
-          this.etudiantConnecte.setEtudiantConnecte(data);
+this.etudiantConnecte.saveData('id', data.idEtudiant.toString());
         this.r.navigate(['/home']);
 
         }

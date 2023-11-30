@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
 import {Etudiant} from "../_Models/etudiant";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EtudiantConnecteService {
 
-  constructor() {
+
+  constructor() {}
+  key!:'id';
+  public saveData(key: string, value: string) {
+    localStorage.setItem(key, value);
   }
 
-  private etudiantConnecte: Etudiant | null = null;
-
-  setEtudiantConnecte(etudiant: Etudiant): void {
-    this.etudiantConnecte = etudiant;
+  public getData(key: string) {
+    return localStorage.getItem(key)
+  }
+  public removeData(key: string) {
+    localStorage.removeItem(key);
   }
 
-  getEtudiantConnecte(): Etudiant | null {
-    return this.etudiantConnecte;
-
+  public clearData() {
+    localStorage.clear();
   }
+
+
 }
