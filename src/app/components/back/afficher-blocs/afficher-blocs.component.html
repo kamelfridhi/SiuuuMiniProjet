@@ -13,7 +13,7 @@
                             <th>Id Bloc</th>
                             <th>Nom du Bloc</th>
                             <th>Capacité du Bloc</th>
-                            <th>Apaartient a quel Foyer</th>
+                            <th>Appartient a quel Foyer</th>
                             <th>Supprimer</th>
                             <th>Modifier</th>
                         </tr>
@@ -23,7 +23,7 @@
                             <th>Id Bloc</th>
                             <th>Nom du Bloc</th>
                             <th>Capacité du Bloc</th>
-                            <th>Apaartient a quel Foyer</th>
+                            <th>Appartient a quel Foyer</th>
                             <th>Supprimer</th>
                             <th>Modifier</th>
                         </tr>
@@ -33,7 +33,12 @@
                             <td>{{ bloc.blocId }}</td>
                             <td>{{ bloc.nomBloc }}</td>
                             <td>{{ bloc.capaciteBloc }}</td>
-                            <td>TO DO</td>
+                            <td>
+                                <select class="form-control" id="foyerSelect" name="selectedFoyerId" [(ngModel)]="blocForm2.value.UPDselectedFoyerId">
+                                    <option *ngFor="let foyer of foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+                                  </select>
+                                  
+                            </td>
                             <!-- Button Delete -->
                             <td>
                                 <a href="" class="btn btn-danger btn-icon-split"
@@ -74,25 +79,25 @@
                         Ajouter
                     </button>
                 </form>
+                <hr>
                 <!-- form UPD -->
-                <form  class="border-bottom-primary border-left-primary p-1" (ngSubmit)="updateBloc()">
+                <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="updateBloc()">
                     <div class="form-group">
-                        <input type="hidden" name="blocId"
-                            [(ngModel)]="blocForm2.value.blocId">
+                      <input type="text" class="form-control form-control-user" name="UPDblocId" [(ngModel)]="blocForm2.value.UPDblocId" [disabled]="true">
                     </div>
                     <div class="form-group">
-        
-                        <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
-                            [(ngModel)]="blocForm2.value.UPDnomBloc" name="nomBloc" required>
+                      <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
+                        [(ngModel)]="blocForm2.value.UPDnomBloc" name="UPDnomBloc" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
-                            [(ngModel)]="blocForm2.value.UPDcapaciteBloc" name="capaciteBloc" required>
+                      <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
+                        [(ngModel)]="blocForm2.value.UPDcapaciteBloc" name="UPDcapaciteBloc" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                        Ajouter
+                      Modifier
                     </button>
-                </form>
+                  </form>
+                  
                 <!-- form end -->
             </div>
         </div>

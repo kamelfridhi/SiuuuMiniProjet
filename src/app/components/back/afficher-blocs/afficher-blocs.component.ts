@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,NgForm } from '@angular/forms';
-import { Bloc } from 'src/app/_Models/bloc';
-import { BlocService } from 'src/app/_Services/bloc.service';
+import { Bloc } from 'src/app/_Models/bloc/bloc';
+import { Foyer } from 'src/app/_Models/foyer/foyer';
+import { BlocService } from 'src/app/_Services/bloc/bloc.service';
+import { FoyerService } from 'src/app/_Services/foyer/foyer.service';
 
 @Component({
   selector: 'app-afficher-blocs',
@@ -19,8 +21,10 @@ export class AfficherBlocsComponent implements OnInit {
   UPDcapaciteBloc!: number;
   UPDblocId!: number;
   selectedBloc!: Bloc;
+  foyers:Foyer[]=[];
   /* Declaration end */
-  constructor(private blocService: BlocService, private fb: FormBuilder) { }
+  
+  constructor(private blocService: BlocService,private foyerService: FoyerService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getBlocs();
@@ -35,7 +39,8 @@ export class AfficherBlocsComponent implements OnInit {
     });
     
     this.initForm();
-    console.log(this.blocs);
+
+    this.getFoyers();
   }
 
   getBlocs(): void {
@@ -49,6 +54,20 @@ export class AfficherBlocsComponent implements OnInit {
       }
     });
   }
+
+  
+  getFoyers(): void {
+    this.foyerService.getAllFoyer().subscribe({
+      next: (data: Foyer[]) => {
+        this.foyers = data;
+        console.log(this.foyers);
+      },
+      error: (error) => {
+        console.error('Error fetching foyers:', error);
+      }
+    });
+  }
+  
 
   deleteBloc(event: Event, id: number): void {
     event.preventDefault();
@@ -81,25 +100,29 @@ export class AfficherBlocsComponent implements OnInit {
       });
   }
   
+
   updateBloc(): void {
-    // Access form controls and extract values
-    const nomBlocValue = this.blocForm2.get('UPDnomBloc')?.value;
-    const capaciteBlocValue = this.blocForm2.get('UPDcapaciteBloc')?.value;
-    const idBlocValue = this.blocForm2.get('UPDblocId')?.value;
+
+    const nomBlocValue = this.blocForm2.value.UPDnomBloc;
+    const capaciteBlocValue = this.blocForm2.value.UPDcapaciteBloc;
+    const idBlocValue = this.blocForm2.value.UPDblocId; 
   
-    // Create a Bloc object with the extracted values
+    console.log('nomBlocValue:', nomBlocValue);
+    console.log('capaciteBlocValue:', capaciteBlocValue);
+    console.log('idBlocValue:', idBlocValue);
+  
     const updatedBloc: Bloc = {
       nomBloc: nomBlocValue,
       capaciteBloc: capaciteBlocValue,
       blocId: idBlocValue
     };
-  
-    // Call the service to update the block
+    console.log('updatedBloc:', updatedBloc);
+
     this.blocService.updateBloc(updatedBloc).subscribe({
       next: (response: Bloc) => {
         console.log('Bloc updated successfully:', response);
         this.getBlocs();
-        this.blocForm2.reset(); // Reset the form
+        this.blocForm2.reset(); 
       },
       error: (error) => {
         console.error('Error updating bloc:', error);
@@ -113,13 +136,13 @@ export class AfficherBlocsComponent implements OnInit {
     this.blocForm = this.fb.group({
       nomBloc: ['', Validators.required],
       capaciteBloc: [null, Validators.required],
-      // Add other form controls as needed based on your Bloc model
+
     });
      this.blocForm2 = this.fb.group({
       UPDnomBloc: ['', Validators.required],
       UPDcapaciteBloc: [null, Validators.required],
       UPDblocId: [null, Validators.required]  
-      // Add other form controls as needed based on your Bloc model
+
     });
   }
 
