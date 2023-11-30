@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { ChambreService } from '../../../../_Services/chambre.service';
 import {Chambre} from "../../../../_Models/chambre";
 import {TypeChambre} from "../../../../_Models/TypeChambre.enum";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ajouterchambre',
@@ -13,10 +14,10 @@ export class AjouterchambreComponent implements OnInit {
 
   chambre!:Chambre;
 
-  constructor(private formBuilder: FormBuilder, private chambreService: ChambreService) { }
+  constructor(private formBuilder: FormBuilder, private chambreService: ChambreService,private router:Router) { }
 
   ngOnInit() {
-
+    console.log('AjouterchambreComponent chargé !');
   }
 
   ajouterChambre(ajoutForm : NgForm) {
@@ -26,15 +27,35 @@ export class AjouterchambreComponent implements OnInit {
       this.chambre =ajoutForm.value;
       console.log(this.chambre );
       // Appelle le service pour ajouter la chambre
-      this.chambreService.addChambre(this.chambre).subscribe(
-        (response) => {
+      this.chambreService.addChambre(this.chambre).subscribe({
+        next:(response) => {
           console.log('Chambre ajoutée avec succès !', response);
+          this.router.navigate(['/back/afficherchambre'])
           // Ajoute ici des actions supplémentaires si nécessaire (par exemple, redirection)
         },
-        (error) => {
+        error:(error) => {
           console.error('Erreur lors de l\'ajout de la chambre', error);
         }
-      );
+      });
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

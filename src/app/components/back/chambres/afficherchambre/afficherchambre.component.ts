@@ -28,4 +28,20 @@ export class AfficherchambreComponent implements OnInit{
     );
   }
 
+  supprimerChambre(chambreId: Number) {
+    // Appelle le service pour supprimer la chambre
+    this.chambreService.deleteChambre(chambreId).subscribe(
+      (response) => {
+        console.log('Chambre supprimée avec succès !', response);
+        // Ajoute ici des actions supplémentaires si nécessaire (par exemple, recharger la liste)
+        // Par exemple, recharge la liste après la suppression
+        this.loadChambres();
+      },
+      (error) => {
+        console.error('Erreur lors de la suppression de la chambre', error);
+      }
+    );
+  }
+
+
 }

@@ -3,34 +3,33 @@
 
     <div class="col-md-6">
 
-      <form [formGroup]="modificationForm" (ngSubmit)="modifierChambre()">
 
-        <div class="form-group">
-          <label for="idChambre">ID Chambre :</label>
-          <input type="text" class="form-control" id="idChambre" formControlName="idChambre" >
-        </div>
 
-        <div class="form-group">
-          <label for="numeroChambre">Numéro Chambre :</label>
-          <input type="text" class="form-control" id="numeroChambre" formControlName="numeroChambre" required>
-        </div>
+      <div class="form-group">
+        <label for="idChambre">ID Chambre :</label>
+        <input type="text" class="form-control" id="idChambre" [(ngModel)]="chambre.idChambre" >
+      </div>
 
-        <div class="form-group">
-          <label for="typeC">Type Chambre :</label>
+      <div class="form-group">
+        <label for="numeroChambre">Numéro Chambre :</label>
+        <input type="text" class="form-control" id="numeroChambre" [(ngModel)]="chambre.numeroChambre" required>
+      </div>
 
-          <select id="typeC" formControlName="typeC">
-            <option value="SIMPLE">Simple</option>
-            <option value="DOUBLE">Double</option>
-            <option value="TRIPLE">Triple</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <label for="typeC">Type Chambre :</label>
 
-        <!-- ... autres champs du formulaire ... -->
+        <select id="typeC"[(ngModel)]="chambre.typeC">
+          <option value="SIMPLE">Simple</option>
+          <option value="DOUBLE">Double</option>
+          <option value="TRIPLE">Triple</option>
+        </select>
+      </div>
 
-        <button type="submit" class="btn btn-primary">Modifier</button>
+      <!-- ... autres champs du formulaire ... -->
 
-      </form>
+      <button (click)="modifierChambre()" type="submit" class="btn btn-primary">Modifier</button>
+
+
     </div>
   </div>
 </div>
-

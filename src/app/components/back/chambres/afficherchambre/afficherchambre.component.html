@@ -3,6 +3,14 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Tous les chambres</h6>
+      <div class="ajout" style="margin-left: 90%;">
+          <a routerLink="/back/ajouterchambre" routerLinkActive="active" class="btn btn-primary btn-icon-split ">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus-square"></i>
+                </span>
+                <span class="text">Ajouter</span>
+          </a>
+      </div>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -18,7 +26,7 @@
             <th>Modifier</th>
           </tr>
           </thead>
-          
+
           <tbody *ngFor="let chambre of chambres">
           <tr>
             <td>{{ chambre.idChambre }}</td>
@@ -27,20 +35,21 @@
 
             <!-- Button Delete -->
             <td>
-              <a href="" class="btn btn-danger btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-trash"></i>
-                                    </span>
+              <a (click)="supprimerChambre(chambre.idChambre)" class="btn btn-danger btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-trash"></i>
+                </span>
                 <span class="text">Supprimer</span>
               </a>
             </td>
             <!-- Button Delete end-->
+
             <!-- Button Edit -->
             <td>
-              <a href="#" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-pen-square"></i>
-                                    </span>
+              <a routerLink="/back/modifierchambre/{{chambre.idChambre}}"  routerLinkActive="active" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-pen-square"></i>
+                </span>
                 <span class="text">Modifier</span>
               </a>
             </td>
@@ -54,5 +63,4 @@
       </div>
     </div>
   </div>
-
 </div>

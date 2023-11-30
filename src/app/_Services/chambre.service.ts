@@ -18,9 +18,16 @@ export class ChambreService {
     return this.http.post<Chambre>(this.apiUrl +'/add', chambre);
   }
 
-  updateChambre(chambreId: Number, chambreData: Chambre): Observable<Chambre> {
-    const url = `${this.apiUrl}/update/${chambreId}`;
-    return this.http.put<Chambre>(url, chambreData);
+  updateChambre(chambreData: Chambre): Observable<Chambre> {
+    const url = `${this.apiUrl}/update`;
+    return this.http.post<Chambre>(url, chambreData);
+  }
+  deleteChambre(chambreId: Number): Observable<Chambre> {
+    const url = `${this.apiUrl}/delete/${chambreId}`;
+    return this.http.delete<Chambre>(url);
+  }
+  getChambre(id : Number): Observable<Chambre> {
+    return this.http.get<Chambre>(this.apiUrl+'/getChambresParId/'+id);
   }
 
 }

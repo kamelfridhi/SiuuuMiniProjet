@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'Dashboard', component: DashboardComponent },
       { path: 'afficherchambre', component: AfficherchambreComponent },
       { path: 'ajouterchambre', component: AjouterchambreComponent },
-      { path: 'modifierchambre', component:ModifierchambreComponent },
+      { path: 'modifierchambre/:id', component:ModifierchambreComponent },
       { path: 'supprimerchambre', component: AjouterchambreComponent },
 
 
