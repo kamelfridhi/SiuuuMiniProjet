@@ -17,15 +17,12 @@ export class ModifierFoyerComponent implements OnInit{
 
   ngOnInit(): void {
     this.ar.params.subscribe((p) => {
-      this.foyerService.getFoyerByID(p['id']).subscribe(value => {
-        this.foyer=value;
-        //scroll to top with animation
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth',
-        })
-      } );
+      this.foyerService.getFoyerByID(p['id']).subscribe(value => this.foyer=value);
+    });
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
     });
   }
   updateFoyer(formFoyer: NgForm) {
@@ -33,6 +30,12 @@ export class ModifierFoyerComponent implements OnInit{
       next: (res) => {
         this.r.navigateByUrl('/back/foyer/table').then(value => {
           this.foyerService.announceFoyerUpdate();
+          //scroll to top with animation
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          })
           }
         );
       },

@@ -6,7 +6,7 @@ import {AfficherFoyerComponent} from "./foyer/afficher-foyer/afficher-foyer.comp
 import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.component";
 import {FoyerDashComponent} from "./foyer/foyer-dash/foyer-dash.component";
-import {FoyerDetailsComponent} from "./foyer/foyer-details/foyer-details.component";
+import {FoyerDetailsComponent} from "./foyer/foyer-blocs/foyer-details.component";
 
 const routes: Routes = [
   {
