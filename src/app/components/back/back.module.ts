@@ -10,6 +10,7 @@ import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.comp
 import { FoyerDashComponent } from './foyer/foyer-dash/foyer-dash.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { FoyerDetailsComponent } from './foyer/foyer-details/foyer-details.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     AddFoyerComponent,
     AfficherFoyerComponent,
     ModifierFoyerComponent,
-    FoyerDashComponent
+    FoyerDashComponent,
+    FoyerDetailsComponent,
   ],
   imports: [
     CommonModule,

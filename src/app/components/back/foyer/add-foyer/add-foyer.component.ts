@@ -37,7 +37,7 @@ export class AddFoyerComponent {
       this.foyerService.addFoyer(this.addFoyerForm.value)
           .subscribe({
               next: (res) => {
-                  this.router.navigate(['/back/foyer/afficher']);
+                  this.router.navigate(['/back/foyer/table']);
               },
               error: (err) => {
                   alert("Erreur lors de l'ajout du foyer");
@@ -45,7 +45,4 @@ export class AddFoyerComponent {
           });
 
   }
-
-
-
 }

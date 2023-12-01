@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Foyer} from "../_Models/foyer/foyer";
 import {Observable} from "rxjs";
@@ -7,6 +7,12 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class FoyerService {
+  foyerUpdated = new EventEmitter<void>();
+
+  announceFoyerUpdate() {
+    this.foyerUpdated.emit();
+  }
+
   private Api="http://localhost:8081/api";
 
   private getAllFoyerApi= this.Api + "/foyer/all";
@@ -35,8 +41,10 @@ export class FoyerService {
   addFoyer(foyer: Foyer): Observable<Foyer> {
     return this.http.post<Foyer>(`${this.Api}/foyer/add`, foyer, this.httpOptions);
   }
+
   updateFoyer(foyer: Foyer): Observable<Foyer> {
     return this.http.post<Foyer>(`${this.Api}/foyer/update`, foyer, this.httpOptions);
   }
+
 
 }

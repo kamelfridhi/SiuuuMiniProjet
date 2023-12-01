@@ -1,7 +1,7 @@
 
 
 <div class="container-fluid">
-
+  <router-outlet></router-outlet>
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Table de foyers</h1>
   <br>
@@ -30,8 +30,9 @@
             <td>{{f.nomFoyer}}</td>
             <td>{{f.capaciteFoyer}}</td>
             <td>
-              <button class="btn btn-warning" routerLink="/back/foyer/modifier/{{f.idFoyer}}" (click)="editF(f)">Edit</button>
-              <button class="btn btn-danger" (click)="deleteF(index,f.idFoyer)">Delete</button>
+              <button class="btn btn-warning" routerLink="modifier/{{f.idFoyer}}">Edit</button>
+              <button class="btn btn-danger ml-4" (click)="deleteF(index,f.idFoyer)">Delete</button>
+              <button routerLink="Details/{{f.idFoyer}}" class="btn btn-info ml-4" >Details</button>
             </td>
           </tr>
           </tbody>

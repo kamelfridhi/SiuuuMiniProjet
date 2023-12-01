@@ -6,6 +6,7 @@ import {AfficherFoyerComponent} from "./foyer/afficher-foyer/afficher-foyer.comp
 import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.component";
 import {FoyerDashComponent} from "./foyer/foyer-dash/foyer-dash.component";
+import {FoyerDetailsComponent} from "./foyer/foyer-details/foyer-details.component";
 
 const routes: Routes = [
   {
@@ -21,10 +22,17 @@ const routes: Routes = [
         path: 'foyer',
         component: FoyerDashComponent,
         children:[
-          { path:'', redirectTo: 'afficher',pathMatch: 'full',  },
-          { path: 'afficher', component: AfficherFoyerComponent  },
+          { path:'', redirectTo: 'table',pathMatch: 'full',  },
+          { path: 'table', component: AfficherFoyerComponent,
+            children:[
+              { path: 'modifier/:id', component: ModifierFoyerComponent },
+              { path: 'Details/:id', component: FoyerDetailsComponent },
+            ]
+          },
           { path: 'ajouter', component: AddFoyerComponent  },
-          { path: 'modifier/:id', component: ModifierFoyerComponent },
+
+
+
         ]
       },
       /*END FOYER*/

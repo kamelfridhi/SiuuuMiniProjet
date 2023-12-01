@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {Foyer} from "../../../../_Models/foyer/foyer";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FoyerService} from "../../../../_Services/foyer.service";
+import {AfficherFoyerComponent} from "../afficher-foyer/afficher-foyer.component";
 
 @Component({
   selector: 'app-modifier-foyer',
@@ -11,19 +12,29 @@ import {FoyerService} from "../../../../_Services/foyer.service";
 })
 export class ModifierFoyerComponent implements OnInit{
   foyer!: Foyer;
-  id!:number;
 
-  constructor(private foyerService: FoyerService, private ar: ActivatedRoute,private r : Router) {}
+  constructor(private modifierCompo:AfficherFoyerComponent,private foyerService: FoyerService, private ar: ActivatedRoute,private r : Router) {}
 
   ngOnInit(): void {
-    this.id = this.ar.snapshot.params['id'];
-    console.log(this.id);
-    this.foyerService.getFoyerByID(this.id).subscribe(f => this.foyer=f);
+    this.ar.params.subscribe((p) => {
+      this.foyerService.getFoyerByID(p['id']).subscribe(value => {
+        this.foyer=value;
+        //scroll to top with animation
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        })
+      } );
+    });
   }
   updateFoyer(formFoyer: NgForm) {
     this.foyerService.updateFoyer(this.foyer).subscribe({
       next: (res) => {
-        this.r.navigate(['/back/foyer/afficher']);
+        this.r.navigateByUrl('/back/foyer/table').then(value => {
+          this.foyerService.announceFoyerUpdate();
+          }
+        );
       },
       error: (err) => {
         alert("Erreur lors de l'update du foyer");
