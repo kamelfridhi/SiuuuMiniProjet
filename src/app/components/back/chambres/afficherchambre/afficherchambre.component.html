@@ -1,3 +1,4 @@
+<app-detailschambre ></app-detailschambre>
 <div class="container-fluid">
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -21,9 +22,11 @@
             <th>Id Chambre</th>
             <th>Numéro</th>
             <th>Type</th>
+            <th>Bloc</th>
 
             <th>Supprimer</th>
             <th>Modifier</th>
+            <th>Détails</th>
           </tr>
           </thead>
 
@@ -32,6 +35,8 @@
             <td>{{ chambre.idChambre }}</td>
             <td>{{ chambre.numeroChambre }}</td>
             <td>{{ chambre.typeC }}</td>
+            <td></td>
+
 
             <!-- Button Delete -->
             <td>
@@ -53,14 +58,48 @@
                 <span class="text">Modifier</span>
               </a>
             </td>
+            <td><a (click)="afficherDetailsChambre(chambre)"  class="btn btn-warning btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+              <span class="text">Détails</span>
+            </a>
+
+
+            </td>
             <!-- Button Edit end-->
           </tr>
 
           </tbody>
         </table>
         <hr>
+        <!-- Bootstrap Modal -->
+        <div class="modal" *ngIf="afficherModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" style="color: #0d6efd">Détails de la chambre {{ chambreSelectionnee?.numeroChambre }}</h4>
+                <button type="button" class="close" (click)="fermerModal()">&times;</button>
+              </div>
+              <div class="modal-body">
+                <!-- Ajoute ton contenu ici -->
+                <app-detailschambre [chambre]="chambreSelectionnee"></app-detailschambre>
+
+                <!-- Ajoute un bouton close supplémentaire ici (exemple) -->
+
+                <a (click)="fermerModal()" class="btn btn-primary btn-icon-split" style="margin-left: 68%;"  >
+                <span class="icon text-white-50">
+                  <i class="fas fa-times"></i>
+                </span>
+                  <span class="text">Close</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
   </div>
 </div>
+

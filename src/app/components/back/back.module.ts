@@ -9,6 +9,7 @@ import { ModifierchambreComponent } from './chambres/modifierchambre/modifiercha
 import { SupprimerchambreComponent } from './chambres/supprimerchambre/supprimerchambre.component';
 import { AjouterchambreComponent } from './chambres/ajouterchambre/ajouterchambre.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DetailschambreComponent } from './chambres/detailschambre/detailschambre.component';
 
 
 
@@ -19,7 +20,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AfficherchambreComponent,
     ModifierchambreComponent,
     SupprimerchambreComponent,
-    AjouterchambreComponent
+    AjouterchambreComponent,
+    DetailschambreComponent
   ],
   imports: [
     CommonModule,

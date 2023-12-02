@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {AfficherchambreComponent} from "./chambres/afficherchambre/afficherchambre.component";
 import {AjouterchambreComponent} from "./chambres/ajouterchambre/ajouterchambre.component";
 import {ModifierchambreComponent} from "./chambres/modifierchambre/modifierchambre.component";
+import {DetailschambreComponent} from "./chambres/detailschambre/detailschambre.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'ajouterchambre', component: AjouterchambreComponent },
       { path: 'modifierchambre/:id', component:ModifierchambreComponent },
       { path: 'supprimerchambre', component: AjouterchambreComponent },
+      { path: 'detailschambre/:id', component: DetailschambreComponent },
 
 
 

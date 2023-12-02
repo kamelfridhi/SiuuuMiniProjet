@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/front/header/header.component';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AfficherchambresComponent } from './components/front/chambre/afficherchambres/afficherchambres.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    UserTemplateComponent
+    UserTemplateComponent,
+    AfficherchambresComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,9 @@ import {Chambre} from "../../../../_Models/chambre";
 })
 export class AfficherchambreComponent implements OnInit{
   chambres: Chambre[] = [];
+  afficherModal = false;
 
+  chambreSelectionnee: Chambre | undefined;
   constructor(private chambreService: ChambreService) { }
 
   ngOnInit() {
@@ -16,7 +18,6 @@ export class AfficherchambreComponent implements OnInit{
   }
 
   loadChambres() {
-    // Appelle le service pour récupérer toutes les chambres
     this.chambreService.getAllChambres().subscribe(
       (data) => {
         this.chambres = data;
@@ -29,12 +30,9 @@ export class AfficherchambreComponent implements OnInit{
   }
 
   supprimerChambre(chambreId: Number) {
-    // Appelle le service pour supprimer la chambre
     this.chambreService.deleteChambre(chambreId).subscribe(
       (response) => {
         console.log('Chambre supprimée avec succès !', response);
-        // Ajoute ici des actions supplémentaires si nécessaire (par exemple, recharger la liste)
-        // Par exemple, recharge la liste après la suppression
         this.loadChambres();
       },
       (error) => {
@@ -42,6 +40,13 @@ export class AfficherchambreComponent implements OnInit{
       }
     );
   }
+  afficherDetailsChambre(chambre: Chambre) {
+    this.chambreSelectionnee = chambre;
+    this.afficherModal = true;
+  }
 
+  fermerModal() {
+    this.afficherModal = false;
+  }
 
 }
