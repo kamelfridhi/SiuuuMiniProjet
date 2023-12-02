@@ -11,6 +11,7 @@ import { LoginComponent } from './components/front/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { NotFoundComponent } from './components/front/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     HttpClientModule,

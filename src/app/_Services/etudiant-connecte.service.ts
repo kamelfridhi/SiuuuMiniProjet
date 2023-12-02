@@ -4,9 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EtudiantConnecteService {
+   roleas!: string ;
 
   constructor() {}
-  key!:'id';
+
   public saveData(key: string, value: string) {
     localStorage.setItem(key, value);
   }
@@ -21,8 +22,16 @@ export class EtudiantConnecteService {
   public clearData() {
     localStorage.clear();
   }
-
-
+is_loged():Boolean{
+    return !!localStorage.getItem('id');
+}
+getrole(role:string):Boolean{
+  let roleas = localStorage.getItem('role');
+    if(roleas == role){
+      return true;
+    }
+    return false;
+}
 
 
 }

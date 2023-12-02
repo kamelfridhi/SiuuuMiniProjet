@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
 import {LoginComponent} from "./components/front/login/login.component";
+import {AuthentificationGuard} from "./Authen/authentification.guard";
+import {RoleGuardGuard} from "./Authen/role-guard.guard";
 
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
- { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule)},
+ { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
  {
   path: '',
 component: UserTemplateComponent,

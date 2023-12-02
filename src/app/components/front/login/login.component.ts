@@ -41,13 +41,12 @@ export class LoginComponent implements OnInit {
 
   addEtudiant(formUser: NgForm) {
     this.etudiantConnecte.clearData();
-    this.etudiantService.addetudiant(formUser.value).subscribe(date =>
-    {
-      this.etudiantConnecte.saveData('id',date.idEtudiant.toString())
-      this.r.navigate(['/home']);
+    this.etudiantService.addetudiant(formUser.value).subscribe(data => {
+      this.etudiantConnecte.saveData('id', data.idEtudiant.toString())
+      this.etudiantConnecte.saveData('role', data.role);
+      console.log(this.etudiantConnecte.getData('role'))
+      this.r.navigate(['/Home']);
     })
-
-
 
 
   }
@@ -58,8 +57,16 @@ export class LoginComponent implements OnInit {
     this.etudiantService.loginEtudiant(Loginuser.value).subscribe({
       next: (data) => {
         if (data != null) {
-this.etudiantConnecte.saveData('id', data.idEtudiant.toString());
-        this.r.navigate(['/home']);
+          this.etudiantConnecte.saveData('role', data.role);
+
+          this.etudiantConnecte.saveData('id', data.idEtudiant.toString());
+          if (data.role == 'user') {
+            this.r.navigate(['/home']);
+          }
+          else{
+            this.r.navigate(['/back']);
+          }
+
 
         }
       },

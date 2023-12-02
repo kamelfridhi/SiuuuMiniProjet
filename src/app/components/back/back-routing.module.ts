@@ -4,6 +4,7 @@ import { TemplateComponent } from './template/template.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AdminComponent} from "./admin/admin.component";
 import {UpdateuserComponent} from "./admin/updateuser/updateuser.component";
+import {RoleGuardGuard} from "../../Authen/role-guard.guard";
 
 const routes: Routes = [
   {

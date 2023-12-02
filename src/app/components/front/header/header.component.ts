@@ -40,9 +40,13 @@ etudiant!:Etudiant;
 
   logout() {
     if (this.etduiantconnecte.getData('id')!= null) {
-      // @ts-ignore
-      this.E = this.etudiantService.getEtudiant(this.etduiantconnecte.getData('id'));
-      this.etudiantService.Offline(this.E.idEtudiant);
+      console.log()
+
+
+
+      this.etudiantService.Offline(this.etduiantconnecte.getData('id')!).subscribe(value => {
+
+      });
       this.etduiantconnecte.clearData();
 
       this.r.navigate(['/login']);

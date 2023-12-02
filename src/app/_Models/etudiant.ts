@@ -1,12 +1,13 @@
 export class Etudiant {
   idEtudiant!: number;
   etat!:number;
-  nomEt!: String;
-  prenomet!: String;
+  nomEt!: string;
+  prenomet!: string;
   cin!: Number;
-  ecole!: String;
+  ecole!: string;
   dateNaissance!: Date;
-  email!: String;
-  passoword!: String;
+  email!: string;
+  passoword!: string;
+  role!: string;
 
 }
