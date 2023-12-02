@@ -64,12 +64,19 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
+<div *ngIf="id_logout!=null">
+  <a class="btn-getstarted scrollto"   (click)="logout()" >logout</a>
+</div>
 
-      <a class="btn-getstarted scrollto"   (click)="logout()" >logout</a>
-      <div *ngIf="etudiant != null" >
-      <strong>{{ etudiant.nomEt }}</strong>
+      <a  class="logo d-flex align-items-end scrollto me-auto me-lg-0" style="margin-left: 40px;">
+        <div *ngIf="etudiant != null" >
+        <strong>{{ etudiant.nomEt }}</strong><br>
+          <small>{{etudiant.prenomet}}</small>
 
       </div>
+
+      </a>
+
 
     </div>
   </header><!-- End Header -->

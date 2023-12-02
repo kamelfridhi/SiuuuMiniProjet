@@ -41,20 +41,14 @@ export class LoginComponent implements OnInit {
 
   addEtudiant(formUser: NgForm) {
     this.etudiantConnecte.clearData();
-    this.etudiantService.addetudiant(formUser.value).subscribe({
-      next: (data) => {
-        this.etat = true;
-        console.log(this.etat);
-this.etudiantConnecte.getData(data.idEtudiant.toString());
-        this.r.navigate(['/home']);
-
-      },
-      error: (err) => {
-        console.log(err);
-        this.etat = false;
-        console.log(this.etat);
-      }
+    this.etudiantService.addetudiant(formUser.value).subscribe(date =>
+    {
+      this.etudiantConnecte.saveData('id',date.idEtudiant.toString())
+      this.r.navigate(['/home']);
     })
+
+
+
 
   }
 

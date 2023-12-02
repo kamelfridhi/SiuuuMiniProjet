@@ -10,6 +10,7 @@ import { UserTemplateComponent } from './components/front/user-template/user-tem
 import { LoginComponent } from './components/front/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

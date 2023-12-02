@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit {
   constructor(private etduiantconnecte: EtudiantConnecteService, private r: Router, private etudiantService: EtudiantService) {
 
   }
+  E!: Etudiant;
 etudiant!:Etudiant;
+    id_logout =this.etduiantconnecte.getData('id');
 
   ngOnInit(): void {
     const etudiantId = this.etduiantconnecte.getData('id');
@@ -25,6 +27,7 @@ etudiant!:Etudiant;
         this.etudiant = value;
       });
     }
+
 
 /* ---------------------------user----------------------------------------*/
 
@@ -36,8 +39,15 @@ etudiant!:Etudiant;
 
 
   logout() {
-    this.etduiantconnecte.clearData();
-    this.r.navigate(['/login']);
+    if (this.etduiantconnecte.getData('id')!= null) {
+      // @ts-ignore
+      this.E = this.etudiantService.getEtudiant(this.etduiantconnecte.getData('id'));
+      this.etudiantService.Offline(this.E.idEtudiant);
+      this.etduiantconnecte.clearData();
+
+      this.r.navigate(['/login']);
+    }
+
 
   }
 

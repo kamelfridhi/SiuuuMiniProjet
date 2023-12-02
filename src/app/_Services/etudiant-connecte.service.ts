@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Etudiant} from "../_Models/etudiant";
-import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EtudiantConnecteService {
-
 
   constructor() {}
   key!:'id';
@@ -24,6 +21,8 @@ export class EtudiantConnecteService {
   public clearData() {
     localStorage.clear();
   }
+
+
 
 
 }

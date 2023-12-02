@@ -1,0 +1,157 @@
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">all users</h6>
+      <div class="ajout" style="margin-left: 90%;">
+        <a class="btn btn-primary btn-icon-split " routerLink="/back/ajouterchambre" routerLinkActive="active">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus-square"></i>
+                </span>
+          <span class="text">Ajouter</span>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table cellspacing="0" class="table table-bordered border-bottom-primary border-left-primary"
+               id="dataTable" width="100%">
+          <thead>
+          <tr>
+            <th>Id Etudiant</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>CIN</th>
+            <th>ECOLE</th>
+            <th>DATE DE NAISSANCE</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+
+            <th>Supprimer</th>
+            <th>Modifier</th>
+            <th>STATUT</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody *ngFor="let e of etudiant">
+          <tr *ngIf="e.etat !=5">
+            <td>{{e.idEtudiant}}</td>
+            <td>{{e.nomEt}}</td>
+            <td>{{e.prenomet}}</td>
+            <td>{{e.cin}}</td>
+            <td>{{e.ecole}}</td>
+            <td>{{e.dateNaissance}}</td>
+            <td>{{e.email}}</td>
+            <td>{{e.passoword}}</td>
+
+
+            <!-- Button Delete -->
+            <td>
+              <a (click)="deleteEtudiant(e.idEtudiant)" class="btn btn-danger btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-trash"></i>
+                </span>
+                <span class="text">Supprimer</span>
+              </a>
+            </td>
+            <!-- Button Delete end-->
+
+            <!-- Button Edit -->
+            <td>
+              <a class="btn btn-primary btn-icon-split" routerLink="/back/update/user/{{e.idEtudiant }}" routerLinkActive="active">
+                <span class="icon text-white-50">
+                  <i class="fas fa-pen-square"></i>
+                </span>
+                <span class="text">Modifier</span>
+              </a>
+            </td>
+            <td>
+              <div *ngIf="e.etat ==0">
+                <i class="fas fa-circle text-danger">offline</i>
+              </div>
+              <div *ngIf="e.etat==1" >
+                <i class="fas fa-circle text-success">Online</i>
+              </div>
+
+
+            </td>
+
+            <!-- Button Edit end-->
+            <td>
+              <button (click)="blocked(e.idEtudiant)" class="btn btn-danger btn-icon-split">Blocked</button>
+            </td>
+
+          </tr>
+
+
+          </tbody>
+
+        </table>
+        <h1> User blocked </h1>
+        <table cellspacing="0"
+               class="table table-bordered border-bottom-primary border-left-primary" width="100%">
+          <thead>
+          <tr>
+            <th>Id Etudiant</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>CIN</th>
+            <th>ECOLE</th>
+            <th>DATE DE NAISSANCE</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+
+            <th>Supprimer</th>
+            <th>Modifier</th>
+
+
+          </tr>
+          </thead>
+
+          <tbody *ngFor="let e of etudiant">
+          <tr *ngIf="e.etat==5">
+            <td>{{e.idEtudiant}}</td>
+            <td>{{e.nomEt}}</td>
+            <td>{{e.prenomet}}</td>
+            <td>{{e.cin}}</td>
+            <td>{{e.ecole}}</td>
+            <td>{{e.dateNaissance}}</td>
+            <td>{{e.email}}</td>
+            <td>{{e.passoword}}</td>
+
+
+            <!-- Button Delete -->
+            <td>
+              <a (click)="deleteEtudiant(e.idEtudiant)" class="btn btn-danger btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-trash"></i>
+                </span>
+                <span class="text">Supprimer</span>
+              </a>
+            </td>
+            <!-- Button Delete end-->
+
+            <!-- Button Edit -->
+            <td>
+              <a class="btn btn-primary btn-icon-split" routerLink="/back/update/user/{{e.idEtudiant }}" routerLinkActive="active">
+                <span class="icon text-white-50">
+                  <i class="fas fa-pen-square"></i>
+                </span>
+                <span class="text">Modifier</span>
+              </a>
+            </td>
+
+            <td *ngIf="e.etat==5" style="color:red;">Blocked</td>
+            <!-- Button Edit end-->
+
+          </tr>
+
+          </tbody>
+        </table>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+</div>

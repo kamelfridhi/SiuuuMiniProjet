@@ -19,16 +19,47 @@ export class EtudiantService {
   }
 
   addetudiant(etudiant: Etudiant): Observable<Etudiant> {
-    return this.http.post<Etudiant>(this.APIURL + "AddEtudiantapi", etudiant, this.httpOptions);
+    return this.http.post<Etudiant>(this.APIURL + "AddEtudiant", etudiant, this.httpOptions);
   }
 
   loginEtudiant(etudiant: Etudiant): Observable<Etudiant> {
     return this.http.post<Etudiant>(this.APIURL + 'login', etudiant, this.httpOptions);
   }
   getEtudiant(idString: string): Observable<Etudiant> {
-    let id = parseInt(idString,10);
+    let id = parseInt(idString, 10);
     return this.http.get<Etudiant>(this.APIURL + 'one/' + id);
   }
+
+    getAllEtudiant():Observable<Etudiant[]>{
+      return this.http.get<Etudiant[]>(this.APIURL + 'Alletudiant');
+
+    }
+    deleteetudiant(id:Number):Observable<Etudiant[]> {
+      return this.http.delete<Etudiant[]>(this.APIURL + 'delete/' + id);
+    }
+      etudiantBlocked(id:number):Observable<Etudiant[]>{
+        return this.http.get<Etudiant[]>(this.APIURL + 'blocked/'+ id);
+      }
+
+      Offline(id:Number):Observable<Etudiant[]> {
+    return this.http.get<Etudiant[]>(this.APIURL + 'offline/' + id);
+      }
+
+      updateEtudiant(etdudiant :Etudiant): Observable<Etudiant> {
+        return this.http.put<Etudiant>(this.APIURL + 'UpdateEtudiant', etdudiant, this.httpOptions);
+      }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
