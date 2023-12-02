@@ -7,7 +7,8 @@ import { TemplateComponent } from './template/template.component';
 import { AfficherBlocsComponent } from './afficher-blocs/afficher-blocs.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -19,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BackRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatCheckboxModule
   ]
 })
 export class BackModule { }

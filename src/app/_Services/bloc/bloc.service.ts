@@ -12,7 +12,7 @@ export class BlocService {
   readonly ENDPOINT_ADDBLOC = "/api/bloc/add";
   readonly ENDPOINT_UPDATEBLOC = "/api/bloc/update";
   readonly ENDPOINT_DELETEBLOCBYID = "/api/bloc/delete";
-
+  readonly ENDPOINT_AFFECTERBLOCAFOYER="/api/bloc/affecterBlocAFoyer"
   constructor(private http: HttpClient) { }
 
   getAllBlocs(): Observable<Bloc[]> {
@@ -34,4 +34,11 @@ export class BlocService {
     const url = `${this.API_URL}${this.ENDPOINT_DELETEBLOCBYID}/${idBloc}`;
     return this.http.delete<void>(url);
   }
+
+  affecterBlocAFoyer(nomBloc: string, nomFoyer: string): Observable<Bloc> {
+    const url = `${this.API_URL}${this.ENDPOINT_AFFECTERBLOCAFOYER}/${nomBloc}/${nomFoyer}`;
+    return this.http.put<Bloc>(url, {});
+  }
+
+  
 }

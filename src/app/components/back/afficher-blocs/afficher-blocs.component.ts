@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,NgForm } from '@angular/forms';
 import { Bloc } from 'src/app/_Models/bloc/bloc';
+import { Chambre } from 'src/app/_Models/chambre/chambre';
 import { Foyer } from 'src/app/_Models/foyer/foyer';
 import { BlocService } from 'src/app/_Services/bloc/bloc.service';
 import { FoyerService } from 'src/app/_Services/foyer/foyer.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
+import { ChambreService } from 'src/app/_Services/chambre/chambre.service';
 
 @Component({
   selector: 'app-afficher-blocs',
@@ -22,9 +26,15 @@ export class AfficherBlocsComponent implements OnInit {
   UPDblocId!: number;
   selectedBloc!: Bloc;
   foyers:Foyer[]=[];
+  affecterSelectedBloc!:string;
+  affecterSelectedFoyer!:string;
   /* Declaration end */
-  
-  constructor(private blocService: BlocService,private foyerService: FoyerService, private fb: FormBuilder) { }
+  displayedColumns: string[] = ['select', 'idChambre'];
+
+
+  dataSource = new MatTableDataSource<Chambre>([]);
+  selection = new SelectionModel<Chambre>(true, []);
+  constructor(private blocService: BlocService,private foyerService: FoyerService,private chamberService :ChambreService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getBlocs();
@@ -41,6 +51,13 @@ export class AfficherBlocsComponent implements OnInit {
     this.initForm();
 
     this.getFoyers();
+    this.fetchChambresNonAffecter();
+  }
+
+  fetchChambresNonAffecter(): void {
+    this.chamberService.getChambresNonAffecter().subscribe((chambres: Chambre[]) => {
+      this.dataSource.data = chambres;
+    });
   }
 
   getBlocs(): void {
@@ -86,7 +103,8 @@ export class AfficherBlocsComponent implements OnInit {
       const newBloc: Bloc = {
         nomBloc: this.nomBloc,
         capaciteBloc: this.capaciteBloc,
-        blocId: 0
+        blocId: 0,
+        foyer: null
       };
       this.blocService.addBloc(newBloc).subscribe({
         next: (addedBloc: Bloc) => {
@@ -96,6 +114,7 @@ export class AfficherBlocsComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error adding bloc:', error);
+          console.log('Error adding bloc:', newBloc);
         }
       });
   }
@@ -114,7 +133,8 @@ export class AfficherBlocsComponent implements OnInit {
     const updatedBloc: Bloc = {
       nomBloc: nomBlocValue,
       capaciteBloc: capaciteBlocValue,
-      blocId: idBlocValue
+      blocId: idBlocValue,
+      foyer: null
     };
     console.log('updatedBloc:', updatedBloc);
 
@@ -161,4 +181,38 @@ export class AfficherBlocsComponent implements OnInit {
   
   
 
+  affecter(event: Event): void {
+    event.preventDefault();
+    if (this.affecterSelectedBloc && this.affecterSelectedFoyer) {
+      const selectedBlocNom: string = this.affecterSelectedBloc;
+      const selectedFoyerNom: string = this.affecterSelectedFoyer;
+
+      this.blocService.affecterBlocAFoyer(selectedBlocNom, selectedFoyerNom).subscribe({
+        next: (updatedBloc: Bloc) => {
+          console.log('Bloc affected successfully:', updatedBloc);
+          // Add any additional logic here if needed
+        },
+        error: (error) => {
+          console.error('Error affecting bloc:', error);
+        },
+      });
+    } else {
+      console.error('Please select both bloc and foyer.');
+    }
+  }
+
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle(): void {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
+  }
+
 }
+
