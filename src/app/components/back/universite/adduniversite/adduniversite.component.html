@@ -1,1 +1,83 @@
-<p>adduniversite works!</p>
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Afficher tout les universite</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
+               width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Nom du universite</th>
+            <th>addeess du Bloc</th>
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+
+          </tr>
+          </tfoot>
+          <tbody *ngFor="let u of universties">
+          <tr>
+            <td>{{ u.idUniversite }}</td>
+            <td>{{ u.nomUniversite }}</td>
+            <td>{{ u.adresse }}</td>
+            <!-- <td>
+               <select class="form-control" id="foyerSelect" name="selectedFoyerId" [(ngModel)]="blocForm2.value.UPDselectedFoyerId">
+                 <option *ngFor="let foyer of foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+               </select>
+
+             </td> -->
+            <!-- Button Delete -->
+            <td>
+              <a href="" class="btn btn-danger btn-icon-split"
+                 (click)="deleteuniversite($event,u.idUniversite)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                <span class="text">Supprimer</span>
+              </a>
+            </td>
+            <!-- Button Delete end-->
+            <!-- Button Edit -->
+            <td>
+              <a href="#" class="btn btn-primary btn-icon-split" routerLink="/back/updateuniversite/{{u.idUniversite}}">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
+                <span class="text">Modifier</span>
+              </a>
+            </td>
+            <!-- Button Edit end-->
+          </tr>
+
+          </tbody>
+        </table>
+        <hr>
+        <!-- form start -->
+        <form class="border-bottom-primary border-left-primary p-1" >
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" placeholder="Nom du Universite"
+                   [(ngModel)]="nomuniversite" name="nomUv" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-user" placeholder="address du Bloc"
+                   [(ngModel)]="adress" name="adressUv" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-user btn-block" (click)="addUniversite()">
+            Ajouter
+          </button>
+        </form>
+        <hr>
+
+
+        <!-- form end -->
+      </div>
+    </div>
+  </div>
+
+</div>

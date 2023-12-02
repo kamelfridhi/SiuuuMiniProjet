@@ -1,0 +1,13 @@
+<form class="border-bottom-primary border-left-primary p-1" >
+  <div class="form-group">
+    <input type="text" class="form-control form-control-user" placeholder="Nom du Universite"
+           [(ngModel)]="uv.nomUniversite"   name="nomUv" required>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control form-control-user" placeholder="address du Bloc"
+           [(ngModel)]="uv.adresse"      name="adressUv" required>
+  </div>
+  <button type="submit" class="btn btn-primary btn-user btn-block" (click)="modifieruniversite()">
+    update
+  </button>
+</form>
