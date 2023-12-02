@@ -23,9 +23,19 @@
         </div>
 
         <div *ngIf="capaciteFoyer?.touched && capaciteFoyer?.invalid">
-          <small *ngIf="capaciteFoyer?.errors!['required']" class="text-danger">firstname is required <br></small>
+          <small *ngIf="capaciteFoyer?.errors!['required']" class="text-danger">capacite is required <br></small>
         </div>
 
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" formControlName="resto">
+          <option [value]="null">Select one Resto for this foyer</option>
+          <option *ngFor="let r of allResto" value="{{r.idResto}}" >
+            {{ r.nomResto }}
+          </option>
+        </select>
+
+        <div *ngIf="getRestoValue?.touched && getRestoValue?.invalid">
+          <small *ngIf="getRestoValue?.errors!['required']" class="text-danger">resto is required <br></small>
+        </div>
 
 
         <!--

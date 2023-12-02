@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SharedService} from "../../../../_Services/shared.service";
 
 import {Bloc} from "../../../../_Models/bloc/bloc";
+import {Foyer} from "../../../../_Models/foyer/foyer";
 
 @Component({
   selector: 'app-foyer-blocs',
@@ -10,14 +11,14 @@ import {Bloc} from "../../../../_Models/bloc/bloc";
 })
 export class FoyerDetailsComponent implements OnInit {
 
-  blocsFoyer:Bloc[]=[];
+  foyer:Foyer|undefined;
 
   constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
 
-    this.sharedService.data$.forEach(data => {
-      this.blocsFoyer = data;
+    this.sharedService.data$.subscribe(data => {
+      this.foyer = data;
     });
   }
 

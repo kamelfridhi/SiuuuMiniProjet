@@ -17,6 +17,8 @@ export class FoyerService {
 
   private getAllFoyerApi= this.Api + "/foyer/all";
   private getOneFoyerApi= this.Api + "/foyer/getOne/";
+  private ajouterFoyerEtAffecterARestoApi = this.Api + "/foyer/ajouterFoyerEtAffecterAResto";
+
 
   constructor(private http:HttpClient) { }
   httpOptions = {
@@ -44,6 +46,10 @@ export class FoyerService {
 
   updateFoyer(foyer: Foyer): Observable<Foyer> {
     return this.http.post<Foyer>(`${this.Api}/foyer/update`, foyer, this.httpOptions);
+  }
+
+  ajouterFoyerEtAffecterAResto(foyer: Foyer, idResto: number): Observable<Foyer> {
+    return this.http.post<Foyer>(`${this.ajouterFoyerEtAffecterARestoApi}?idResto=${idResto}`, foyer, this.httpOptions);
   }
 
 

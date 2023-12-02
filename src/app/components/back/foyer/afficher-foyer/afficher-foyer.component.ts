@@ -46,9 +46,9 @@ export class AfficherFoyerComponent implements OnInit {
   }
 
 
-  sendDataToChild(blocs: Bloc[]) {
+  sendDataToChild(foyer: Foyer) {
 
-      this.sharedService.setData(blocs);
+      this.sharedService.setData(foyer);
       //scroll to bot with smooth behavior
       window.scrollTo({
         top: document.body.scrollHeight,
