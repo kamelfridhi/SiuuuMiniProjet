@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./ajouterchambre.component.css']
 })
 export class AjouterchambreComponent implements OnInit {
-
+  numChambre!: number;
   chambre!:Chambre;
 
   constructor(private formBuilder: FormBuilder, private chambreService: ChambreService,private router:Router) { }
@@ -39,6 +39,7 @@ export class AjouterchambreComponent implements OnInit {
       });
     }
   }
+
 
 
 

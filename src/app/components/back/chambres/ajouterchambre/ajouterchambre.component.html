@@ -9,7 +9,12 @@
 
         <div class="form-group">
           <label for="nc">Numéro Chambre :</label>
-          <input type="text" class="form-control" id="nc" ngModel  name="numeroChambre" required>
+          <input type="text" class="form-control" id="nc" ngModel #num="ngModel" name="numeroChambre" required pattern="[0-9]*" >
+        </div>
+        <div *ngIf="num?.touched && num?.invalid">
+          <small *ngIf="num?.errors!['required']" class="text-danger">Numero chambre Vide! <br></small>
+          <small *ngIf="num?.errors!['pattern']" class="text-danger">Numero chambre doit etre des chiffres <br></small>
+
         </div>
 
         <div class="form-group">

@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ModifierchambreComponent implements OnInit {
   chambre!: Chambre;
+  modifForm!:FormGroup;
 
 
   constructor(private formBuilder: FormBuilder, private chambreService: ChambreService,private route:ActivatedRoute,private router:Router) { }
@@ -31,6 +32,8 @@ export class ModifierchambreComponent implements OnInit {
 
       this.chambreService.updateChambre(this.chambre).subscribe({
         next:(response) => {
+
+
         this.router.navigate(['/back/afficherchambre'])
         },
         error:(error) => {
