@@ -30,4 +30,9 @@ export class ChambreService {
     return this.http.get<Chambre>(this.apiUrl+'/getChambresParId/'+id);
   }
 
+  getChambresParNomBloc(nomBloc: String): Observable<Chambre[]> {
+    const url = `${this.apiUrl}/getChambresParNomBloc/${nomBloc}`;
+    return this.http.get<Chambre[]>(url);
+  }
+
 }

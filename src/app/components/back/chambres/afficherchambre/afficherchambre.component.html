@@ -1,3 +1,4 @@
+
 <app-detailschambre ></app-detailschambre>
 <div class="container-fluid">
   <!-- DataTales Example -->
@@ -13,8 +14,20 @@
           </a>
       </div>
     </div>
+
     <div class="card-body">
+      <div class="d-flex justify-content-end form-inline ml-auto my-5 my-md-0 mw-100 ">
+        <div class="input-group">
+          <select style="width: 1%;" (change)="inputchange($event)" class="form-control bg-light border-0 small"  >
+            <option value="" selected >Tous</option>
+            <option *ngFor=" let nomBloc of blocs" [value]="nomBloc.nomBloc" >{{nomBloc.nomBloc}}</option>
+
+
+          </select>
+        </div>
+      </div>
       <div class="table-responsive">
+
         <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
                width="100%" cellspacing="0">
           <thead>
@@ -30,12 +43,14 @@
           </tr>
           </thead>
 
-          <tbody *ngFor="let chambre of chambres">
+          <tbody *ngFor="let chambre of chambres" >
+
+
           <tr>
             <td>{{ chambre.idChambre }}</td>
             <td>{{ chambre.numeroChambre }}</td>
             <td>{{ chambre.typeC }}</td>
-            <td></td>
+            <td >{{ chambre.blocchambre?.nomBloc }}</td>
 
 
             <!-- Button Delete -->
