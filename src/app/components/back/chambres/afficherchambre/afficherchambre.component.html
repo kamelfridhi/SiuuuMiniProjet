@@ -1,4 +1,23 @@
+<form [formGroup]="ChambreForm" >
+<div>
+  <label for="typeChambreSelector">Sélectionner le type de chambre:</label>
+  <select id="typeChambreSelector"  formControlName="typeC">
+    <option  value="{{TypeChambre.SIMPLE}}" >SIMPLE</option>
+    <option value="{{TypeChambre.DOUBLE}}" >DOUBLE</option>
+    <option value="{{TypeChambre.TRIPLE}}" >TRIPLE</option>
 
+  </select>
+</div>
+
+<div>
+  <label for="blocSelector">Sélectionner le bloc:</label>
+  <select id="blocSelector"  formControlName="blocId">
+    <option *ngFor="let bloc of blocs" value="{{bloc.bloc}}">{{ bloc.nomBloc }}</option>
+  </select>
+</div>
+  <h3>{{nbChambre}}</h3>
+<button (click)="getNombreChambreParTypeEtBloc(selectedType, selectedBlocId)">Afficher le nombre de chambres</button>
+</form>
 <app-detailschambre ></app-detailschambre>
 <div class="container-fluid">
   <!-- DataTales Example -->
@@ -17,7 +36,9 @@
 
     <div class="card-body">
       <div class="d-flex justify-content-end form-inline ml-auto my-5 my-md-0 mw-100 ">
+        <STRONG style="margin-right: 1%;color: black">Filtre chambre par bloc:</STRONG>
         <div class="input-group">
+
           <select style="width: 1%;" (change)="inputchange($event)" class="form-control bg-light border-0 small"  >
             <option value="" selected >Tous</option>
             <option *ngFor=" let nomBloc of blocs" [value]="nomBloc.nomBloc" >{{nomBloc.nomBloc}}</option>

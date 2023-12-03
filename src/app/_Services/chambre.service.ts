@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Chambre} from "../_Models/chambre";
+import {Bloc} from "../_Models/bloc";
+import {TypeChambre} from "../_Models/TypeChambre.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,12 @@ export class ChambreService {
   getChambresParNomBloc(nomBloc: String): Observable<Chambre[]> {
     const url = `${this.apiUrl}/getChambresParNomBloc/${nomBloc}`;
     return this.http.get<Chambre[]>(url);
+  }
+
+
+  nombreChambreParTypeEtBloc(type: TypeChambre, idBloc: number): Observable<number> {
+    const url = `${this.apiUrl}/nbChambreParTypeEtBloc/${type}/${idBloc}`;
+    return this.http.get<number>(url);
   }
 
 }

@@ -1,5 +1,5 @@
 export class Bloc {
-  blocId!: number;
+  bloc!: number;
   nomBloc!: string;
   capaciteBloc!: number;
 }

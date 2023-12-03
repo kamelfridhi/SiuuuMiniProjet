@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { ChambreService } from '../../../../_Services/chambre.service';
-import { BlocService } from '../../../../_Services/bloc/bloc.service';
+import {ChambreService} from '../../../../_Services/chambre.service';
+import {BlocService} from '../../../../_Services/bloc/bloc.service';
 import {Chambre} from "../../../../_Models/chambre";
 import {Bloc} from "../../../../_Models/bloc";
+import {TypeChambre} from "../../../../_Models/TypeChambre.enum";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+
 @Component({
   selector: 'app-afficherchambre',
   templateUrl: './afficherchambre.component.html',
@@ -13,13 +16,34 @@ export class AfficherchambreComponent implements OnInit{
   blocs:Bloc[]=[];
   afficherModal = false;
   nomBloc:String="";
+  nbChambre!:number;
+  selectedType!: TypeChambre;
+  selectedBlocId!: number;
+  ChambreForm!:FormGroup;
 
   chambreSelectionnee: Chambre | undefined;
-  constructor(private chambreService: ChambreService,private blocService:BlocService) { }
+  constructor(private chambreService: ChambreService,private blocService:BlocService,private fb:FormBuilder) {
+    let formControls = {
+      typeC: new FormControl('', Validators.required),
+      blocId: new FormControl(null, Validators.required),
+    }
+    this.ChambreForm = this.fb.group(formControls);
+
+
+  }
 
   ngOnInit() {
     this.loadChambres();
     this.loadBlocs();
+    this.getBlocIdValue?.valueChanges.subscribe((selectedId: number) => {
+      console.log(selectedId)
+      this.selectedBlocId= selectedId;
+    });
+    this.getTypeValue?.valueChanges.subscribe((selectedType: TypeChambre) => {
+      console.log(selectedType)
+
+      this.selectedType= selectedType;
+    });
 
   }
 
@@ -38,7 +62,7 @@ export class AfficherchambreComponent implements OnInit{
     this.blocService.getAllBlocs().subscribe({
       next: (blocs: Bloc[]) => {
         this.blocs = blocs;
-        console.log("qsjdflmkhjsqmkfhjqsddikmf",this.blocs);
+        //console.log(this.blocs);
       },
       error: (error) => {
         console.error('Error fetching blocs:', error);
@@ -85,8 +109,27 @@ export class AfficherchambreComponent implements OnInit{
   fermerModal() {
     this.afficherModal = false;
   }
+  getNombreChambreParTypeEtBloc(type: TypeChambre , idBloc: number ): void {
+
+    console.log(type)
+    console.log(idBloc)
+    this.chambreService.nombreChambreParTypeEtBloc(type,idBloc).subscribe({
+      next: (nombreChambres) => {
 
 
+        console.log("nombre chambre :", nombreChambres)
+      this.nbChambre=nombreChambres;
+        // Fais ce que tu veux avec le nombre de chambres, peut-être mettre à jour une propriété dans le composant.
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération du nombre de chambres');
+      }
+    });
+  }
+  get getTypeValue() { return this.ChambreForm.get('typeC'); }
+  get getBlocIdValue() { return this.ChambreForm.get('blocId'); }
 
 
+  protected readonly Chambre = Chambre;
+  protected readonly TypeChambre = TypeChambre;
 }
