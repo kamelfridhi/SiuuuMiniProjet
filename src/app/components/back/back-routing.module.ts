@@ -7,6 +7,9 @@ import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {ModifierFoyerComponent} from "./foyer/modifier-foyer/modifier-foyer.component";
 import {FoyerDashComponent} from "./foyer/foyer-dash/foyer-dash.component";
 import {FoyerDetailsComponent} from "./foyer/foyer-blocs/foyer-details.component";
+import {AfficherRestoComponent} from "./resto/afficher-resto/afficher-resto.component";
+import {ModifierRestoComponent} from "./resto/modifier-resto/modifier-resto.component";
+import {AddRestoComponent} from "./resto/add-resto/add-resto.component";
 
 const routes: Routes = [
   {
@@ -31,7 +34,19 @@ const routes: Routes = [
           },
           { path: 'ajouter', component: AddFoyerComponent  },
 
-
+        ]
+      },
+      {
+        path: 'restaurant',
+        component: FoyerDashComponent,
+        children:[
+          { path:'', redirectTo: 'table',pathMatch: 'full',  },
+          { path: 'table', component: AfficherRestoComponent,
+            children:[
+              { path: 'modifier/:id', component: ModifierRestoComponent },
+            ]
+          },
+          { path: 'ajouter', component: AddRestoComponent  },
 
         ]
       },

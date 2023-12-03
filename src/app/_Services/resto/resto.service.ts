@@ -17,4 +17,9 @@ export class RestoService {
     return this.http.get<Resto[]>(this.getAllRestoEndPoint);
   }
 
+  ajouterRestoEtAffecterAplusiersFoyer(restaurant: Resto, idFoyers: number[]): Observable<Resto> {
+    const url = `${this.Api}/resto/ajouterRestoEtAffecterAplusiersFoyer`;
+    return this.http.post<Resto>(url, restaurant, { params: { foyers: idFoyers} });
+  }
+
 }

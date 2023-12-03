@@ -7,10 +7,10 @@ import {Bloc} from "../../../../_Models/bloc/bloc";
 
 @Component({
   selector: 'app-afficher-resto',
-  templateUrl: './afficher-foyer.component.html',
-  styleUrls: ['./afficher-foyer.component.css']
+  templateUrl: './afficher-resto.component.html',
+  styleUrls: ['./afficher-resto.component.css']
 })
-export class AfficherFoyerComponent implements OnInit {
+export class AfficherRestoComponent implements OnInit {
 
 
 

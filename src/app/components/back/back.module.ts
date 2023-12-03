@@ -11,6 +11,10 @@ import { FoyerDashComponent } from './foyer/foyer-dash/foyer-dash.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { FoyerDetailsComponent } from './foyer/foyer-blocs/foyer-details.component';
+import {AddRestoComponent} from "./resto/add-resto/add-resto.component";
+import {AfficherRestoComponent} from "./resto/afficher-resto/afficher-resto.component";
+import {RestoDashComponent} from "./resto/resto-dash/resto-dash.component";
+import {ModifierRestoComponent} from "./resto/modifier-resto/modifier-resto.component";
 
 
 @NgModule({
@@ -22,6 +26,10 @@ import { FoyerDetailsComponent } from './foyer/foyer-blocs/foyer-details.compone
     ModifierFoyerComponent,
     FoyerDashComponent,
     FoyerDetailsComponent,
+    AddRestoComponent,
+    AfficherRestoComponent,
+    RestoDashComponent,
+    ModifierRestoComponent
   ],
   imports: [
     CommonModule,

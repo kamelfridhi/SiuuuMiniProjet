@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-foyer-dash',
+  selector: 'app-resto-dash',
   templateUrl: './foyer-dash.component.html',
   styleUrls: ['./foyer-dash.component.css']
 })

@@ -3,17 +3,17 @@ import {NgForm} from "@angular/forms";
 import {Foyer} from "../../../../_Models/foyer/foyer";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FoyerService} from "../../../../_Services/foyer.service";
-import {AfficherFoyerComponent} from "../afficher-foyer/afficher-foyer.component";
+import {AfficherRestoComponent} from "../afficher-resto/afficher-resto.component";
 
 @Component({
   selector: 'app-modifier-resto',
-  templateUrl: './modifier-foyer.component.html',
-  styleUrls: ['./modifier-foyer.component.css']
+  templateUrl: './modifier-resto.component.html',
+  styleUrls: ['./modifier-resto.component.css']
 })
-export class ModifierFoyerComponent implements OnInit{
+export class ModifierRestoComponent implements OnInit{
   foyer!: Foyer;
 
-  constructor(private modifierCompo:AfficherFoyerComponent,private foyerService: FoyerService, private ar: ActivatedRoute,private r : Router) {}
+  constructor(private modifierCompo:AfficherRestoComponent, private foyerService: FoyerService, private ar: ActivatedRoute, private r : Router) {}
 
   ngOnInit(): void {
     this.ar.params.subscribe((p) => {

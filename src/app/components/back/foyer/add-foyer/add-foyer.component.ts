@@ -7,7 +7,7 @@ import {RestoService} from "../../../../_Services/resto/resto.service";
 
 
 @Component({
-  selector: 'app-add-foyer',
+  selector: 'app-add-resto',
   templateUrl: './add-foyer.component.html',
   styleUrls: ['./add-foyer.component.css']
 })
@@ -21,6 +21,7 @@ export class AddFoyerComponent implements OnInit {
     this.loadResto();
 
     this.getRestoValue?.valueChanges.subscribe((selectedId: number) => {
+      console.log(selectedId);
       this.idResto = selectedId; // Update the idResto property with the selected ID
     });
 
