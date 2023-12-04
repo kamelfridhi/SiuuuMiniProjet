@@ -10,6 +10,7 @@ import {FoyerDetailsComponent} from "./foyer/foyer-blocs/foyer-details.component
 import {AfficherRestoComponent} from "./resto/afficher-resto/afficher-resto.component";
 import {ModifierRestoComponent} from "./resto/modifier-resto/modifier-resto.component";
 import {AddRestoComponent} from "./resto/add-resto/add-resto.component";
+import {RestoDetailsComponent} from "./resto/resto-foyers/resto-details.component";
 
 const routes: Routes = [
   {
@@ -44,6 +45,8 @@ const routes: Routes = [
           { path: 'table', component: AfficherRestoComponent,
             children:[
               { path: 'modifier/:id', component: ModifierRestoComponent },
+              { path: 'Details/:id', component: RestoDetailsComponent },
+
             ]
           },
           { path: 'ajouter', component: AddRestoComponent  },

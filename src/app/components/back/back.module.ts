@@ -15,6 +15,7 @@ import {AddRestoComponent} from "./resto/add-resto/add-resto.component";
 import {AfficherRestoComponent} from "./resto/afficher-resto/afficher-resto.component";
 import {RestoDashComponent} from "./resto/resto-dash/resto-dash.component";
 import {ModifierRestoComponent} from "./resto/modifier-resto/modifier-resto.component";
+import {RestoDetailsComponent} from "./resto/resto-foyers/resto-details.component";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {ModifierRestoComponent} from "./resto/modifier-resto/modifier-resto.comp
     AddRestoComponent,
     AfficherRestoComponent,
     RestoDashComponent,
-    ModifierRestoComponent
+    ModifierRestoComponent,
+    RestoDetailsComponent
   ],
   imports: [
     CommonModule,

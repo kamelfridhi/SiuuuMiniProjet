@@ -2,16 +2,16 @@
   <div class="row justify-content-center">
 
     <div class="col-md-6">
-      <form #updateFormFoyer="ngForm" (ngSubmit)="updateFoyer(updateFormFoyer)">
+      <form #updateFormResto="ngForm" (ngSubmit)="updateResto()">
 
         <div class="form-group">
-          <label for="idF">nom foyer</label>
-          <input  [disabled]="true" type="text" id="idF" class="form-control" [(ngModel)]="foyer.idFoyer"  [ngModelOptions]="{standalone: true}" >
+          <label for="idF">id resto</label>
+          <input  [disabled]="true" type="text" id="idF" class="form-control" [(ngModel)]="resto.idResto"  [ngModelOptions]="{standalone: true}" >
         </div>
 
         <div class="form-group">
-          <label for="nom">nom foyer</label>
-          <input  required minlength="3" type="text" id="nom" class="form-control" [(ngModel)]="foyer.nomFoyer"  #nom="ngModel" [ngModelOptions]="{standalone: true}" >
+          <label for="nom">nom resto</label>
+          <input  required minlength="3" type="text" id="nom" class="form-control" [(ngModel)]="resto.nomResto"  #nom="ngModel" [ngModelOptions]="{standalone: true}" >
         </div>
 
         <div *ngIf="nom?.touched && nom?.invalid">
@@ -23,15 +23,10 @@
 
 
         <div class="form-group">
-          <label for="cap">capacite</label>
-          <input  required type="number" id="cap" class="form-control" [(ngModel)]="foyer.capaciteFoyer"  #capaciteFoyer="ngModel" [ngModelOptions]="{standalone: true}">
+          <label for="tel">tel</label>
+          <input  required type="number" id="tel" class="form-control" [(ngModel)]="resto.telResto"  [ngModelOptions]="{standalone: true}">
 
         </div>
-
-        <div *ngIf="capaciteFoyer?.touched && capaciteFoyer?.invalid">
-          <small *ngIf="capaciteFoyer?.errors!['required']" class="text-danger">firstname is required <br></small>
-        </div>
-
 
 
         <!--
@@ -49,7 +44,7 @@
      [disabled]="addUserForm.invalid"
   -->
         <br>
-        <input [disabled]="updateFormFoyer.invalid" type="submit" value="update foyer" class="btn btn-info">
+        <input [disabled]="updateFormResto.invalid" type="submit" value="update foyer" class="btn btn-info">
       </form>
     </div>
   </div>

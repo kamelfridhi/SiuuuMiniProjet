@@ -10,7 +10,7 @@ export class SharedService {
   public data$ = this.dataSubject.asObservable();
 
   public setData(data: any): void {
-    //console.log("data$ : "+this.data$.forEach(value  => console.log(value)));
+    this.data$.forEach(value => console.log("dehe"+value));
     this.dataSubject.next(data);
   }
   constructor() { }

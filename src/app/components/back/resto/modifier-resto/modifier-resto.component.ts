@@ -4,6 +4,8 @@ import {Foyer} from "../../../../_Models/foyer/foyer";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FoyerService} from "../../../../_Services/foyer.service";
 import {AfficherRestoComponent} from "../afficher-resto/afficher-resto.component";
+import {Resto} from "../../../../_Models/resto/resto";
+import {RestoService} from "../../../../_Services/resto/resto.service";
 
 @Component({
   selector: 'app-modifier-resto',
@@ -11,13 +13,13 @@ import {AfficherRestoComponent} from "../afficher-resto/afficher-resto.component
   styleUrls: ['./modifier-resto.component.css']
 })
 export class ModifierRestoComponent implements OnInit{
-  foyer!: Foyer;
+  resto!: Resto;
 
-  constructor(private modifierCompo:AfficherRestoComponent, private foyerService: FoyerService, private ar: ActivatedRoute, private r : Router) {}
+  constructor(private modifierCompo:AfficherRestoComponent, private restoService: RestoService, private ar: ActivatedRoute, private r : Router) {}
 
   ngOnInit(): void {
     this.ar.params.subscribe((p) => {
-      this.foyerService.getFoyerByID(p['id']).subscribe(value => this.foyer=value);
+      this.restoService.getRestoById(p['id']).subscribe(value => this.resto=value);
     });
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -25,11 +27,11 @@ export class ModifierRestoComponent implements OnInit{
       behavior: 'smooth'
     });
   }
-  updateFoyer(formFoyer: NgForm) {
-    this.foyerService.updateFoyer(this.foyer).subscribe({
+  updateResto() {
+    this.restoService.updateFoyer(this.resto).subscribe({
       next: (res) => {
-        this.r.navigateByUrl('/back/foyer/table').then(value => {
-          this.foyerService.announceFoyerUpdate();
+        this.r.navigateByUrl('/back/restaurant/table').then(value => {
+         this.restoService.announceRestoUpdate();
           //scroll to top with animation
           window.scrollTo({
             top: 0,

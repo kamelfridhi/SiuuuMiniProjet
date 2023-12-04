@@ -1,0 +1,40 @@
+<div  class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Table des foyers du resto
+      <strong *ngIf="resto">
+
+       ({{resto.nomResto}})
+        <strong *ngIf="resto.foyers.length==0">
+          est vide
+        </strong>
+      </strong>
+    </h6>
+  </div>
+  <div *ngIf="resto.foyers.length>0" class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>capacite foyer</th>
+          <th>#</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let f of resto?.foyers">
+          <td>{{f.idFoyer}}</td>
+          <td>{{f.nomFoyer}}</td>
+          <td>{{f.capaciteFoyer}}</td>
+          <td>
+            <button class="btn btn-outline-secondary ml-4" (click)="desafecterFoyer(f.idFoyer)">desafecter</button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

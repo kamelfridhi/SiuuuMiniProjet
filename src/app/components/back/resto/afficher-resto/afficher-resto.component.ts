@@ -4,6 +4,8 @@ import {Foyer} from "../../../../_Models/foyer/foyer";
 import {RouterOutlet} from "@angular/router";
 import {SharedService} from "../../../../_Services/shared.service";
 import {Bloc} from "../../../../_Models/bloc/bloc";
+import {Resto} from "../../../../_Models/resto/resto";
+import {RestoService} from "../../../../_Services/resto/resto.service";
 
 @Component({
   selector: 'app-afficher-resto',
@@ -15,29 +17,28 @@ export class AfficherRestoComponent implements OnInit {
 
 
 
-  foyers:Foyer[]=[];
-  constructor(private foyerService: FoyerService,private sharedService: SharedService) {}
+  resto:Resto[]=[];
+  constructor(private foyerService: FoyerService,private restoService:RestoService, private sharedService: SharedService) {}
 
 
 
-  deleteF(index:number,id_foyer: number) {
-    this.foyerService.deleteFoyer(id_foyer).subscribe(value =>{
-      this.foyers.splice(index, 1);
+  deleteR(index:number,idResto: number) {
+    this.restoService.deleteResto(idResto).subscribe(value =>{
+      this.resto.splice(index, 1);
     });
   }
 
   ngOnInit(): void {
-    this.loadFoyers();
-
+    this.loadResto();
     // Subscribe to foyer updates
-    this.foyerService.foyerUpdated.subscribe(() => {
+    this.restoService.restoUpdated.subscribe(() => {
       // Reload the list of foyers
-      this.loadFoyers();
+      this.loadResto();
     });
   }
 
-  loadFoyers() {
-    this.foyerService.getAllFoyer().subscribe(data =>this.foyers=data );
+  loadResto() {
+    this.restoService.getAllResto().subscribe(data =>this.resto=data );
   }
 
   goDown() {
@@ -46,9 +47,9 @@ export class AfficherRestoComponent implements OnInit {
   }
 
 
-  sendDataToChild(foyer: Foyer) {
+  sendDataToChild(r: Resto) {
 
-      this.sharedService.setData(foyer);
+      this.sharedService.setData(r);
       //scroll to bot with smooth behavior
       window.scrollTo({
         top: document.body.scrollHeight,

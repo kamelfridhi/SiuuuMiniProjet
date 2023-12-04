@@ -2,6 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Foyer} from "../_Models/foyer/foyer";
 import {Observable} from "rxjs";
+import {Resto} from "../_Models/resto/resto";
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,11 @@ export class FoyerService {
 
   ajouterFoyerEtAffecterAResto(foyer: Foyer, idResto: number): Observable<Foyer> {
     return this.http.post<Foyer>(`${this.ajouterFoyerEtAffecterARestoApi}?idResto=${idResto}`, foyer, this.httpOptions);
+  }
+
+  desaffecterFoyerAResto(idFoyer:number, idResto: number) :Observable<Foyer> {
+    const url = `${this.Api}/foyer/desaffecterFoyerAResto/${idResto}/${idFoyer}`;
+    return this.http.put<Foyer>(url,null);
   }
 
 
