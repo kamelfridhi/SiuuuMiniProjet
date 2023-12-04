@@ -1,0 +1,107 @@
+
+<body>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<section>
+
+
+  <div class="container">
+    <section class="row d-flex">
+
+      <div  *ngFor="let f of foyers" class="col-md-4">
+        <div class="card">
+          <img src="../../../../../assets/images/1.png" class="card-img-top" alt="Image de la chambre" style="width:400px;height: 300px">
+          <div class="card-body">
+            <h5 class="card-title">{{f.nomFoyer}}</h5>
+            <p class="card-text">Description ou autres informations sur la chambre.</p>
+            <button class="btn btn-primary">Consulter</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+      <button [disabled]="currentPage==0" class="btn btn-outline-dark m-2" (click)="prevPage()">Previous</button>
+      <button [disabled]="currentPage==totalPages-1" class="btn btn-outline-dark" (click)="nextPage()">Next</button>
+
+  </div>
+
+
+
+
+
+
+
+  <!--
+   <div class="container">
+     <section class="row">
+
+      <div class="col-md-4" *ngFor="let chambre of chambres">
+        <div *ngIf="chambre.typeC=='SIMPLE'">
+
+          <div class="card">
+            <img [src]="getImagePath(chambre.typeC)" class="card-img-top" alt="Image de la chambre">
+            <div class="card-body">
+              <h5 class="card-title">Type de chambre: {{ chambre.typeC }}</h5>
+              <p class="card-text">Description ou autres informations sur la chambre.</p>
+              <button class="btn btn-primary">Consulter</button>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="chambre.typeC=='DOUBLE'">
+
+          <div class="card">
+            <img [src]="getImagePath(chambre.typeC)" class="card-img-top" alt="Image de la chambre">
+            <div class="card-body">
+              <h5 class="card-title">Type de chambre: {{ chambre.typeC }}</h5>
+              <p class="card-text">Description ou autres informations sur la chambre.</p>
+              <button class="btn btn-primary">Consulter</button>
+            </div>
+          </div>
+
+        </div>
+        <div *ngIf="chambre.typeC=='TRIPLE'">
+
+          <div class="card">
+            <img [src]="getImagePath(chambre.typeC)" class="card-img-top" alt="Image de la chambre">
+            <div class="card-body">
+              <h5 class="card-title">Type de chambre: {{ chambre.typeC }}</h5>
+              <p class="card-text">Description ou autres informations sur la chambre.</p>
+              <button class="btn btn-primary">Consulter</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+</section>
+
+</body>

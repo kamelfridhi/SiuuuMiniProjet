@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Foyer} from "../_Models/foyer/foyer";
 import {Observable} from "rxjs";
 import {Resto} from "../_Models/resto/resto";
@@ -17,6 +17,7 @@ export class FoyerService {
   private Api="http://localhost:8081/api";
 
   private getAllFoyerApi= this.Api + "/foyer/all";
+  private getAllFoyerWPApi= this.Api + "/foyer/allWP";
   private getOneFoyerApi= this.Api + "/foyer/getOne/";
   private ajouterFoyerEtAffecterARestoApi = this.Api + "/foyer/ajouterFoyerEtAffecterAResto";
 
@@ -58,5 +59,12 @@ export class FoyerService {
     return this.http.put<Foyer>(url,null);
   }
 
+  getAllFoyerWP(page: number, size: number): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<any>(this.getAllFoyerWPApi, { params });
+  }
 
 }

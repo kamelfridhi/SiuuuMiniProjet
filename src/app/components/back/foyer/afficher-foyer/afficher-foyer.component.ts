@@ -18,14 +18,6 @@ export class AfficherFoyerComponent implements OnInit {
   foyers:Foyer[]=[];
   constructor(private foyerService: FoyerService,private sharedService: SharedService) {}
 
-
-
-  deleteF(index:number,id_foyer: number) {
-    this.foyerService.deleteFoyer(id_foyer).subscribe(value =>{
-      this.foyers.splice(index, 1);
-    });
-  }
-
   ngOnInit(): void {
     this.loadFoyers();
 
@@ -35,6 +27,15 @@ export class AfficherFoyerComponent implements OnInit {
       this.loadFoyers();
     });
   }
+
+
+
+  deleteF(index:number,id_foyer: number) {
+    this.foyerService.deleteFoyer(id_foyer).subscribe(value =>{
+      this.foyers.splice(index, 1);
+    });
+  }
+
 
   loadFoyers() {
     this.foyerService.getAllFoyer().subscribe(data =>this.foyers=data );
