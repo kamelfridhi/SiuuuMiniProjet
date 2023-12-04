@@ -38,6 +38,10 @@ export class FoyerService {
     return this.http.get<Foyer>(this.getOneFoyerApi+id);
   }
 
+  getRestoOfFoyerDonner(idFoyer:number): Observable<Resto>{
+    return this.http.get<Resto>(this.Api+"/resto/getRestoOfFoyerDonner/"+idFoyer);
+  }
+
   deleteFoyer(id:number): Observable<void>{
     return this.http.delete<void>(`${this.Api}/foyer/delete/${id}`);
   }

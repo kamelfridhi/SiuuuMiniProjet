@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
 import {AfficherFoyerComponent} from "./components/front/foyer/afficher-foyer/afficher-foyer.component";
+import {FoyerDetailsComponent} from "./components/front/foyer/foyer-details/foyer-details.component";
 
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
@@ -15,6 +16,7 @@ children: [
   { path: 'Home', component: HomeComponent },
   // add your route for user n3awed lil user kahaw moch admin user kahaw !!!!!!!!
   { path: 'foyer', component: AfficherFoyerComponent },
+  { path: 'details/:id', component: FoyerDetailsComponent },
 
   ]
  },

@@ -10,6 +10,8 @@ import { UserTemplateComponent } from './components/front/user-template/user-tem
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AfficherFoyerComponent } from './components/front/foyer/afficher-foyer/afficher-foyer.component';
+import { CardFoyerComponent } from './components/front/foyer/card-foyer/card-foyer.component';
+import { FoyerDetailsComponent } from './components/front/foyer/foyer-details/foyer-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AfficherFoyerComponent } from './components/front/foyer/afficher-foyer/
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
-    AfficherFoyerComponent
+    AfficherFoyerComponent,
+    CardFoyerComponent,
+    FoyerDetailsComponent
   ],
   imports: [
     BrowserModule,

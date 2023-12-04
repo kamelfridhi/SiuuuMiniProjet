@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Foyer} from "../../../../_Models/foyer/foyer";
 import {FoyerService} from "../../../../_Services/foyer.service";
 import {SharedService} from "../../../../_Services/shared.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-afficher-foyer',
@@ -17,13 +18,14 @@ export class AfficherFoyerComponent implements OnInit{
   totalElements!:number;
   totalPages!:number;
 
-  constructor(private foyerService: FoyerService) { }
+  constructor(private foyerService: FoyerService,private router: Router) { }
 
   ngOnInit(): void {
     this.loadFoyers();
     console.log("nb foyers : "+this.totalElements)
-
   }
+
+
 
   loadFoyers(): void {
       this.foyerService.getAllFoyerWP(this.currentPage, this.elementPerPage).subscribe(response => {
@@ -46,4 +48,9 @@ export class AfficherFoyerComponent implements OnInit{
       this.loadFoyers();
     }
   }
+
+  goToDetailsPage(id: number) {
+      this.router.navigate(['/details/'+id]);
+  }
+
 }
