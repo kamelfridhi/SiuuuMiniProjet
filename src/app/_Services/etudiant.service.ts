@@ -41,6 +41,10 @@ export class EtudiantService {
         return this.http.get<Etudiant[]>(this.APIURL + 'blocked/'+ id);
       }
 
+      etudiantdeblocked(id:number):Observable<Etudiant[]>{
+        return this.http.get<Etudiant[]>(this.APIURL + 'unblocked/'+ id);
+      }
+
       Offline(id:String):Observable<Etudiant> {
     console.log("offline     "+id)
 

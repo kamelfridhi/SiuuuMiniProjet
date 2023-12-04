@@ -142,7 +142,7 @@
               </a>
             </td>
 
-            <td *ngIf="e.etat==5" style="color:red;">Blocked</td>
+            <button (click)="unbloked(e.idEtudiant)" class="btn btn-danger btn-icon-split">unbloked</button>
             <!-- Button Edit end-->
 
           </tr>

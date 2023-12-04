@@ -46,26 +46,12 @@ let etudiant =this.etudiantConnecte.getData('id');
     }
 
 
+  unbloked(idEtudiant: number) {
+    this.etudiantService.etudiantdeblocked(idEtudiant).subscribe(data => {
+      this.getallEtudiant();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    })
 
   }
+}
 
