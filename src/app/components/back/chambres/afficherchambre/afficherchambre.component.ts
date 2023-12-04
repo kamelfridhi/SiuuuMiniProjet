@@ -6,11 +6,13 @@ import {Bloc} from "../../../../_Models/bloc";
 import {TypeChambre} from "../../../../_Models/TypeChambre.enum";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
+
 @Component({
   selector: 'app-afficherchambre',
   templateUrl: './afficherchambre.component.html',
   styleUrls: ['./afficherchambre.component.css']
 })
+
 export class AfficherchambreComponent implements OnInit{
   chambres: Chambre[] = [];
   blocs:Bloc[]=[];

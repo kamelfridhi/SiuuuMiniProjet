@@ -10,6 +10,7 @@ import { SupprimerchambreComponent } from './chambres/supprimerchambre/supprimer
 import { AjouterchambreComponent } from './chambres/ajouterchambre/ajouterchambre.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DetailschambreComponent } from './chambres/detailschambre/detailschambre.component';
+import {ChambresModule} from "./chambres/chambres.module";
 
 
 
@@ -27,7 +28,8 @@ import { DetailschambreComponent } from './chambres/detailschambre/detailschambr
     CommonModule,
     BackRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ChambresModule
   ]
 })
 export class BackModule { }

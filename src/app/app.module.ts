@@ -19,6 +19,7 @@ import { AfficherchambresComponent } from './components/front/chambre/afficherch
     HomeComponent,
     UserTemplateComponent,
     AfficherchambresComponent
+
   ],
   imports: [
     BrowserModule,
