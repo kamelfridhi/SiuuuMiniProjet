@@ -12,6 +12,9 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { NotFoundComponent } from './components/front/not-found/not-found.component';
+import { UpdateloginComponent } from './components/front/login/updatelogin/updatelogin.component';
+import { LoginnameComponent } from './components/front/login/loginname/loginname.component';
+import { UpdatebuttonComponent } from './components/front/login/updateprofil/updatebutton.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { NotFoundComponent } from './components/front/not-found/not-found.compon
     HomeComponent,
     UserTemplateComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UpdateloginComponent,
+    LoginnameComponent,
+    UpdatebuttonComponent
   ],
   imports: [
     HttpClientModule,

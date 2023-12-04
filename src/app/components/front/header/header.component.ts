@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {EtudiantConnecteService} from "../../../_Services/etudiant-connecte.service";
 import {Router} from "@angular/router";
 import {EtudiantService} from "../../../_Services/etudiant.service";
@@ -25,6 +25,9 @@ etudiant!:Etudiant;
     if (etudiantId!= null) {
       this.etudiantService.getEtudiant(etudiantId).subscribe(value => {
         this.etudiant = value;
+
+
+
       });
     }
 
@@ -36,7 +39,6 @@ etudiant!:Etudiant;
 
 
   }
-
 
   logout() {
     if (this.etduiantconnecte.getData('id')!= null) {
@@ -52,6 +54,11 @@ etudiant!:Etudiant;
       this.r.navigate(['/login']);
     }
 
+
+  }
+
+  redirect(id: number) {
+    this.r.navigate(['/update_profile/' + id]);
 
   }
 

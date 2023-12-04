@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.container.classList.remove('right-panel-active');
       });
     }
+
   }
 
   addEtudiant(formUser: NgForm) {
