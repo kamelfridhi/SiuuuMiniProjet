@@ -11,12 +11,11 @@ import {Foyer} from "../../../../_Models/foyer/foyer";
 })
 export class FoyerDetailsComponent implements OnInit {
 
-  foyer:Foyer|undefined;
+  foyer!:Foyer;
 
   constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
-
     this.sharedService.data$.subscribe(data => {
       this.foyer = data;
     });

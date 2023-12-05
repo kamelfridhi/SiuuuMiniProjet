@@ -16,6 +16,8 @@ import {AfficherRestoComponent} from "./resto/afficher-resto/afficher-resto.comp
 import {RestoDashComponent} from "./resto/resto-dash/resto-dash.component";
 import {ModifierRestoComponent} from "./resto/modifier-resto/modifier-resto.component";
 import {RestoDetailsComponent} from "./resto/resto-foyers/resto-details.component";
+import { PersoDirectiveDirective } from './foyer/directives/perso-directive.directive';
+import { DeleteTableDirectiveDirective } from './foyer/directives/delete-table-directive.directive';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import {RestoDetailsComponent} from "./resto/resto-foyers/resto-details.componen
     AfficherRestoComponent,
     RestoDashComponent,
     ModifierRestoComponent,
-    RestoDetailsComponent
+    RestoDetailsComponent,
+    PersoDirectiveDirective,
+    DeleteTableDirectiveDirective
   ],
   imports: [
     CommonModule,
