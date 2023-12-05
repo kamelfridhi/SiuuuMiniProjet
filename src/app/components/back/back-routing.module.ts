@@ -4,6 +4,7 @@ import { TemplateComponent } from './template/template.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AdduniversiteComponent} from "./universite/adduniversite/adduniversite.component";
 import {UpdateuniversiteComponent} from "./universite/updateuniversite/updateuniversite.component";
+import {AfficheuvComponent} from "./universite/afficheuv/afficheuv.component";
 
 const routes: Routes = [
   {
@@ -15,12 +16,13 @@ const routes: Routes = [
       /***bayoudh***/
       { path: 'adduniversite', component: AdduniversiteComponent },
       { path: 'updateuniversite/:id', component: UpdateuniversiteComponent },
+      { path: 'aff', component: AfficheuvComponent }
       /***bayoudh***/
 
       // add your route for admin n3awed for admin
     ]
   },
- // { path: '**', redirectTo: 'Dashboard' }
+  { path: '**', redirectTo: 'Dashboard' }
 ]
 
 

@@ -1,17 +1,24 @@
 <div class="container-fluid">
   <!-- DataTales Example -->
+  <!-- Add this to your HTML head section -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Gn5384xqQ1ndCOF2r9qF40A5SCQfIc06ekhqbt7ZQnRU8XODK/cjKZN6PkPz2MPqtppgENgAJ+BRMQaTtk5t5A==" crossorigin="anonymous" />
+
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">Afficher tout les universite</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
+          {{ successMessage }}
+        </div>
         <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
                width="100%" cellspacing="0">
           <thead>
           <tr>
             <th>Nom du universite</th>
-            <th>addeess du Bloc</th>
+            <th>addeess du universite</th>
+            <th>foyer </th>
             <th>Supprimer</th>
             <th>Modifier</th>
           </tr>
@@ -23,9 +30,14 @@
           </tfoot>
           <tbody *ngFor="let u of universties">
           <tr>
-            <td>{{ u.idUniversite }}</td>
             <td>{{ u.nomUniversite }}</td>
             <td>{{ u.adresse }}</td>
+            <td>
+
+            </td>
+
+
+
             <!-- <td>
                <select class="form-control" id="foyerSelect" name="selectedFoyerId" [(ngModel)]="blocForm2.value.UPDselectedFoyerId">
                  <option *ngFor="let foyer of foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
@@ -41,7 +53,16 @@
                                     </span>
                 <span class="text">Supprimer</span>
               </a>
+              <button class="btn btn-facebook btn-icon-split" (click)="sharfacebook(u.nomUniversite,u.adresse)">
+   <span class="icon text-white-50">
+      <i class="fab fa-facebook-f"></i>
+   </span>
+                <span class="text">Facebook</span>
+              </button>
+
+
             </td>
+
             <!-- Button Delete end-->
             <!-- Button Edit -->
             <td>
@@ -57,17 +78,35 @@
 
           </tbody>
         </table>
+
         <hr>
         <!-- form start -->
-        <form class="border-bottom-primary border-left-primary p-1" >
+
+        <form [formGroup]="uvform" (ngSubmit)="addUniversite()">
+
           <div class="form-group">
-            <input type="text" class="form-control form-control-user" placeholder="Nom du Universite"
-                   [(ngModel)]="nomuniversite" name="nomUv" required>
+            <label for="nom">nom Universite</label>
+            <input formControlName="nomUniversite" type="text" id="nom" class="form-control">
           </div>
+
           <div class="form-group">
-            <input type="text" class="form-control form-control-user" placeholder="address du Bloc"
-                   [(ngModel)]="adress" name="adressUv" required>
+          <input formControlName="adresse" class="form-control" type="text" [(ngModel)]="inputValue" (input)="onInputChange()">
+
+
+
+          <li *ngFor="let location of locations" (click)="onSelectLocation(location)">
+              {{ location.label }}
+            </li>
           </div>
+
+
+         <!-- <div class="input-group">
+
+            <select formControlName="foyer"  class="form-control bg-light border-0 "  >
+              <option *ngFor=" let foyers of foyer" value="{{foyers.idFoyer}}">{{foyers.nomFoyer}}</option>
+            </select>
+          </div>
+-->
           <button type="submit" class="btn btn-primary btn-user btn-block" (click)="addUniversite()">
             Ajouter
           </button>
@@ -81,3 +120,4 @@
   </div>
 
 </div>
+

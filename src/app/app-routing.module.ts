@@ -17,7 +17,7 @@ children: [
 
 ]
 },
-{ path: '**', redirectTo: 'Home' }
+//{ path: '**', redirectTo: 'Home' }
 ];
 
 @NgModule({

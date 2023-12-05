@@ -1,0 +1,8 @@
+<!-- afficheuv.component.html -->
+<input type="text" [(ngModel)]="inputValue" (input)="onInputChange()">
+
+<ul>
+  <li *ngFor="let location of locations" (click)="onSelectLocation(location)">
+    {{ location.label }}
+  </li>
+</ul>
