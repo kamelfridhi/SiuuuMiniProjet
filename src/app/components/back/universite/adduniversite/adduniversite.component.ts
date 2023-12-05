@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class AdduniversiteComponent implements OnInit{
   universties!: Universite[];
+  uv!: Universite;
   foyer!: Foyer[];
   uvform!: FormGroup;
   uvformup!: FormGroup;
@@ -84,9 +85,9 @@ selectedBloc!:Universite;
       }
     });*/
   }
-  addUniversite() {
+  addUniversitee() {
 
-    this.univservice.affecterFoyerAUniversite(this.uvform.value).subscribe({
+    this.univservice.addUniversite(this.uvform.value).subscribe({
       next: () => {
         console.log('Universite added successfully:', );
         this.getuniversities();
@@ -133,49 +134,6 @@ console.log("lossssssssssssssss");
   get getnomuv() { return this.uvform.get('nomUniversite'); }
 
 
-  /*updateBloc(): void {
-    const nomUniversiteValue = this.uvformup.value.UPDnomuv;
-    const adresseValue = this.uvformup.value.UPDadd;
-    const idUniversiteValue = this.uvformup.value.UPDuvid;
-
-    const updatedUniversite: Universite = {
-      nomUniversite: nomUniversiteValue,
-      adresse: adresseValue,
-      idUniversite: idUniversiteValue
-    };
-
-    console.log('updatedBloc:', updatedUniversite);
-
-    this.univservice.updateUniversite(updatedUniversite).subscribe({
-      next: (response: Universite) => {
-        console.log('Bloc updated successfully:', response);
-        // Don't reset the form to preserve updated values
-        // this.uvformup.reset();
-        this.getuniversities();
-      },
-      error: (error) => {
-        console.error('Error updating bloc:', error);
-        // Display an error message to the user
-        alert('An error occurred while updating the bloc.');
-      }
-    });
-  }
-
-
-
-
-  private initForm(): void {
-    this.uvform = this.fb.group({
-      nomUv: ['', Validators.required],
-      adressUv: [null, Validators.required]
-    });
-    this.uvformup = this.fb.group({
-      UPDnomuv: ['', Validators.required],
-      UPDadd: ['', Validators.required],
-      UPDuvid: [null, Validators.required]
-    });
-    }
-*/
 
     editBloc(event: Event, bloc: Universite): void {
       event.preventDefault();
@@ -206,5 +164,21 @@ console.log("lossssssssssssssss");
     // Optionally, you can use location.lat and location.lon here
     this.locations = []; // Clear the suggestions
   }
+  desaffectfoyer(idf:number,u:number) {
 
+    this.univservice.disaffecFoyerAUniversite(idf,u).subscribe({
+      next:(response) => {
+
+        this.router.navigate(['/back/adduniversite'])
+      },
+      error:(error) => {
+        console.error('Erreur lors de la modification de la universite', error);
+      }
+    });
+
+
+  }
+  refreshPage(): void {
+    window.location.reload();
+  }
 }

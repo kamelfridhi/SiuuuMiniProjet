@@ -6,5 +6,7 @@ export class Foyer {
   nomFoyer!:string ;
   //capaciteFoyer!:number;
   u!:Universite;
- // blocs:Bloc[]=[];
+  etat!:number;
+
+  // blocs:Bloc[]=[];
 }

@@ -45,9 +45,13 @@ export class UniversiteService {
     const url = `${this.API_URL}${this.ENDPOINT_UPDATEUV}`;
     return this.http.post<Universite>(url, u);
   }
-  affecterFoyerAUniversite(u: Universite): Observable<Universite> {
-   // return this.http.post<Universite>("http://localhost:8080/api/universite/affecterFoyerAUniversite/"+idFoyer,u, this.httpOptions);
-    return this.http.post<Universite>("http://localhost:8080/api/universite/add", u, this.httpOptions);
+  affecterFoyerAUniversite(idFoyer:number,iduv:number): Observable<Universite> {
+    return this.http.put<Universite>(`http://localhost:8080/api/universite/affecterFoyerAUniversite/${idFoyer}/${iduv}`, null);
+    //  return this.http.post<Universite>("http://localhost:8080/api/universite/add", u, this.httpOptions);
+  }
+  disaffecFoyerAUniversite(idFoyer:number,iduv:number): Observable<Universite> {
+    return this.http.put<Universite>(`http://localhost:8080/api/universite/desaffecterFoyerAUniversite/${idFoyer}/${iduv}`, null);
+    //  return this.http.post<Universite>("http://localhost:8080/api/universite/add", u, this.httpOptions);
   }
 
   deleteUniversiteById(iduniversite: number): Observable<void> {

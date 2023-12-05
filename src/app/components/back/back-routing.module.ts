@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {AdduniversiteComponent} from "./universite/adduniversite/adduniversite.component";
 import {UpdateuniversiteComponent} from "./universite/updateuniversite/updateuniversite.component";
 import {AfficheuvComponent} from "./universite/afficheuv/afficheuv.component";
+import {AffectedfoyerComponent} from "./universite/affectedfoyer/affectedfoyer.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       /***bayoudh***/
       { path: 'adduniversite', component: AdduniversiteComponent },
       { path: 'updateuniversite/:id', component: UpdateuniversiteComponent },
-      { path: 'aff', component: AfficheuvComponent }
+      { path: 'aff', component: AfficheuvComponent },
+      { path: 'affectedfoyer/:id', component: AffectedfoyerComponent }
       /***bayoudh***/
 
       // add your route for admin n3awed for admin

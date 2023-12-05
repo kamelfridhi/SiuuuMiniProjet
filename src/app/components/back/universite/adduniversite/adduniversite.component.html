@@ -33,8 +33,18 @@
             <td>{{ u.nomUniversite }}</td>
             <td>{{ u.adresse }}</td>
             <td>
+              <ng-container *ngIf="u.foyer !== null; else noFoyer">
+                <a>{{ u.foyer.nomFoyer }}</a>
+                <button (click)="desaffectfoyer(u.foyer.idFoyer,u.idUniversite); refreshPage()" >RemoveFoyer</button>
 
+              </ng-container>
+              <ng-template #noFoyer>
+                <!-- Content to display when u.foyer is null -->
+                <a routerLink="/back/affectedfoyer/{{ u.idUniversite }}">AffectFoyer</a>
+              </ng-template>
             </td>
+
+
 
 
 
@@ -82,7 +92,7 @@
         <hr>
         <!-- form start -->
 
-        <form [formGroup]="uvform" (ngSubmit)="addUniversite()">
+        <form [formGroup]="uvform" (ngSubmit)="addUniversitee()">
 
           <div class="form-group">
             <label for="nom">nom Universite</label>
@@ -107,7 +117,7 @@
             </select>
           </div>
 -->
-          <button type="submit" class="btn btn-primary btn-user btn-block" (click)="addUniversite()">
+          <button type="submit" class="btn btn-primary btn-user btn-block">
             Ajouter
           </button>
         </form>
