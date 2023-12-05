@@ -10,6 +10,8 @@ import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AfficherchambresComponent } from './components/front/chambre/afficherchambres/afficherchambres.component';
+import {DetailschambrerComponent} from "./components/front/chambre/detailschambre/detailschambrer.component";
+import { CartchambreComponent } from './components/front/chambre/cartchambre/cartchambre.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AfficherchambresComponent } from './components/front/chambre/afficherch
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
-    AfficherchambresComponent
+    AfficherchambresComponent,
+    DetailschambrerComponent,
+    CartchambreComponent
 
   ],
   imports: [

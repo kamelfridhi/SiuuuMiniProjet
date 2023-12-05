@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
 import {AfficherchambresComponent} from "./components/front/chambre/afficherchambres/afficherchambres.component";
+import {DetailschambrerComponent} from "./components/front/chambre/detailschambre/detailschambrer.component";
 
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
@@ -14,6 +15,8 @@ children: [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'afficherchambres', component: AfficherchambresComponent },
+  { path: 'detailchambre/:id', component: DetailschambrerComponent },
+
   // add your route for user n3awed lil user kahaw moch admin user kahaw !!!!!!!!
 
 

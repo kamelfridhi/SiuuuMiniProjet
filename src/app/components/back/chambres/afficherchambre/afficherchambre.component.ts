@@ -23,7 +23,7 @@ export class AfficherchambreComponent implements OnInit{
   selectedBlocId!: number;
   ChambreForm!:FormGroup;
 
-  chambreSelectionnee: Chambre | undefined;
+  chambreSelectionnee!: Chambre ;
   constructor(private chambreService: ChambreService,private blocService:BlocService,private fb:FormBuilder) {
     let formControls = {
       typeC: new FormControl('', Validators.required),

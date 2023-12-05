@@ -11,6 +11,7 @@ export class AlertDirectiveDirective {
     this.el.nativeElement.style.color='white'
     this.el.nativeElement.innerText=this.alert
 
+
   }
 
 }

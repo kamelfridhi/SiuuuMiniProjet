@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Chambre} from "../../../../_Models/chambre";
 import {ChambreService} from "../../../../_Services/chambre.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-afficherchambres',
@@ -12,7 +13,7 @@ export class AfficherchambresComponent implements OnInit{
 
 
 
-  constructor(private chambreService: ChambreService) { }
+  constructor(private chambreService: ChambreService,private router:Router) { }
   ngOnInit() {
     this.loadChambres();
   }
@@ -40,9 +41,22 @@ export class AfficherchambresComponent implements OnInit{
         return '../../../../../assets/images/1.png';
     }
   }
-
-
-
+  goToDetailsChambre(idChambre: number) {
+    // Ajoute ici la logique pour réagir à l'événement émis (par exemple, naviguer vers la page de détails).
+    console.log('Clique sur détails pour la chambre avec l\'ID :', idChambre);
+  }
+  afficherDetailsChambreSimple() {
+    console.log('Clique sur détails pour la chambre avec 1111111111  :');
+    this.router.navigate(['/detailchambre/1']);
+  }
+  afficherDetailsChambreDouble() {
+    console.log('Clique sur détails pour la chambre avec 2222222 :');
+    this.router.navigate(['/detailchambre/2']);
+  }
+  afficherDetailsChambreTriple() {
+    console.log('Clique sur détails pour la chambre avec 333333333:');
+    this.router.navigate(['/detailchambre/3']);
+  }
 
 
 }

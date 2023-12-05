@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./detailschambre.component.css']
 })
 export class DetailschambreComponent{
-    @Input() chambre: Chambre | undefined;  // Input pour recevoir la chambre à afficher
+    @Input() chambre!: Chambre;  // Input pour recevoir la chambre à afficher
 
   constructor() { }
 
