@@ -1,3 +1,4 @@
+import { Chambre } from "../chambre/chambre";
 import { Foyer } from "../foyer/foyer";
 
 export class Bloc {
@@ -5,4 +6,5 @@ export class Bloc {
     nomBloc!: string;
     capaciteBloc!: number;
     foyer: Foyer | null = null;
+    chambres: Chambre[] = [] ;
 }

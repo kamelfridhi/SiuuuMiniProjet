@@ -14,6 +14,7 @@
                             <th>Nom du Bloc</th>
                             <th>Capacité du Bloc</th>
                             <th>Appartient a quel Foyer</th>
+                            <th>List des Chambre qui appartient a ce Bloc</th>
                             <th>Supprimer</th>
                             <th>Modifier</th>
                         </tr>
@@ -24,6 +25,7 @@
                             <th>Nom du Bloc</th>
                             <th>Capacité du Bloc</th>
                             <th>Appartient a quel Foyer</th>
+                            <th>List des Chambre qui appartient a ce Bloc</th>
                             <th>Supprimer</th>
                             <th>Modifier</th>
                         </tr>
@@ -33,7 +35,9 @@
                             <td>{{ bloc.blocId }}</td>
                             <td>{{ bloc.nomBloc }}</td>
                             <td>{{ bloc.capaciteBloc }}</td>
-                            <td>{{bloc.foyer?.nomFoyer}}
+                            <td>{{bloc.foyer?.nomFoyer}}</td>
+                            <td>
+                                <span *ngFor="let chambre of bloc.chambres">{{ chambre.numeroChambre }}, </span>
                             </td>
                             <!-- Button Delete -->
                             <td>
@@ -74,7 +78,7 @@
                                         </option>
                                     </select>
                                 </div>
-                              
+
                                 <div class="form-group">
                                     <select id="selectableList" [(ngModel)]="affecterSelectedFoyer"
                                         class="form-control">
@@ -99,53 +103,56 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
                             </div>
                             <div class="card-body">
-                                <select id="selectableList" 
-                                        class="form-control">
-                                        <option [value]="foyer.nomFoyer" *ngFor="let foyer of foyers">{{ foyer.nomFoyer }}</option>
-                                    </select>
+                                <select id="selectableList" [(ngModel)]="affecterListChambreToSelectedBloc"
+                                    class="form-control">
+                                    <option [value]="bloc.nomBloc" *ngFor="let bloc of blocs">{{ bloc.nomBloc }}
+                                    </option>
+                                </select>
                             </div>
                             <div class="from-group">
                                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                                     <!-- Select Column -->
                                     <ng-container matColumnDef="select">
-                                      <th mat-header-cell *matHeaderCellDef>
-                                        <mat-checkbox (change)="$event ? masterToggle() : null"
-                                                      [checked]="selection.hasValue() && isAllSelected()"
-                                                      [indeterminate]="selection.hasValue() && !isAllSelected()">
-                                        </mat-checkbox>
-                                      </th>
-                                      <td mat-cell *matCellDef="let row">
-                                        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
-                                                      [checked]="selection.isSelected(row)">
-                                        </mat-checkbox>
-                                      </td>
+                                        <th mat-header-cell *matHeaderCellDef>
+                                            <mat-checkbox (change)="$event ? masterToggle() : null"
+                                                [checked]="selection.hasValue() && isAllSelected()"
+                                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                                            </mat-checkbox>
+                                        </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <mat-checkbox (click)="$event.stopPropagation()"
+                                                (change)="$event ? selection.toggle(row) : null"
+                                                [checked]="selection.isSelected(row)">
+                                            </mat-checkbox>
+                                        </td>
                                     </ng-container>
-                                  
+
                                     <!-- Chambre ID Column -->
                                     <ng-container matColumnDef="idChambre">
-                                      <th mat-header-cell *matHeaderCellDef>Chambre ID</th>
-                                      <td mat-cell *matCellDef="let element">{{ element.idChambre }}</td>
+                                        <th mat-header-cell *matHeaderCellDef>Chambre ID</th>
+                                        <td mat-cell *matCellDef="let element">{{ element.idChambre }}</td>
                                     </ng-container>
-                                  
+
                                     <!-- Add more columns if needed -->
-                                  
+
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                                  </table>
-                                  
-                                  <!-- Display the selected Chambre IDs in a list -->
-                                  <div class="form-group">
+                                </table>
+
+                                <!-- Display the selected Chambre IDs in a list -->
+                                <div class="form-group">
                                     <label for="selectedChambreIds">Selected Chambre IDs:</label>
                                     <ul id="selectedChambreIds">
-                                      <li *ngFor="let selected of selection.selected">
-                                        ID: {{ selected.idChambre }}
-                                      </li>
+                                        <li *ngFor="let selected of selection.selected">
+                                            ID: {{ selected.idChambre }}
+                                        </li>
                                     </ul>
-                                  </div>
-                                  
+                                </div>
+
                             </div>
                             <div class="form-group" style="align-self: center;">
-                                <a href="#" class="btn btn-success btn-icon-split" (click)="affecter($event)">
+                                <a href="#" class="btn btn-success btn-icon-split"
+                                    (click)="affecterListChambreToBlock($event)">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
@@ -158,20 +165,35 @@
                 </div>
                 <hr>
                 <!-- form start -->
-                <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="addBloc()">
+
+
+
+                <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="addBloc()" [formGroup]="blocForm">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
-                            [(ngModel)]="nomBloc" name="nomBloc" required>
+                      <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc" formControlName="nomBloc">
+                      <div *ngIf="nomBlocControl!.invalid && (nomBlocControl!.dirty || nomBlocControl!.touched)">
+                        <div *ngIf="nomBlocControl!.errors!required">Le nom du bloc est requis.</div>
+                      </div>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
-                            [(ngModel)]="capaciteBloc" name="capaciteBloc" required>
+                      <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc" formControlName="capaciteBloc">
+                      <div *ngIf="capaciteBlocControl!.invalid && (capaciteBlocControl!.dirty || capaciteBlocControl!.touched)">
+                        <div *ngIf="capaciteBlocControl!.errors!required">La capacité du bloc est requise.</div>
+                        <div *ngIf="capaciteBlocControl!.errors!min">La capacité doit être supérieure à 0.</div>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                        Ajouter
+                    <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="blocForm.invalid">
+                      Ajouter
                     </button>
-                </form>
+                  </form>
+                  
                 <hr>
+
+
+
+
+
+
                 <!-- form UPD -->
                 <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="updateBloc()">
                     <div class="form-group">
