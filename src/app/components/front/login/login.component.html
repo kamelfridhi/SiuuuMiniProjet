@@ -8,6 +8,10 @@
       <input type="text" placeholder="Name" ngModel name="nomEt" required />
       <input type="text" placeholder="prenom" ngModel name="prenomet" required />
       <input type="email" placeholder="Email" ngModel name="email" required/>
+      <!-- login.component.html -->
+
+      <input type="email" placeholder="Email" ngModel name="email" [(ngModel)]="email" required appDirective [appGravatar]="email"/>
+
       <input type="date" placeholder="date de naissance"  ngModel name="dateNaissance" required/>
       <input type="text" placeholder="CIN"  ngModel name="cin" required/>
       <input type="password" placeholder="Password"   ngModel name="passoword" required/>
@@ -21,6 +25,8 @@
 
       <span>or use your account</span>
       <input type="email" placeholder="Email" ngModel name="email" required/>
+      <!-- example.component.html -->
+
 
       <input type="password" placeholder="Password"   ngModel name="passoword" required/>
 

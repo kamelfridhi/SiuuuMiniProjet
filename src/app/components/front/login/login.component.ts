@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   private signUpButton: HTMLElement | null;
   private signInButton: HTMLElement | null;
   private container: HTMLElement | null;
+  email!: string;
 
   constructor(private elementRef: ElementRef, private etudiantService: EtudiantService, private r: Router, private etudiantConnecte: EtudiantConnecteService) {
     this.signUpButton = null;
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
         this.container.classList.remove('right-panel-active');
       });
     }
+
 
   }
 

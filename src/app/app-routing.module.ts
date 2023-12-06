@@ -10,13 +10,16 @@ import {UpdateloginComponent} from "./components/front/login/updatelogin/updatel
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
  { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
+
  {
   path: '',
 component: UserTemplateComponent,
 children: [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
-  { path: 'update_profile/:id', component: UpdateloginComponent },
+  {path:"update_profile/:id",component:UpdateloginComponent}
+
+
 
   // add your route for user n3awed lil user kahaw moch admin user kahaw !!!!!!!!
 
