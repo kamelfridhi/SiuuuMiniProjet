@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {AdminComponent} from "./admin/admin.component";
 import {UpdateuserComponent} from "./admin/updateuser/updateuser.component";
 import {RoleGuardGuard} from "../../Authen/role-guard.guard";
+import {AuthentificationGuard} from "../../Authen/authentification.guard";
 
 const routes: Routes = [
   {
@@ -13,11 +14,11 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
-      { path: 'admin', component: AdminComponent },
-      { path: 'update/user/:id', component: UpdateuserComponent},
+      { path:"admin",loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
       // add your route for admin n3awed for admin
     ]
   },
+
   { path: '**', redirectTo: 'Dashboard' }
 ]
 

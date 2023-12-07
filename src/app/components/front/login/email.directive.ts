@@ -12,7 +12,7 @@ export class EmailDirective {
 
   ngOnChanges() {
     const emailHash = CryptoJS.MD5(this.appGravatar.toLowerCase()).toString();
-    const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}?s=80`;
+    const gravatarUrl = `${emailHash}?s=80`;
 
     // Mettez à jour l'attribut src de l'élément img avec l'URL Gravatar
     this.renderer.setAttribute(this.el.nativeElement, 'src', gravatarUrl);

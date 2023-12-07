@@ -16,6 +16,7 @@ import { LoginnameComponent } from './components/front/login/loginname/loginname
 import { UpdatebuttonComponent } from './components/front/login/updateprofil/updatebutton.component';
 import {UpdateloginComponent} from "./components/front/login/updatelogin/updatelogin.component";
 import { EmailDirective } from './components/front/login/email.directive';
+import { AdminModule } from './components/back/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ UpdateloginComponent,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
 
   ],
   providers: [ ],

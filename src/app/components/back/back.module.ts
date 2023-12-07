@@ -13,8 +13,7 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     DashboardComponent,
     TemplateComponent,
-    AdminComponent,
-    UpdateuserComponent
+
   ],
   imports: [
     CommonModule,
