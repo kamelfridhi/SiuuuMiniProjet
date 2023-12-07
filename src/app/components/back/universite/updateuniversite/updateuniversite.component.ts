@@ -32,7 +32,7 @@ export class UpdateuniversiteComponent implements OnInit {
     this.uvService.updateUniversite(this.uv).subscribe({
       next:(response) => {
 
-        this.router.navigate(['/back/adduniversite'])
+        this.router.navigate(['/back/university/adduniversite'])
       },
       error:(error) => {
         console.error('Erreur lors de la modification de la universite', error);

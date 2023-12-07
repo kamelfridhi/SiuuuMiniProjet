@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {UniversiteService} from "../../../../_Services/universite.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Universite} from "../../../../_Models/universite";

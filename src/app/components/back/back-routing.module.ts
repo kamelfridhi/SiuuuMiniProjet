@@ -15,10 +15,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
       /***bayoudh***/
-      { path: 'adduniversite', component: AdduniversiteComponent },
-      { path: 'updateuniversite/:id', component: UpdateuniversiteComponent },
-      { path: 'aff', component: AfficheuvComponent },
-      { path: 'affectedfoyer/:id', component: AffectedfoyerComponent }
+
+      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule)}
+
       /***bayoudh***/
 
       // add your route for admin n3awed for admin

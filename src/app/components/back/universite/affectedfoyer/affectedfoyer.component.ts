@@ -31,7 +31,7 @@ export class AffectedfoyerComponent implements OnInit {
     this.univservice.affecterFoyerAUniversite(idf,this.uv.idUniversite).subscribe({
       next:(response) => {
 
-        this.router.navigate(['/back/adduniversite'])
+        this.router.navigate(['/back/university/adduniversite'])
       },
       error:(error) => {
         console.error('Erreur lors de la modification de la universite', error);

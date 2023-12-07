@@ -2,6 +2,7 @@
   <!-- DataTales Example -->
   <!-- Add this to your HTML head section -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Gn5384xqQ1ndCOF2r9qF40A5SCQfIc06ekhqbt7ZQnRU8XODK/cjKZN6PkPz2MPqtppgENgAJ+BRMQaTtk5t5A==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-n4dJ7zgFf2LX6qo97PpcFMcrNtMWXSndiIcPhq39l8byVxE0+mcK/1EPYLIV9yfS3l3m2vSTzcZmSod1bIY2vA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -28,19 +29,20 @@
 
           </tr>
           </tfoot>
-          <tbody *ngFor="let u of universties">
+           <tbody *ngFor="let u of universties">
           <tr>
             <td>{{ u.nomUniversite }}</td>
             <td>{{ u.adresse }}</td>
             <td>
               <ng-container *ngIf="u.foyer !== null; else noFoyer">
                 <a>{{ u.foyer.nomFoyer }}</a>
-                <button (click)="desaffectfoyer(u.foyer.idFoyer,u.idUniversite); refreshPage()" >RemoveFoyer</button>
-
+                <button (click)="desaffectfoyer(u.foyer.idFoyer, u.idUniversite); refreshPage()" style="background-color: #e74c3c; color: #fff; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; font-size: 14px;">
+                  <i class="fas fa-times"></i> <!-- Font Awesome "X" icon -->
+                </button>
               </ng-container>
               <ng-template #noFoyer>
                 <!-- Content to display when u.foyer is null -->
-                <a routerLink="/back/affectedfoyer/{{ u.idUniversite }}">AffectFoyer</a>
+                <a routerLink="/back/university/affectedfoyer/{{ u.idUniversite }}">AffectFoyer</a>
               </ng-template>
             </td>
 
@@ -76,7 +78,7 @@
             <!-- Button Delete end-->
             <!-- Button Edit -->
             <td>
-              <a href="#" class="btn btn-primary btn-icon-split" routerLink="/back/updateuniversite/{{u.idUniversite}}">
+              <a href="#" class="btn btn-primary btn-icon-split" routerLink="/back/university/updateuniversite/{{u.idUniversite}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-pen-square"></i>
                                     </span>

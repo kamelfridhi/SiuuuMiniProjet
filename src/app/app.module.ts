@@ -9,6 +9,9 @@ import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { UniversitesComponent } from './components/front/universites/universites.component';
+import { AdminModule } from './components/back/admin/admin.module';
+import { UniversiteModule } from './components/back/universite/universite.module';
 
 
 @NgModule({
@@ -17,14 +20,17 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    UserTemplateComponent
+    UserTemplateComponent,
+    UniversitesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule,
+    UniversiteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
