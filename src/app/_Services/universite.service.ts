@@ -22,7 +22,7 @@ export class UniversiteService {
   private readonly apiUrl = 'https://graph.facebook.com';
 
   private readonly pageId = '101832652905293';
-  private readonly accessToken = 'EABN4S3PVPwwBO7F8fvmDdvzDZC3qg8Hx1FOEQUdLMO38L4Flg6Sy567Nv062VRsiqJsqS9NxeJR2LfqHBWZCkZBZCaOhUZANHK7RBIbep3XA7ba9TQEiFxvyUEl61rwsfshiLKM6OB69uvKr5CZCYZBM5PR6CO4WOdEfZBR0EjfZCtsgMSMvuZBrG7BYRGIsH4P3btUQoM0HlOZC9Ar6ZAgaBhh9vxvJ';
+  private readonly accessToken = 'EABN4S3PVPwwBOwo4WZCvQMkgiaDMflIZAoAzL8Vle3sZCOUwBSC2S7RwqwoDK4bBatsZBZBFHcQGZC2Pu765pAp8KlCASEtNWlZA7GB3cL6e2mUh8ZADMg9ZATfbE7nIZC3Q86ZCioaOhAk0CD0J1D5LHTZAtJFrdMORSVuU1NiQANOWhgkIyCWgtbAPFOXL8Mfgm8ylNZCibSaFRpsVukqfZAg3ouJwYZD';
   api = 'http://localhost:8080/api/universite/'
   apiallfoyer = 'http://localhost:8080/api/foyer/allfoyer'
   constructor(private http: HttpClient) { }
@@ -58,10 +58,10 @@ export class UniversiteService {
     const url = `${this.API_URL}${this.ENDPOINT_DELETEUCBYID}/${iduniversite}`;
     return this.http.delete<void>(url);
   }
-  getUniversiteById(iduniversite: number): Observable<void> {
+  getUniversiteById(iduniversite: number): Observable<Universite> {
 
-    const url = `${this.API_URL}${this.ENDPOINT_GETOneUV}/${iduniversite}`;
-    return this.http.get<void>(url);
+    return this.http.get<Universite>(`http://localhost:8080/api/universite/getOne/${iduniversite}`);
+
   }
   postMessageToFeed(message: string, imageUrl: string): Observable<any> {
     const endpoint = `${this.apiUrl}/${this.pageId}/photos`; // Use the 'photos' endpoint for posting photos

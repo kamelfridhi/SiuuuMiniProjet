@@ -12,6 +12,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { UniversitesComponent } from './components/front/universites/universites.component';
 import { AdminModule } from './components/back/admin/admin.module';
 import { UniversiteModule } from './components/back/universite/universite.module';
+import { CardUnviComponent } from './components/front/universites/card-unvi/card-unvi.component';
+import { DetailUnivComponent } from './components/front/universites/detail-univ/detail-univ.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { UniversiteModule } from './components/back/universite/universite.module
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
-    UniversitesComponent
+    UniversitesComponent,
+    CardUnviComponent,
+    DetailUnivComponent
   ],
   imports: [
     BrowserModule,

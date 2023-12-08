@@ -15,13 +15,18 @@ export class UniversitesComponent implements OnInit{
   ngOnInit(): void {
     this.getuniversities();
   }
-  constructor(private univservice: UniversiteService) {}
+  constructor(private univservice: UniversiteService,private router:Router) {}
   getuniversities(): void {
 
     this.univservice.getAllUniversites().subscribe(value => {
       this.universties = value;
     });
 
+
+  }
+
+  gotodetail(id: number): void {
+    this.router.navigate(['/showdetail/'+id]);
 
   }
 }
