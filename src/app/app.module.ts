@@ -21,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     UserTemplateComponent,
     ReserverChambreComponent,
-    ListeChambreComponent
+    ListeChambreComponent,
+    
   ],
   imports: [
     BrowserModule,

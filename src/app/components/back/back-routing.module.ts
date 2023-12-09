@@ -8,6 +8,7 @@ const routes: Routes = [
     path: '',
     component: TemplateComponent,
     children: [
+      { path:"n",loadChildren:()=>import('./nejd-module/nejd-module.module').then(m=>m.NejdModuleModule)},
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
       // add your route for admin n3awed for admin

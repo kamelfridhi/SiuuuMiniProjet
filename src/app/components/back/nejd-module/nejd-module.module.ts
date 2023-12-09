@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BackRoutingModule } from './back-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TemplateComponent } from './template/template.component';
+import { NejdModuleRoutingModule } from './nejd-module-routing.module';
+import { ListReservationComponent } from './reservation/list-reservation/list-reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { DirectiveDirective } from './directive.directive';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    TemplateComponent,
-    
+    ListReservationComponent,
+    DirectiveDirective
   ],
   imports: [
     CommonModule,
-    BackRoutingModule,
+    NejdModuleRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
   ]
 })
-export class BackModule { 
+export class NejdModuleModule {
   constructor() {
     this.loadScript('src/assets/Back/vendor/jquery/jquery.min.js');
     this.loadScript('src/assets/Back/vendor/bootstrap/js/bootstrap.bundle.min.js');
@@ -39,4 +38,6 @@ export class BackModule {
     document.head.appendChild(script);
   }
 
-}
+
+  
+ }

@@ -5,6 +5,22 @@ export interface ReservationsPage {
   number: number
 }
 
+export interface ReservationsDTOPage {
+  content: ReservationDTO[],
+  totalPages: number,
+  last: boolean,
+  number: number
+}
+
+ export interface ReservationDTO {
+  idReservation?: number;
+  numReservation: String;
+  debuteAnneUniversite: Date;
+  finAnneUniversite: Date;
+  etat: EtatReservation|String;
+  cinEtudiant: number;
+}
+
 export class Reservation {
   
   constructor(
@@ -16,7 +32,9 @@ export class Reservation {
     public etat: EtatReservation|String,
     public typePayment: TypePayment|String,
     public typeRepat: TypeRepat|String,
-    public idReservation?: number
+    public email: string,
+    public phone:string,
+    public idReservation?: number,
   ) {}
   
   } 
@@ -36,6 +54,7 @@ export class Reservation {
   }
   
   export enum TypeRepat {
+    SANS_REPAS="SANS_REPAS",
     SIMPLE = "SIMPLE",
   DOUBLE = "DOUBLE",
   TRIPLE = "TRIPLE"

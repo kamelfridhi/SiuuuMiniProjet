@@ -250,51 +250,91 @@
                 <h3 class="sidebar-title" *ngIf="reservation.etat === 'NEW'">Reserver</h3>
 
                 <br>
-                <form  (ngSubmit)="ajouterReservation()">
-                  <h5 *ngIf="reservation.etat === 'NEW' || reservation.etat === 'EN_ATTENTE'">Num : {{ reservation.numReservation }} 
+                <form [formGroup]="reservationForm" (ngSubmit)="ajouterReservation()">
+                  <h5 *ngIf="reservation.etat != 'NEW'">Num : {{ reservation.numReservation }} 
                     
                   </h5>
+                  <div  class="form-group">
+                    <input [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" type="text" class="form-control bg-light border-0 small" placeholder="Email@domain.com" formControlName="email" name="email" >
+                  </div>
+                  <div *ngIf="reservationForm.get('email').touched">
+                    <small *ngIf="reservationForm.get('email').hasError('required') " class="text-danger">Email est Vide! <br></small>
+                    <small *ngIf="reservationForm.get('email').hasError('email')" class="text-danger">Veuillez entrer une adresse e-mail valide!</small>
+                  </div>
+                  <br>
+                  <div  class="form-group">
+                    <input [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" type="number" class="form-control bg-light border-0 small" placeholder="Numero telephone" formControlName="phone" name="phone" >
+                  </div>
+                  <div *ngIf="reservationForm.get('phone').touched">
+                    <small *ngIf="reservationForm.get('phone').hasError('required') " class="text-danger">Numero telephone est Vide! <br></small>
+                    <small *ngIf="reservationForm.get('phone').hasError('invalidTunisianPhoneNumber')" class="text-danger">Veuillez entrer un numéro de téléphone tunisien valide!</small>
+                  </div>
+                  <br>
                   <div class="form-group">
-                    <select [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE' " class="form-select"  [(ngModel)]="reservation.typeRepat" name="typeRepat" >
-                      <option value="">Type Repat</option>
+                    <textarea [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'"  class="form-control"  formControlName="description" placeholder="Description" name="description" required  ></textarea>
+                  </div>
+                  <div *ngIf="reservationForm.get('description').touched">
+                    <small *ngIf="reservationForm.get('description').hasError('required') " class="text-danger">description Vide! <br></small>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <select [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE' " class="form-select"  formControlName="typeRepat" name="typeRepat" >
+                      <option value="">Type Repas</option>
+                      <option value="SANS_REPAS">Sans Repat</option>
                       <option value="SIMPLE">Simple</option>
                       <option value="DOUBLE">Double</option>
                       <option value="TRIPLE">Triple</option>
                     </select>
                   </div>
+                  <div *ngIf="reservationForm.get('typeRepat').touched">
+                    <small *ngIf="reservationForm.get('typeRepat').hasError('required') " class="text-danger">type Repat est Vide! <br></small>
+                  </div>
                   <br>
                   <div class="form-group">
-                    <select [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" class="form-select"  [(ngModel)]="reservation.typePayment" name="typePayment" >
+                    <select [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" class="form-select"  formControlName="typePayment" name="typePayment" >
                       <option value="">Type Payment</option>
                       <option  value="CACHE">Cache</option>
                       <option value="CHEQUE">Cheque</option>
                       <option value="CARTE_BANCAIRE">Carte Bancaire</option>
                     </select>
                   </div>
+                  <div *ngIf="reservationForm.get('typePayment').touched">
+                    <small *ngIf="reservationForm.get('typePayment').hasError('required') " class="text-danger">type Payment est Vide! <br></small>
+                  </div>
                   <br>
-                  <div  class="form-group">
-                    <input [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" type="date" class="form-control bg-light border-0 small" placeholder="Nom Categorie ..."  [(ngModel)]="reservation.debuteAnneUniversite" name="debuteAnneUniversite" >
+                  <select [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" class="form-select"  formControlName="anneeUniversitaire" name="anneeUniversitaire" >
+                    <option  value="">Anne Universitaire</option>
+                    <option *ngFor="let option of yearOptions" [ngValue]="option.value">{{ option.option }}</option>
+                  </select>
+                  <div *ngIf="reservationForm.get('anneeUniversitaire').touched">
+                    <small *ngIf="reservationForm.get('anneeUniversitaire').hasError('required') " class="text-danger">debut Anne Universitaire est Vide! <br></small>
                   </div>
                   <br>
                   <div  class="form-group">
-                    <input [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" type="date" class="form-control bg-light border-0 small" placeholder="Nom Categorie ..."  [(ngModel)]="reservation.finAnneUniversite" name="finAnneUniversite" >
+                    <input [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" type="date" class="form-control bg-light border-0 small"   formControlName="debuteAnneUniversite" name="debuteAnneUniversite" >
+                  </div>
+                  <div *ngIf="reservationForm.get('debuteAnneUniversite').touched">
+                    <small *ngIf="reservationForm.get('debuteAnneUniversite').hasError('required') " class="text-danger">debut reservation est Vide! <br></small>
+                    <small *ngIf="reservationForm.get('debuteAnneUniversite').hasError('invalidStartDate')" class="text-danger">La date de début doit être au moins 10 jours après la date actuelle! <br></small>
                   </div>
                   <br>
-                  <div class="form-group">
-                    <textarea [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'"  class="form-control"  [(ngModel)]="reservation.description" #description="ngModel" placeholder="Description" name="description" required  ></textarea>
+                  <div  class="form-group">
+                    <input [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" type="date" class="form-control bg-light border-0 small"  formControlName="finAnneUniversite" name="finAnneUniversite" >
                   </div>
-                  <div *ngIf="description?.touched && description?.invalid">
-                    <small *ngIf="description?.errors!['required']" class="text-danger">description Vide! <br></small>
+                  <div *ngIf="reservationForm.get('finAnneUniversite').touched">
+                    <small *ngIf="reservationForm.get('finAnneUniversite').hasError('required') " class="text-danger">Fin reservation est Vide! <br></small>
+                    <small *ngIf="reservationForm.get('finAnneUniversite').hasError('invalidEndDate')" class="text-danger">La date de fin doit être au moins 1 mois après la date de début! <br></small>
                   </div>
                   <br>
+                  
                   <div class=" d-flex justify-content-between">
-                    <button *ngIf="reservation.etat == 'NEW' " style="color: white;" type="submit" class="btn btn-info" >Reserver</button>
-                    <button *ngIf="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" style="color: white;" type="submit" class="btn btn-info" >Reserver</button>
-                    <button *ngIf="!disabled && reservation.etat === 'EN_ATTENTE'" [disabled]="disabled" style="color: white;" type="submit" class="btn btn-warning" >Modifier</button>
+                    <button *ngIf="reservation.etat == 'NEW' " style="color: white;" [disabled]=" reservationForm.invalid" type="submit" class="btn btn-info" >Reserver</button>
+                    <button *ngIf="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE'" [disabled]="reservation.etat != 'NEW' && reservation.etat != 'EN_ATTENTE' " style="color: white;" type="submit" class="btn btn-info" >Reserver</button>
+                    <button *ngIf="!disabled && reservation.etat === 'EN_ATTENTE'" [disabled]="disabled || reservationForm.invalid" style="color: white;" type="submit" class="btn btn-warning" >Modifier</button>
                     <button *ngIf="!disabled && reservation.etat === 'EN_ATTENTE'" [disabled]="disabled" style="color: white;" (click)="delete()" class="btn btn-danger" >Annuler</button>
             </div>
                 
-          
+           
                 </form>
              
               <div class="sidebar-item categories">
