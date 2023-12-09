@@ -10,13 +10,19 @@ import { UserTemplateComponent } from './components/front/user-template/user-tem
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BlocComponent } from './components/front/bloc/bloc/bloc.component';
+import { DetailblocComponent } from './components/front/bloc/detailbloc/detailbloc.component';
+import { CouleurChambreDirective } from './components/front/couleur-chambre.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    UserTemplateComponent
+    UserTemplateComponent,
+    BlocComponent,
+    DetailblocComponent,
+    CouleurChambreDirective
   ],
   imports: [
     BrowserModule,

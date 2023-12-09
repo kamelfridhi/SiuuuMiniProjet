@@ -8,6 +8,7 @@ import { FoyerService } from 'src/app/_Services/foyer/foyer.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ChambreService } from 'src/app/_Services/chambre/chambre.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-afficher-blocs',
@@ -33,9 +34,14 @@ export class AfficherBlocsComponent implements OnInit {
   selection = new SelectionModel<Chambre>(true, []);
   chambre: Chambre[] = [];
   affecterListChambreToSelectedBloc!: string;
+  selectedNomFoyer!: string;
+  selectedIdChambres: number[] = [];
+  nomBlocCheckP!: string;
+  resulatat!: number
+  message: string = '';
   /* Declaration END */
 
-  constructor(private blocService: BlocService, private foyerService: FoyerService, private chamberService: ChambreService, private fb: FormBuilder) { }
+  constructor(private router: Router, private blocService: BlocService, private foyerService: FoyerService, private chamberService: ChambreService, private fb: FormBuilder) { }
 
 
 
@@ -44,35 +50,33 @@ export class AfficherBlocsComponent implements OnInit {
     return this.blocForm.get('nomBloc');
   }
 
-  get capaciteBlocControl() {
-    return this.blocForm.get('capaciteBloc');
-  }
+
   /* accesseur pour les champs du form add END */
-/* Init */
+  /* Init */
   ngOnInit(): void {
     this.getBlocs();
     this.blocForm = this.fb.group({
-      nomBloc: ['', Validators.required],
-      capaciteBloc: [null,[ Validators.required, Validators.min(1)]]
+      nomBloc: ['', [Validators.required, Validators.minLength(2)]],
+      capaciteBloc: [null, [Validators.required, Validators.min(2)]]
     });
+
     this.blocForm2 = this.fb.group({
       UPDnomBloc: ['', Validators.required],
       UPDcapaciteBloc: [null, Validators.required],
       UPDblocId: [null, Validators.required]
     });
-
     this.initForm();
-
     this.getFoyers();
     this.fetchChambresNonAffecter();
   }
-/* Init END */
+  /* Init END */
 
   fetchChambresNonAffecter(): void {
     this.chamberService.getChambresNonAffecter().subscribe((chambres: Chambre[]) => {
       this.dataSource.data = chambres;
     });
   }
+  get getcapaciteBloc() { return this.blocForm.get('capaciteBloc'); }
 
   getBlocs(): void {
     this.blocService.getAllBlocs().subscribe({
@@ -114,26 +118,31 @@ export class AfficherBlocsComponent implements OnInit {
   }
 
   addBloc(): void {
-    const newBloc: Bloc = {
-      nomBloc: this.nomBloc,
-      capaciteBloc: this.capaciteBloc,
-      blocId: 0,
-      foyer: null,
-      chambres: []
-    };
-    this.blocService.addBloc(newBloc).subscribe({
-      next: (addedBloc: Bloc) => {
-        console.log('Bloc added successfully:', addedBloc);
-        this.getBlocs();
-        this.blocForm.reset();
-      },
-      error: (error) => {
-        console.error('Error adding bloc:', error);
-        console.log('Error adding bloc:', newBloc);
-      }
-    });
+    if (this.blocForm.valid) {
+      const newBloc: Bloc = {
+        nomBloc: this.blocForm.value.nomBloc,
+        capaciteBloc: this.blocForm.value.capaciteBloc,
+        blocId: 0,
+        foyer: null,
+        chambres: []
+      };
+  
+      this.blocService.addBloc(newBloc).subscribe({
+        next: (addedBloc: Bloc) => {
+          console.log('Bloc added successfully:', addedBloc);
+          this.getBlocs();
+          this.blocForm.reset();
+        },
+        error: (error) => {
+          console.error('Error adding bloc:', error);
+          console.log('Error adding bloc:', newBloc);
+        }
+      });
+    } else {
+      console.log('form is not valid:', this.blocForm )
+    }
   }
-
+  
 
   updateBloc(): void {
 
@@ -171,7 +180,7 @@ export class AfficherBlocsComponent implements OnInit {
   private initForm(): void {
     this.blocForm = this.fb.group({
       nomBloc: ['', Validators.required],
-      capaciteBloc: [null, Validators.required],
+      capaciteBloc: [null, [Validators.required, Validators.min(1)]]
 
     });
     this.blocForm2 = this.fb.group({
@@ -231,10 +240,10 @@ export class AfficherBlocsComponent implements OnInit {
   }
 
 
-  affecterListChambreToBlock(event: Event) {
+  affecterListChambreToBlock(event: Event){
     event.preventDefault();
     const selectedBloc = this.affecterListChambreToSelectedBloc;
-    const selectedChambres = this.selection.selected.map(chambre => chambre.numeroChambre) as number[];
+    const selectedChambres = this.selection.selected.map(chambre => chambre.idChambre) as number[];
     console.log('selectedBloc', selectedBloc);
     console.log('selectedChambres', selectedChambres);
     this.blocService.affecterChambresABloc(selectedChambres, selectedBloc).subscribe({
@@ -247,6 +256,13 @@ export class AfficherBlocsComponent implements OnInit {
       complete: () => {
       }
     });
+  }
+
+
+  goToDetailsPage(message: string) {
+    this.message = message;
+    console.log('Message from child:', message);
+    // Additional logic to handle the message in the parent component
   }
 }
 

@@ -2,7 +2,12 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Afficher tout les Blocs</h6>
+            <a [routerLink]="'/Bloc'" class="btn btn-secondary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+                <span class="text">Acceder a la page des Blocs</span>
+            </a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -37,7 +42,7 @@
                             <td>{{ bloc.capaciteBloc }}</td>
                             <td>{{bloc.foyer?.nomFoyer}}</td>
                             <td>
-                                <span *ngFor="let chambre of bloc.chambres">{{ chambre.numeroChambre }}, </span>
+                                <span *ngFor="let chambre of bloc.chambres">{{ chambre.idChambre }}, </span>
                             </td>
                             <!-- Button Delete -->
                             <td>
@@ -73,14 +78,14 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <select id="selectableList" [(ngModel)]="affecterSelectedBloc" class="form-control">
+                                   Nom bloc: <select id="selectableList" [(ngModel)]="affecterSelectedBloc" class="form-control" >
                                         <option [value]="bloc.nomBloc" *ngFor="let bloc of blocs">{{ bloc.nomBloc }}
                                         </option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <select id="selectableList" [(ngModel)]="affecterSelectedFoyer"
+                                   Nom Foyer: <select id="selectableList" [(ngModel)]="affecterSelectedFoyer"  
                                         class="form-control">
                                         <option [value]="foyer.nomFoyer" *ngFor="let foyer of foyers">{{foyer.nomFoyer
                                             }}</option>
@@ -126,29 +131,24 @@
                                             </mat-checkbox>
                                         </td>
                                     </ng-container>
-
                                     <!-- Chambre ID Column -->
                                     <ng-container matColumnDef="idChambre">
                                         <th mat-header-cell *matHeaderCellDef>Chambre ID</th>
                                         <td mat-cell *matCellDef="let element">{{ element.idChambre }}</td>
                                     </ng-container>
-
                                     <!-- Add more columns if needed -->
-
                                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                                 </table>
-
                                 <!-- Display the selected Chambre IDs in a list -->
                                 <div class="form-group">
                                     <label for="selectedChambreIds">Selected Chambre IDs:</label>
                                     <ul id="selectedChambreIds">
                                         <li *ngFor="let selected of selection.selected">
-                                            ID: {{ selected.idChambre }}
+                                            num chambre: {{ selected.idChambre }}
                                         </li>
                                     </ul>
                                 </div>
-
                             </div>
                             <div class="form-group" style="align-self: center;">
                                 <a href="#" class="btn btn-success btn-icon-split"
@@ -160,44 +160,48 @@
                                 </a>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <hr>
                 <!-- form start -->
-
-
-
                 <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="addBloc()" [formGroup]="blocForm">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc" formControlName="nomBloc">
-                      <div *ngIf="nomBlocControl!.invalid && (nomBlocControl!.dirty || nomBlocControl!.touched)">
-                        <div *ngIf="nomBlocControl!.errors!required">Le nom du bloc est requis.</div>
+                      <div class="row">
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
+                            formControlName="nomBloc">
+                        </div>
+                        <div class="col-lg-3">
+                          <app-detailbloc [nomBlocCheck]="blocForm.get('nomBloc')?.value" (detailsEmitter)="goToDetailsPage($event)"></app-detailbloc><br>
+                            {{message}}
+                        </div>
+                      </div>
+                      <div *ngIf="blocForm.get('nomBloc')!.hasError('required') && blocForm.get('nomBloc')!.dirty">
+                        Le nom du bloc est requis.
+                      </div>
+                      <div *ngIf="blocForm.get('nomBloc')!.hasError('minlength') && blocForm.get('nomBloc')!.dirty">
+                        La longueur minimale du nom du bloc est de 2 caractères.
                       </div>
                     </div>
                     <div class="form-group">
-                      <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc" formControlName="capaciteBloc">
-                      <div *ngIf="capaciteBlocControl!.invalid && (capaciteBlocControl!.dirty || capaciteBlocControl!.touched)">
-                        <div *ngIf="capaciteBlocControl!.errors!required">La capacité du bloc est requise.</div>
-                        <div *ngIf="capaciteBlocControl!.errors!min">La capacité doit être supérieure à 0.</div>
+                      <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
+                        formControlName="capaciteBloc">
+                      <div *ngIf="blocForm.get('capaciteBloc')!.hasError('required') && blocForm.get('capaciteBloc')!.touched">
+                        Capacité du bloc est requise.
+                      </div>
+                      <div *ngIf="blocForm.get('capaciteBloc')!.hasError('min') && blocForm.get('capaciteBloc')!.touched">
+                        La capacité du bloc doit être supérieure à 1.
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]="blocForm.invalid">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
                       Ajouter
                     </button>
                   </form>
-                  
                 <hr>
-
-
-
-
-
-
                 <!-- form UPD -->
                 <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="updateBloc()">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" name="UPDblocId"
+                        <input type="text" class="form-control form-control-user" name="UPDblocId" placeholder="BlocID"
                             [(ngModel)]="blocForm2.value.UPDblocId" [disabled]="true">
                     </div>
                     <div class="form-group">
@@ -212,10 +216,10 @@
                         Modifier
                     </button>
                 </form>
-
                 <!-- form end -->
             </div>
         </div>
     </div>
-
 </div>
+<!-- Appliquer l’approche Reactive Form ET/ OU Template Driven Form pour la
+création de formulaire + validateurs + msg d’erreur -->

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AfficherBlocsComponent } from './afficher-blocs/afficher-blocs.component';
+import { DetailblocComponent } from './detailbloc/detailbloc.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
       { path: 'getblocs', component: AfficherBlocsComponent },
+      { path: 'detailbloc', component: DetailblocComponent },
       // add your route for admin n3awed for admin
     ]
   },

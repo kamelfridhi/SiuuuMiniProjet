@@ -1,0 +1,90 @@
+<section id="blog" class="blog">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+
+      <div class="row g-5">
+
+        <div class="col-lg-12">
+
+          <article  class="blog-details">
+
+            <div class="post-img">
+              <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+            </div>
+
+            <h2 class="title">{{blocDetails.nomBloc}}</h2>
+
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-aspect-ratio"></i> <div>capaciteBloc: {{blocDetails.capaciteBloc}}</div></li>
+                <li class="d-flex align-items-center"><i class="bi bi-house-fill"></i> <div>Foyer: {{blocDetails.foyer?.nomFoyer}} </div></li>
+              </ul>
+            </div><!-- End meta top -->
+            <div class="content">
+              <span>Liste des chambres qui existe dans le bloc: </span>
+              <span *ngFor="let chambre of blocDetails.chambres" appCouleurChambre="{{ chambre.typeC }}">
+                {{ chambre.idChambre }} ,
+              </span>
+              
+            </div><!-- End post content -->
+          </article><!-- End blog post -->
+          
+          <section id="faq" class="faq">
+            <div class="container-fluid aos-init aos-animate" data-aos="fade-up">
+              <div class="row gy-10">
+                <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                  <div class="content px-xl-5">
+                    <h3>Explication des <strong>Couleurs</strong></h3>
+                  </div>
+                  <div class="accordion accordion-flush px-xl-5" id="faqlist">
+                    <div class="accordion-item aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                          <i class="bi bi-question-circle question-icon"></i>
+                          Chambre Simple?
+                        </button>
+                      </h3>
+                      <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                        <div class="accordion-body" style="color: blue;">
+                          Les Chambres Simple sont avec la couleur Bleu
+                        </div>
+                      </div>
+                    </div><!-- # Faq item-->
+                    <div class="accordion-item aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                          <i class="bi bi-question-circle question-icon"></i>
+                          Chambre Double?
+                        </button>
+                      </h3>
+                      <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                        <div class="accordion-body" style="color: green;">
+                          Les Chambres Double sont avec la couleur Vert
+                        </div>
+                      </div>
+                    </div><!-- # Faq item-->
+                    <div class="accordion-item aos-init aos-animate" data-aos="fade-up" data-aos-delay="600">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                          <i class="bi bi-question-circle question-icon"></i>
+                          Chambre Triple?
+                        </button>
+                      </h3>
+                      <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                        <div class="accordion-body" style="color: red;">
+                          Les Chambres Triple sont avec la couleur Rouge
+                        </div>
+                      </div>
+                    </div><!-- # Faq item-->
+      
+                  </div>
+      
+                </div>
+
+              </div>
+    
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>

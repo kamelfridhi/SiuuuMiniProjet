@@ -9,11 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DetailblocComponent } from './detailbloc/detailbloc.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
     TemplateComponent,
     AfficherBlocsComponent,
+    DetailblocComponent,
   ],
   imports: [
     CommonModule,

@@ -47,6 +47,13 @@ export class BlocService {
     return this.http.put<Bloc>(url, numChambre);
   }
 
-
+  getBlocDetails(blocId: string): Observable<Bloc> {
+    const url = `${this.API_URL}/api/bloc/${blocId}`;
+    return this.http.get<Bloc>(url);
+  }
   
+  getBlocbyName(name: string): Observable<Bloc> {
+    const url = `${this.API_URL}/api/bloc/getbyNom/${name}`;
+    return this.http.get<Bloc>(url);
+  }
 }
