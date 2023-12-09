@@ -18,18 +18,25 @@ export class AdduniversiteComponent implements OnInit{
   uvformup!: FormGroup;
   idFoyer!:number;
   nomUniv!:string;
-selectedBloc!:Universite;
+  selectedBloc!:Universite;
   successMessage: string | null = null;
 
   constructor(private univservice: UniversiteService, private fb: FormBuilder,private router:Router) {
     let formControls = {
-      nomUniversite: new FormControl(''),
-      adresse: new FormControl(''),
+      nomUniversite: new FormControl('', [
+        Validators.required,
+        Validators.pattern("[a-zA-Z]*"),
+        Validators.minLength(3)
+      ]),
+      adresse: new FormControl('', Validators.required),
 
     }
     this.uvform = this.fb.group(formControls);
 
   }
+  get nomuniversite() { return this.uvform.get('nomUniversite'); }
+  get adresse() { return this.uvform.get('adresse'); }
+
   ngOnInit(): void {
     this.univservice.getAllfoyer().subscribe(value=>this.foyer=value);
     this.getuniversities();

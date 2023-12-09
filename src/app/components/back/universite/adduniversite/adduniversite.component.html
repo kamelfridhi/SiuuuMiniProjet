@@ -100,10 +100,20 @@
             <label for="nom">nom Universite</label>
             <input formControlName="nomUniversite" type="text" id="nom" class="form-control">
           </div>
-
+          <div *ngIf="nomuniversite?.touched && nomuniversite?.invalid">
+            <small *ngIf="nomuniversite?.errors!['required']" class="text-danger">nomuniversite is required <br></small>
+            <small *ngIf="nomuniversite?.errors!['pattern']" class="text-danger">invalid nomuniversite <br></small>
+            <small *ngIf="nomuniversite?.errors!['minlength']" class="text-danger">nomuniversite must contain at least 3
+              characters</small>
+          </div>
           <div class="form-group">
           <input formControlName="adresse" class="form-control" type="text" [(ngModel)]="inputValue" (input)="onInputChange()">
-
+            <div *ngIf="adresse?.touched && adresse?.invalid">
+              <small *ngIf="adresse?.errors!['required']" class="text-danger">adresse is required <br></small>
+              <small *ngIf="adresse?.errors!['pattern']" class="text-danger">adresse nomuniversite <br></small>
+              <small *ngIf="adresse?.errors!['minlength']" class="text-danger">adresse must contain at least 3
+                characters</small>
+            </div>
 
 
           <li *ngFor="let location of locations" (click)="onSelectLocation(location)">
