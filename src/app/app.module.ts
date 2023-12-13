@@ -7,6 +7,11 @@ import { FooterComponent } from './components/front/footer/footer.component';
 import { HeaderComponent } from './components/front/header/header.component';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+
+import { ReserverChambreComponent } from './components/front/reserver-chambre/reserver-chambre.component';
+import { CommonModule } from '@angular/common';
+import { ListeChambreComponent } from './components/front/liste-chambre/liste-chambre.component';
+
 import { LoginComponent } from './components/front/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
@@ -18,6 +23,7 @@ import {UpdateloginComponent} from "./components/front/login/updatelogin/updatel
 import { EmailDirective } from './components/front/login/email.directive';
 import { AdminModule } from './components/back/admin/admin.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +31,11 @@ import { AdminModule } from './components/back/admin/admin.module';
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
+
+    ReserverChambreComponent,
+    ListeChambreComponent,
+    
+
     LoginComponent,
     NotFoundComponent,
 UpdateloginComponent,
@@ -33,11 +44,13 @@ UpdateloginComponent,
     EmailDirective,
 
 
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AdminModule
