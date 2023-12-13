@@ -1,0 +1,109 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+      <form [formGroup]="updateEtudiantForm" (ngSubmit)="updateEtudiant()">
+
+        <div class="form-group">
+          <label for="nom">nom foyer</label>
+          <input formControlName="nomEt" type="text" id="nom" [(ngModel)]="etudiant.nomEt" class="form-control">
+        </div>
+
+        <div *ngIf="getnomEt?.touched && getnomEt?.invalid">
+          <small *ngIf="getnomEt?.errors!['required']" class="text-danger">firstname is required <br></small>
+          <small *ngIf="getnomEt?.errors!['pattern']" class="text-danger">invalid firstname <br></small>
+          <small *ngIf="getnomEt?.errors!['minlength']" class="text-danger">firstname must contain at least 3
+            characters</small>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <label for="cap">prenom</label>
+          <input formControlName="prenomet" type="text" id="cap" [(ngModel)]="etudiant.prenomet" class="form-control">
+        </div>
+        <div *ngIf="getprenomet?.touched && getprenomet?.invalid">
+          <small *ngIf="getprenomet?.errors!['required']" class="text-danger">lastname is required <br></small>
+          <small *ngIf="getprenomet?.errors!['pattern']" class="text-danger">lastname firstname <br></small>
+          <small *ngIf="getprenomet?.errors!['minlength']" class="text-danger">lastname must contain at least 3
+            characters</small>
+        </div>
+
+    <div class="form-group">
+          <label for="cap">cin</label>
+          <input formControlName="cin" type="text" id="cap" [(ngModel)]="etudiant.cin" class="form-control">
+        </div>
+        <div *ngIf="getcin?.touched && getcin?.invalid">
+          <small *ngIf="getcin?.errors!['required']" class="text-danger">cin  is required <br></small>
+          <small *ngIf="getcin?.errors!['pattern']" class="text-danger">cin firstname <br></small>
+          <small *ngIf="getcin?.errors!['minlength']" class="text-danger">cin must contain at least 3
+            characters</small>
+        </div>
+
+
+        <div class="form-group">
+          <label for="cap">ecole</label>
+          <input formControlName="ecole" type="text" id="cap" [(ngModel)]="etudiant.ecole" class="form-control">
+        </div>
+        <div *ngIf="getecole?.touched && getecole?.invalid">
+          <small *ngIf="getecole?.errors!['required']" class="text-danger">ecole is required <br></small>
+          <small *ngIf="getecole?.errors!['pattern']" class="text-danger">ecole firstname <br></small>
+          <small *ngIf="getecole?.errors!['minlength']" class="text-danger">ecole must contain at least 3
+            characters</small>
+        </div>
+
+
+        <div class="form-group">
+          <label for="cap">date de naissance</label>
+          <input formControlName="dateNaissance" type="date" id="cap" [(ngModel)]="etudiant.dateNaissance" class="form-control">
+        </div>
+        <div *ngIf="getdateNaissance?.touched && getdateNaissance?.invalid">
+          <small *ngIf="getdateNaissance?.errors!['required']" class="text-danger">date de naissance is required <br></small>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="cap">email</label>
+          <input formControlName="email" type="email" id="cap" [(ngModel)]="etudiant.email" class="form-control">
+        </div>
+        <div *ngIf="getemail?.touched && getemail?.invalid">
+          <small *ngIf="getemail?.errors!['required']" class="text-danger">email is required <br></small>
+          <small *ngIf="getemail?.errors!['pattern']" class="text-danger">email firstname <br></small>
+          <small *ngIf="getemail?.errors!['minlength']" class="text-danger">email must contain at least 3
+            characters</small>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="cap">password</label>
+          <input formControlName="passoword" type="password" id="cap" class="form-control">
+        </div>
+        <div *ngIf="getpassoword?.touched && getpassoword?.invalid">
+          <small *ngIf="getpassoword?.errors!['required']" class="text-danger">password is required <br></small>
+          <small *ngIf="getpassoword?.errors!['pattern']" class="text-danger">password  firstname <br></small>
+          <small *ngIf="getpassoword?.errors!['minlength']" class="text-danger">password must contain at least 3
+            characters</small>
+        </div>
+
+        <br>
+
+        <input [disabled]="updateEtudiantForm.invalid" type="submit" value="confirmer" class="btn btn-info">
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
