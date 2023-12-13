@@ -1,0 +1,52 @@
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+
+    <form #formUser="ngForm" (ngSubmit)="addEtudiant(formUser)">
+      <h1>Create Account</h1>
+
+      <span>or use your email for registration</span>
+      <input type="text" placeholder="Name" ngModel name="nomEt" required />
+      <input type="text" placeholder="prenom" ngModel name="prenomet" required />
+      <input type="email" placeholder="Email" ngModel name="email" required/>
+      <!-- login.component.html -->
+
+      <input type="email" placeholder="Email" ngModel name="email" [(ngModel)]="email" required appDirective [appGravatar]="email"/>
+
+      <input type="date" placeholder="date de naissance"  ngModel name="dateNaissance" required/>
+      <input type="text" placeholder="CIN"  ngModel name="cin" required/>
+      <input type="password" placeholder="Password"   ngModel name="passoword" required/>
+      <button>Sign Up</button>
+    </form>
+
+  </div>
+  <div class="form-container sign-in-container">
+    <form #Loginuser="ngForm" (ngSubmit)="Loginetudiant(Loginuser)">
+      <h1>Sign in</h1>
+
+      <span>or use your account</span>
+      <input type="email" placeholder="Email" ngModel name="email" required/>
+      <!-- example.component.html -->
+
+
+      <input type="password" placeholder="Password"   ngModel name="passoword" required/>
+
+
+      <a href="#">Forgot your password?</a>
+      <button>Sign In</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" id="signUp">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
