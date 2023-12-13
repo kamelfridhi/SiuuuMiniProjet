@@ -1,0 +1,14 @@
+.pagination  {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    
+  }
+.centred{
+  display: flex;
+  justify-content: center;
+}
+  a,i{
+    cursor: pointer;
+}

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="idChambre">ID Chambre :</label>
+        <input type="text" class="form-control" id="idChambre" [(ngModel)]="chambre.idChambre" >
+      </div>
+
+      <div class="form-group">
+        <label for="numeroChambre">Numéro Chambre :</label>
+        <input type="text" class="form-control" id="numeroChambre" [(ngModel)]="chambre.numeroChambre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="typeC">Type Chambre :</label>
+
+        <select id="typeC"[(ngModel)]="chambre.typeC">
+          <option value="SIMPLE">Simple</option>
+          <option value="DOUBLE">Double</option>
+          <option value="TRIPLE">Triple</option>
+        </select>
+      </div>
+
+      <!-- ... autres champs du formulaire ... -->
+
+      <button (click)="modifierChambre()" type="submit" class="btn btn-primary">Modifier</button>
+
+
+
+    </div>
+  </div>
+</div>

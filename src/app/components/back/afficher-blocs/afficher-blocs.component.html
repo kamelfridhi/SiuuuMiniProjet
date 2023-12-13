@@ -1,0 +1,225 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a [routerLink]="'/Bloc'" class="btn btn-secondary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+                <span class="text">Acceder a la page des Blocs</span>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
+                    width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id Bloc</th>
+                            <th>Nom du Bloc</th>
+                            <th>Capacité du Bloc</th>
+                            <th>Appartient a quel Foyer</th>
+                            <th>List des Chambre qui appartient a ce Bloc</th>
+                            <th>Supprimer</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id Bloc</th>
+                            <th>Nom du Bloc</th>
+                            <th>Capacité du Bloc</th>
+                            <th>Appartient a quel Foyer</th>
+                            <th>List des Chambre qui appartient a ce Bloc</th>
+                            <th>Supprimer</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </tfoot>
+                    <tbody *ngFor="let bloc of blocs">
+                        <tr>
+                            <td>{{ bloc.blocId }}</td>
+                            <td>{{ bloc.nomBloc }}</td>
+                            <td>{{ bloc.capaciteBloc }}</td>
+                            <td>{{bloc.foyer?.nomFoyer}}</td>
+                            <td>
+                                <span *ngFor="let chambre of bloc.chambres">{{ chambre.idChambre }}, </span>
+                            </td>
+                            <!-- Button Delete -->
+                            <td>
+                                <a href="" class="btn btn-danger btn-icon-split"
+                                    (click)="deleteBloc($event,bloc.blocId)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text">Supprimer</span>
+                                </a>
+                            </td>
+                            <!-- Button Delete end-->
+                            <!-- Button Edit -->
+                            <td>
+                                <a href="#" class="btn btn-primary btn-icon-split" (click)="editBloc($event,bloc)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
+                                    <span class="text">Modifier</span>
+                                </a>
+                            </td>
+                            <!-- Button Edit end-->
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- Basic Card Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Affecter Bloc A foyer</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                   Nom bloc: <select id="selectableList" [(ngModel)]="affecterSelectedBloc" class="form-control" >
+                                        <option [value]="bloc.nomBloc" *ngFor="let bloc of blocs">{{ bloc.nomBloc }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                   Nom Foyer: <select id="selectableList" [(ngModel)]="affecterSelectedFoyer"  
+                                        class="form-control">
+                                        <option [value]="foyer.nomFoyer" *ngFor="let foyer of foyers">{{foyer.nomFoyer
+                                            }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="align-self: center;">
+                                <a href="#" class="btn btn-success btn-icon-split" (click)="affecter($event)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Affecter</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+                            </div>
+                            <div class="card-body">
+                                <select id="selectableList" [(ngModel)]="affecterListChambreToSelectedBloc"
+                                    class="form-control">
+                                    <option [value]="bloc.nomBloc" *ngFor="let bloc of blocs">{{ bloc.nomBloc }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="from-group">
+                                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                                    <!-- Select Column -->
+                                    <ng-container matColumnDef="select">
+                                        <th mat-header-cell *matHeaderCellDef>
+                                            <mat-checkbox (change)="$event ? masterToggle() : null"
+                                                [checked]="selection.hasValue() && isAllSelected()"
+                                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                                            </mat-checkbox>
+                                        </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <mat-checkbox (click)="$event.stopPropagation()"
+                                                (change)="$event ? selection.toggle(row) : null"
+                                                [checked]="selection.isSelected(row)">
+                                            </mat-checkbox>
+                                        </td>
+                                    </ng-container>
+                                    <!-- Chambre ID Column -->
+                                    <ng-container matColumnDef="idChambre">
+                                        <th mat-header-cell *matHeaderCellDef>Chambre ID</th>
+                                        <td mat-cell *matCellDef="let element">{{ element.idChambre }}</td>
+                                    </ng-container>
+                                    <!-- Add more columns if needed -->
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <!-- Display the selected Chambre IDs in a list -->
+                                <div class="form-group">
+                                    <label for="selectedChambreIds">Selected Chambre IDs:</label>
+                                    <ul id="selectedChambreIds">
+                                        <li *ngFor="let selected of selection.selected">
+                                            num chambre: {{ selected.idChambre }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group" style="align-self: center;">
+                                <a href="#" class="btn btn-success btn-icon-split"
+                                    (click)="affecterListChambreToBlock($event)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Affecter La List</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- form start -->
+                <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="addBloc()" [formGroup]="blocForm">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
+                            formControlName="nomBloc">
+                        </div>
+                        <div class="col-lg-3">
+                          <app-detailbloc [nomBlocCheck]="blocForm.get('nomBloc')?.value" (detailsEmitter)="goToDetailsPage($event)"></app-detailbloc><br>
+                            {{message}}
+                        </div>
+                      </div>
+                      <div *ngIf="blocForm.get('nomBloc')!.hasError('required') && blocForm.get('nomBloc')!.dirty">
+                        Le nom du bloc est requis.
+                      </div>
+                      <div *ngIf="blocForm.get('nomBloc')!.hasError('minlength') && blocForm.get('nomBloc')!.dirty">
+                        La longueur minimale du nom du bloc est de 2 caractères.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
+                        formControlName="capaciteBloc">
+                      <div *ngIf="blocForm.get('capaciteBloc')!.hasError('required') && blocForm.get('capaciteBloc')!.touched">
+                        Capacité du bloc est requise.
+                      </div>
+                      <div *ngIf="blocForm.get('capaciteBloc')!.hasError('min') && blocForm.get('capaciteBloc')!.touched">
+                        La capacité du bloc doit être supérieure à 1.
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                      Ajouter
+                    </button>
+                  </form>
+                <hr>
+                <!-- form UPD -->
+                <form class="border-bottom-primary border-left-primary p-1" (ngSubmit)="updateBloc()">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" name="UPDblocId" placeholder="BlocID"
+                            [(ngModel)]="blocForm2.value.UPDblocId" [disabled]="true">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user" placeholder="Nom du Bloc"
+                            [(ngModel)]="blocForm2.value.UPDnomBloc" name="UPDnomBloc" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control form-control-user" placeholder="Capacité du Bloc"
+                            [(ngModel)]="blocForm2.value.UPDcapaciteBloc" name="UPDcapaciteBloc" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Modifier
+                    </button>
+                </form>
+                <!-- form end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Appliquer l’approche Reactive Form ET/ OU Template Driven Form pour la
+création de formulaire + validateurs + msg d’erreur -->

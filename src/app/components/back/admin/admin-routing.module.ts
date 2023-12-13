@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+<<<<<<< HEAD
 
 const routes: Routes = [];
+=======
+import {AdminComponent} from "./admin.component";
+import {UpdateuserComponent} from "./updateuser/updateuser.component";
+
+const routes: Routes = [
+
+  { path: 'user', component: AdminComponent },
+  { path: 'update/user/:id', component: UpdateuserComponent},
+];
+>>>>>>> main
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

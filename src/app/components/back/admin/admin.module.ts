@@ -4,11 +4,21 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 
 
+import {FormsModule} from "@angular/forms";
+import {AdminComponent} from "./admin.component";
+import {UpdateuserComponent} from "./updateuser/updateuser.component";
+
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    AdminComponent,
+    UpdateuserComponent
+  ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
+
   ]
 })
 export class AdminModule { }

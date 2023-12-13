@@ -1,0 +1,11 @@
+/* Ajoute ce style CSS pour personnaliser la modal Bootstrap */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ajoute ceci si tu veux ajuster la largeur de la modal Bootstrap */
+.modal-dialog {
+  max-width: 70%; /* Tu peux ajuster cette valeur selon tes besoins */
+}

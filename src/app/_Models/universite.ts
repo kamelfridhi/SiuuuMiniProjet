@@ -1,3 +1,4 @@
+
 import {Foyer} from "./foyer";
 
 export class Universite {
@@ -5,5 +6,6 @@ export class Universite {
   nomUniversite!: string;
   adresse!: string;
   foyer!:Foyer;
+  idUniv!:number;
 
 }

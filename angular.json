@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -34,7 +35,14 @@
               "src/assets/HeroBiz/assets/vendor/isotope-layout/isotope.pkgd.min.js",
               "src/assets/HeroBiz/assets/vendor/swiper/swiper-bundle.min.js",
               "src/assets/HeroBiz/assets/vendor/php-email-form/validate.js",
-              "src/assets/HeroBiz/assets/js/main.js"
+              "src/assets/HeroBiz/assets/js/main.js",
+              "src/assets/Back/vendor/jquery/jquery.min.js",
+              "src/assets/Back/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/Back/vendor/jquery-easing/jquery.easing.min.js",
+              "src/assets/Back/js/sb-admin-2.min.js",
+              "src/assets/Back/vendor/datatables/jquery.dataTables.min.js",
+              "src/assets/Back/vendor/datatables/dataTables.bootstrap4.min.js",
+              "src/assets/Back/js/demo/datatables-demo.js"
             ]
           },
           "configurations": {
@@ -95,6 +103,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
