@@ -1,0 +1,21 @@
+ <form class="border-bottom-primary border-left-primary p-1" #updateForm="ngForm" (ngSubmit)="modifieruniversite()">
+  <div class="form-group">
+    <input type="text" class="form-control form-control-user" placeholder="Nom du Universite"
+           [(ngModel)]="uv.nomUniversite" name="nomUniversite" #nomUniversite="ngModel"
+           required minlength="3">
+    <div *ngIf="nomUniversite.touched && nomUniversite.invalid">
+      <small *ngIf="nomUniversite.errors?.['required']" class="text-danger">Nom du Universite est requis<br></small>
+      <small *ngIf="nomUniversite.errors?.['minlength']" class="text-danger">Le nom doit avoir au moins 3 caractères</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control form-control-user" placeholder="address du Bloc"
+           [(ngModel)]="uv.adresse" name="adresse" #adresse="ngModel"
+           required minlength="3">
+    <div *ngIf="adresse.touched && adresse.invalid">
+      <small *ngIf="adresse.errors?.['required']" class="text-danger">Address du Bloc est requis<br></small>
+      <small *ngIf="adresse.errors?.['minlength']" class="text-danger">L'adresse doit avoir au moins 3 caractères</small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-user btn-block">Update</button>
+</form>

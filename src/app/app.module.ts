@@ -10,6 +10,14 @@ import { FooterComponent } from './components/front/footer/footer.component';
 import { HeaderComponent } from './components/front/header/header.component';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { UniversitesComponent } from './components/front/universites/universites.component';
+import { AdminModule } from './components/back/admin/admin.module';
+import { UniversiteModule } from './components/back/universite/universite.module';
+import { CardUnviComponent } from './components/front/universites/card-unvi/card-unvi.component';
+import { DetailUnivComponent } from './components/front/universites/detail-univ/detail-univ.component';
+
 
 
 import { AfficherchambresComponent } from './components/front/chambre/afficherchambres/afficherchambres.component';
@@ -54,19 +62,24 @@ import { AdminModule } from './components/back/admin/admin.module';
     HomeComponent,
     UserTemplateComponent,
 
+    UniversitesComponent,
+    CardUnviComponent,
+    DetailUnivComponent,
+
+
     AfficherchambresComponent,
     DetailschambrerComponent,
-    CartchambreComponent
+    CartchambreComponent,
 
 
     AfficherFoyerComponent,
     CardFoyerComponent,
-    FoyerDetailsComponent
+    FoyerDetailsComponent,
 
 
     BlocComponent,
     DetailblocComponent,
-    CouleurChambreDirective
+    CouleurChambreDirective,
 
 
     ReserverChambreComponent,
@@ -85,23 +98,30 @@ UpdateloginComponent,
 
 
 
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
 
+   
+  
+    UniversiteModule,
+
+
 
 
    
     
  
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
 
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AdminModule
+    AdminModule,
+
 
 
 

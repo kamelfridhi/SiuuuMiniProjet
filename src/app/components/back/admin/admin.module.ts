@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
+
+
 import {FormsModule} from "@angular/forms";
 import {AdminComponent} from "./admin.component";
 import {UpdateuserComponent} from "./updateuser/updateuser.component";
@@ -16,6 +18,7 @@ import {UpdateuserComponent} from "./updateuser/updateuser.component";
     CommonModule,
     AdminRoutingModule,
     FormsModule
+
   ]
 })
 export class AdminModule { }

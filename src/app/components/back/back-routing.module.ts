@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {AdduniversiteComponent} from "./universite/adduniversite/adduniversite.component";
+import {UpdateuniversiteComponent} from "./universite/updateuniversite/updateuniversite.component";
+import {AfficheuvComponent} from "./universite/afficheuv/afficheuv.component";
+import {AffectedfoyerComponent} from "./universite/affectedfoyer/affectedfoyer.component";
 
 import {AfficherchambreComponent} from "./chambres/afficherchambre/afficherchambre.component";
 import {AjouterchambreComponent} from "./chambres/ajouterchambre/ajouterchambre.component";
@@ -72,6 +76,13 @@ const routes: Routes = [
       { path:"n",loadChildren:()=>import('./nejd-module/nejd-module.module').then(m=>m.NejdModuleModule)},
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
+<<<<<<< HEAD
+      /***bayoudh***/
+
+      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule)}
+
+      /***bayoudh***/
+=======
 
       { path: 'afficherchambre', component: AfficherchambreComponent },
       { path: 'ajouterchambre', component: AjouterchambreComponent },
@@ -89,6 +100,7 @@ const routes: Routes = [
 
       { path:"admin",loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
 
+>>>>>>> main
 
       // add your route for admin n3awed for admin
 

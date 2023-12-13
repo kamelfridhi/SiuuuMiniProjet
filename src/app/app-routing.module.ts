@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+import {UniversitesComponent} from "./components/front/universites/universites.component";
+import {DetailUnivComponent} from "./components/front/universites/detail-univ/detail-univ.component";
 
 import {AfficherchambresComponent} from "./components/front/chambre/afficherchambres/afficherchambres.component";
 import {DetailschambrerComponent} from "./components/front/chambre/detailschambre/detailschambrer.component";
@@ -34,6 +36,10 @@ children: [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
 
+  { path: 'showuniversite', component: UniversitesComponent },
+  { path: 'showdetail/:id', component: DetailUnivComponent }
+
+
   { path: 'afficherchambres', component: AfficherchambresComponent },
   { path: 'detailchambre/:id', component: DetailschambrerComponent },
 
@@ -52,6 +58,7 @@ children: [
 
 
 
+
   // add your route for user n3awed lil user kahaw moch admin user kahaw !!!!!!!!
   { path: 'foyer', component: AfficherFoyerComponent },
   { path: 'details/:id', component: FoyerDetailsComponent },
@@ -63,9 +70,11 @@ children: [
 
 
 
+
 { path: 'login', component: LoginComponent },
 
 { path: '**', redirectTo: 'Home' }
+
 ];
 
 @NgModule({

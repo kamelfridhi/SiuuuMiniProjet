@@ -1,0 +1,145 @@
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <!-- Add this to your HTML head section -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Gn5384xqQ1ndCOF2r9qF40A5SCQfIc06ekhqbt7ZQnRU8XODK/cjKZN6PkPz2MPqtppgENgAJ+BRMQaTtk5t5A==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-n4dJ7zgFf2LX6qo97PpcFMcrNtMWXSndiIcPhq39l8byVxE0+mcK/1EPYLIV9yfS3l3m2vSTzcZmSod1bIY2vA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Afficher tout les universite</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
+          {{ successMessage }}
+        </div>
+        <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
+               width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Nom du universite</th>
+            <th>addeess du universite</th>
+            <th>foyer </th>
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+
+          </tr>
+          </tfoot>
+           <tbody *ngFor="let u of universties">
+          <tr>
+            <td>{{ u.nomUniversite }}</td>
+            <td>{{ u.adresse }}</td>
+            <td>
+              <ng-container *ngIf="u.foyer !== null; else noFoyer">
+                <a>{{ u.foyer.nomFoyer }}</a>
+                <button (click)="desaffectfoyer(u.foyer.idFoyer, u.idUniversite); refreshPage()" style="background-color: #e74c3c; color: #fff; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; font-size: 14px;">
+                  <i class="fas fa-times"></i> <!-- Font Awesome "X" icon -->
+                </button>
+              </ng-container>
+              <ng-template #noFoyer>
+                <!-- Content to display when u.foyer is null -->
+                <a routerLink="/back/university/affectedfoyer/{{ u.idUniversite }}">AffectFoyer</a>
+              </ng-template>
+            </td>
+
+
+
+
+
+            <!-- <td>
+               <select class="form-control" id="foyerSelect" name="selectedFoyerId" [(ngModel)]="blocForm2.value.UPDselectedFoyerId">
+                 <option *ngFor="let foyer of foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+               </select>
+
+             </td> -->
+            <!-- Button Delete -->
+            <td>
+              <a href="" class="btn btn-danger btn-icon-split"
+                 (click)="deleteuniversite($event,u.idUniversite)">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                <span class="text">Supprimer</span>
+              </a>
+              <button class="btn btn-facebook btn-icon-split" (click)="sharfacebook(u.nomUniversite,u.adresse)">
+   <span class="icon text-white-50">
+      <i class="fab fa-facebook-f"></i>
+   </span>
+                <span class="text">Facebook</span>
+              </button>
+
+
+            </td>
+
+            <!-- Button Delete end-->
+            <!-- Button Edit -->
+            <td>
+              <a href="#" class="btn btn-primary btn-icon-split" routerLink="/back/university/updateuniversite/{{u.idUniversite}}">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-pen-square"></i>
+                                    </span>
+                <span class="text">Modifier</span>
+              </a>
+            </td>
+            <!-- Button Edit end-->
+          </tr>
+
+          </tbody>
+        </table>
+
+        <hr>
+        <!-- form start -->
+
+        <form [formGroup]="uvform" (ngSubmit)="addUniversitee()">
+
+          <div class="form-group">
+            <label for="nom">nom Universite</label>
+            <input formControlName="nomUniversite" type="text" id="nom" class="form-control">
+          </div>
+          <div *ngIf="nomuniversite?.touched && nomuniversite?.invalid">
+            <small *ngIf="nomuniversite?.errors!['required']" class="text-danger">nomuniversite is required <br></small>
+            <small *ngIf="nomuniversite?.errors!['pattern']" class="text-danger">invalid nomuniversite <br></small>
+            <small *ngIf="nomuniversite?.errors!['minlength']" class="text-danger">nomuniversite must contain at least 3
+              characters</small>
+          </div>
+          <div class="form-group">
+          <input formControlName="adresse" class="form-control" type="text" [(ngModel)]="inputValue" (input)="onInputChange()">
+            <div *ngIf="adresse?.touched && adresse?.invalid">
+              <small *ngIf="adresse?.errors!['required']" class="text-danger">adresse is required <br></small>
+              <small *ngIf="adresse?.errors!['pattern']" class="text-danger">adresse nomuniversite <br></small>
+              <small *ngIf="adresse?.errors!['minlength']" class="text-danger">adresse must contain at least 3
+                characters</small>
+            </div>
+
+
+          <li *ngFor="let location of locations" (click)="onSelectLocation(location)">
+              {{ location.label }}
+            </li>
+          </div>
+
+
+         <!-- <div class="input-group">
+
+            <select formControlName="foyer"  class="form-control bg-light border-0 "  >
+              <option *ngFor=" let foyers of foyer" value="{{foyers.idFoyer}}">{{foyers.nomFoyer}}</option>
+            </select>
+          </div>
+-->
+          <button type="submit" class="btn btn-primary btn-user btn-block">
+            Ajouter
+          </button>
+        </form>
+        <hr>
+
+
+        <!-- form end -->
+      </div>
+    </div>
+  </div>
+
+</div>
+

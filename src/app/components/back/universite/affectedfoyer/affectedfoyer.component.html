@@ -1,0 +1,26 @@
+
+<div class="container text-center mt-3">
+  <h1>Add Your Foyer</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom Foyer</th>
+      <!-- Add more table headers for other properties if needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let f of foyer">
+      <ng-container *ngIf="f.etat !== 1">
+        <td>{{ f.idFoyer }}</td>
+        <td>{{ f.nomFoyer }}</td>
+        <!-- Add more table cells for other properties if needed -->
+        <td>
+          <button class="btn btn-primary mx-2" (click)="affecterfoyer(f.idFoyer)">Affecter Le Foyer</button>
+        </td>
+      </ng-container>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
