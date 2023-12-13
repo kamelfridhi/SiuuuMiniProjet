@@ -4,7 +4,13 @@ import { CommonModule } from '@angular/common';
 import { BackRoutingModule } from './back-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateComponent } from './template/template.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
+
+import { AdminComponent } from './admin/admin.component';
+import { UpdateuserComponent } from './admin/updateuser/updateuser.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -12,13 +18,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     DashboardComponent,
     TemplateComponent,
-    
+
   ],
   imports: [
     CommonModule,
     BackRoutingModule,
+
     FormsModule,
     ReactiveFormsModule
+
+   
+
   ]
 })
 export class BackModule { 

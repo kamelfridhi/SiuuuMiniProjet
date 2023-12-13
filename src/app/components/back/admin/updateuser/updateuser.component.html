@@ -1,0 +1,119 @@
+<section class="vh-100" >
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-9">
+
+        <h1 class="text-white mb-4">Update user </h1>
+
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0"> id</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.idEtudiant" class="form-control form-control-lg" type="text"/>
+
+              </div>
+            </div>
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0"> name</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.nomEt" class="form-control form-control-lg" type="text"/>
+
+              </div>
+            </div>
+            <hr class="mx-n3">
+
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0"> prenom</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.prenomet" class="form-control form-control-lg" type="text"/>
+
+              </div>
+            </div>
+            <hr class="mx-n3">
+
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0"> CIN</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.cin" class="form-control form-control-lg" type="text"/>
+
+              </div>
+            </div>
+            <hr class="mx-n3">
+
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0"> ecole</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.ecole" class="form-control form-control-lg" type="text"/>
+
+              </div>
+            </div>
+            <hr class="mx-n3">
+
+            <div class="row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0"> date de naissance</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.dateNaissance" class="form-control form-control-lg" type="date"/>
+
+              </div>
+            </div>
+
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Email address</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input [(ngModel)]="etudiant.email" class="form-control form-control-lg" placeholder="example@example.com"
+                       type="email"/>
+
+              </div>
+            </div>
+
+
+            <div class="px-5 py-4">
+              <button (click)="updateEtudiant()" class="btn btn-primary btn-lg" type="submit">confirme</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
