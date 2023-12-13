@@ -9,6 +9,11 @@ import { FooterComponent } from './components/front/footer/footer.component';
 import { HeaderComponent } from './components/front/header/header.component';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { AfficherFoyerComponent } from './components/front/foyer/afficher-foyer/afficher-foyer.component';
+import { CardFoyerComponent } from './components/front/foyer/card-foyer/card-foyer.component';
+import { FoyerDetailsComponent } from './components/front/foyer/foyer-details/foyer-details.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlocComponent } from './components/front/bloc/bloc/bloc.component';
@@ -41,6 +46,11 @@ import { AdminModule } from './components/back/admin/admin.module';
     HomeComponent,
     UserTemplateComponent,
 
+    AfficherFoyerComponent,
+    CardFoyerComponent,
+    FoyerDetailsComponent
+
+
     BlocComponent,
     DetailblocComponent,
     CouleurChambreDirective
@@ -60,11 +70,13 @@ UpdateloginComponent,
 
 
 
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+
 
    
     
@@ -75,6 +87,7 @@ UpdateloginComponent,
     FormsModule,
     ReactiveFormsModule,
     AdminModule
+
 
 
   ],

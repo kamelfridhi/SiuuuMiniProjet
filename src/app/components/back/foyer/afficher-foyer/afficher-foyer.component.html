@@ -1,0 +1,45 @@
+
+
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Table de foyers</h1>
+  <br>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Table de foyers
+      </h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>capaciteFoyer</th>
+            <th>#</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let f of foyers;let index = index">
+            <td>{{f.idFoyer}}</td>
+            <td>{{f.nomFoyer}}</td>
+            <td>{{f.capaciteFoyer}}</td>
+            <td>
+              <button (click)="goDown()" class="btn btn-warning" routerLink="modifier/{{f.idFoyer}}">Edit</button>
+              <button class="btn btn-danger ml-4" (click)="deleteF(index,f.idFoyer)">Delete</button>
+              <button (click)="sendDataToChild(f)" routerLink="Details/{{f.idFoyer}}" class="btn btn-info ml-4" >Details</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
+</div>

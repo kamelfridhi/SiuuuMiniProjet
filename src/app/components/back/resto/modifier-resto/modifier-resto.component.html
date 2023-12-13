@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+      <form #updateFormResto="ngForm" (ngSubmit)="updateResto()">
+
+        <div class="form-group">
+          <label for="idF">id resto</label>
+          <input  [disabled]="true" type="text" id="idF" class="form-control" [(ngModel)]="resto.idResto"  [ngModelOptions]="{standalone: true}" >
+        </div>
+
+        <div class="form-group">
+          <label for="nom">nom resto</label>
+          <input  required minlength="3" type="text" id="nom" class="form-control" [(ngModel)]="resto.nomResto"  #nom="ngModel" [ngModelOptions]="{standalone: true}" >
+        </div>
+
+        <div *ngIf="nom?.touched && nom?.invalid">
+          <small *ngIf="nom?.errors!['required']" class="text-danger">firstname is required <br></small>
+          <small *ngIf="nom?.errors!['pattern']" class="text-danger">invalid firstname <br></small>
+          <small *ngIf="nom?.errors!['minlength']" class="text-danger">firstname must contain at least 3
+            characters</small>
+        </div>
+
+
+        <div class="form-group">
+          <label for="tel">tel</label>
+          <input  required type="number" id="tel" class="form-control" [(ngModel)]="resto.telResto"  [ngModelOptions]="{standalone: true}">
+
+        </div>
+
+
+        <!--
+                <div formArrayName="competences">
+                  <h2>Compétences</h2>
+                  <button (click)="addCompetence()" type="button">+++</button>
+                  <div *ngFor="let competence of competences.controls; let i=index">
+                    <label for="competence-{{ i }}">Competence {{i+1}} : </label>
+                    <input id="competence-{{ i }}" type="text" [formControlName]="i">
+                  </div>
+                </div>
+        -->
+
+        <!--
+     [disabled]="addUserForm.invalid"
+  -->
+        <br>
+        <input [disabled]="updateFormResto.invalid" type="submit" value="update foyer" class="btn btn-info">
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<br>
+<body>
+<section class="my-5">
+
+
+  <div class="container">
+    <section class="row d-flex">
+
+      <div  *ngFor="let f of foyers" class="col-md-4">
+      <app-card-foyer
+        [foyer]="f"
+        (detailsEmitter)="goToDetailsPage($event)"
+      >
+
+      </app-card-foyer>
+      </div>
+
+    </section>
+
+      <button [disabled]="currentPage==0" class="btn btn-outline-dark m-2" (click)="prevPage()">Previous</button>
+      <button [disabled]="currentPage==totalPages-1" class="btn btn-outline-dark" (click)="nextPage()">Next</button>
+
+  </div>
+
+</section>
+
+</body>
