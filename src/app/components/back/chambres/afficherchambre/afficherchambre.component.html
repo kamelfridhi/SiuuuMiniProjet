@@ -1,0 +1,144 @@
+
+
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tous les chambres</h6>
+      <div class="ajout" style="margin-left: 90%;">
+          <a routerLink="/back/ajouterchambre" routerLinkActive="active" class="btn btn-primary btn-icon-split ">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus-square"></i>
+                </span>
+                <span class="text">Ajouter</span>
+          </a>
+      </div>
+    </div>
+    <form [formGroup]="ChambreForm" >
+      <div class="row" style="margin-left: 3% ; margin-top: 2%">
+      <div>
+        <label >Sélectionner le type de chambre:</label>
+        <select   formControlName="typeC">
+          <option  value="{{TypeChambre.SIMPLE}}" >SIMPLE</option>
+          <option value="{{TypeChambre.DOUBLE}}" >DOUBLE</option>
+          <option value="{{TypeChambre.TRIPLE}}" >TRIPLE</option>
+
+        </select>
+      </div>
+
+      <div>
+        <label >Sélectionner le bloc:</label>
+        <select   formControlName="blocId">
+          <option *ngFor="let bloc of blocs" value="{{bloc.bloc}}">{{ bloc.nomBloc }}</option>
+        </select>
+      </div>
+
+      <button appAlertDirective alert="Calculer" class="btn  btn-icon-split" (click)="getNombreChambreParTypeEtBloc(selectedType, selectedBlocId)" style="margin-left: 1% ; margin-bottom: 1%"> Calculer</button>
+        <label style="margin-left: 1%">Nombre Chambres : {{nbChambre}} </label>
+      </div>
+    </form>
+    <div class="card-body">
+      <div class="d-flex justify-content-end form-inline ml-auto my-5 my-md-0 mw-100 ">
+        <STRONG style="margin-right: 1%;color: black">Filtre chambre par bloc: </STRONG>
+        <div class="input-group">
+
+          <select style="width: 1%;" (change)="inputchange($event)" class="form-control bg-light border-0 small"  >
+            <option value="" selected >Tous</option>
+            <option *ngFor=" let nomBloc of blocs" [value]="nomBloc.nomBloc" >{{nomBloc.nomBloc}}</option>
+
+
+          </select>
+        </div>
+      </div>
+      <div class="table-responsive">
+
+        <table class="table table-bordered border-bottom-primary border-left-primary" id="dataTable"
+               width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Id Chambre</th>
+            <th>Numéro</th>
+            <th>Type</th>
+            <th>Bloc</th>
+
+            <th>Supprimer</th>
+            <th>Modifier</th>
+            <th>Détails</th>
+          </tr>
+          </thead>
+
+          <tbody *ngFor="let chambre of chambres" >
+
+
+          <tr>
+            <td>{{ chambre.idChambre }}</td>
+            <td>{{ chambre.numeroChambre }}</td>
+            <td>{{ chambre.typeC }}</td>
+            <td >{{ chambre.blocchambre?.nomBloc }}</td>
+
+
+            <!-- Button Delete -->
+            <td >
+              <a (click)="supprimerChambre(chambre.idChambre)" class="btn btn-danger btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-trash"></i>
+                </span>
+                <span class="text" >Supprimer</span>
+              </a>
+            </td>
+            <!-- Button Delete end-->
+
+            <!-- Button Edit -->
+            <td>
+              <a routerLink="/back/modifierchambre/{{chambre.idChambre}}"  routerLinkActive="active" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-pen-square"></i>
+                </span>
+                <span class="text">Modifier</span>
+              </a>
+            </td>
+              <td><a (click)="afficherDetailsChambre(chambre)"  class="btn btn-warning btn-icon-split">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                <span class="text" >Détails</span>
+              </a>
+
+
+            </td>
+            <!-- Button Edit end-->
+          </tr>
+
+          </tbody>
+        </table>
+        <hr>
+        <!-- Bootstrap Modal -->
+        <div class="modal" *ngIf="afficherModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" style="color: #0d6efd">Détails de la chambre {{ chambreSelectionnee?.numeroChambre }}</h4>
+                <button type="button" class="close" (click)="fermerModal()">&times;</button>
+              </div>
+              <div class="modal-body">
+                <!-- Ajoute ton contenu ici -->
+                <app-detailschambre [chambre]="chambreSelectionnee"></app-detailschambre>
+
+                <!-- Ajoute un bouton close supplémentaire ici (exemple) -->
+
+                <a (click)="fermerModal()" class="btn btn-primary btn-icon-split" style="margin-left: 68%;"  >
+                <span class="icon text-white-50">
+                  <i class="fas fa-times"></i>
+                </span>
+                  <span class="text">Close</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

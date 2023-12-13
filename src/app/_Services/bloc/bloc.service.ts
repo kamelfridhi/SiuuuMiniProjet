@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+
 import { Bloc } from '../../_Models/bloc/bloc';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,10 @@ export class BlocService {
   readonly ENDPOINT_ADDBLOC = "/api/bloc/add";
   readonly ENDPOINT_UPDATEBLOC = "/api/bloc/update";
   readonly ENDPOINT_DELETEBLOCBYID = "/api/bloc/delete";
+
   readonly ENDPOINT_AFFECTERBLOCAFOYER="/api/bloc/affecterBlocAFoyer"
   readonly ENDPOINT_AFFECTERLISTCHAMBREABLOC="/api/bloc/affecteChambre"
+
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +41,7 @@ export class BlocService {
     return this.http.delete<void>(url);
   }
 
+
   affecterBlocAFoyer(nomBloc: string, nomFoyer: string): Observable<Bloc> {
     const url = `${this.API_URL}${this.ENDPOINT_AFFECTERBLOCAFOYER}/${nomBloc}/${nomFoyer}`;
     return this.http.put<Bloc>(url, {});
@@ -56,4 +61,5 @@ export class BlocService {
     const url = `${this.API_URL}/api/bloc/getbyNom/${name}`;
     return this.http.get<Bloc>(url);
   }
+
 }

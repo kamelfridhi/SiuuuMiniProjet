@@ -4,6 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BackRoutingModule } from './back-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TemplateComponent } from './template/template.component';
+import { AfficherchambreComponent } from './chambres/afficherchambre/afficherchambre.component';
+import { ModifierchambreComponent } from './chambres/modifierchambre/modifierchambre.component';
+import { SupprimerchambreComponent } from './chambres/supprimerchambre/supprimerchambre.component';
+import { AjouterchambreComponent } from './chambres/ajouterchambre/ajouterchambre.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DetailschambreComponent } from './chambres/detailschambre/detailschambre.component';
+import {ChambresModule} from "./chambres/chambres.module";
+
 
 import {AddFoyerComponent} from "./foyer/add-foyer/add-foyer.component";
 import {AfficherFoyerComponent} from "./foyer/afficher-foyer/afficher-foyer.component";
@@ -39,6 +47,13 @@ import {FormsModule} from "@angular/forms";
     DashboardComponent,
     TemplateComponent,
 
+    AfficherchambreComponent,
+    ModifierchambreComponent,
+    SupprimerchambreComponent,
+    AjouterchambreComponent,
+    DetailschambreComponent
+
+
     AddFoyerComponent,
     AfficherFoyerComponent,
     ModifierFoyerComponent,
@@ -59,10 +74,16 @@ import {FormsModule} from "@angular/forms";
 
 
 
+
   ],
   imports: [
     CommonModule,
     BackRoutingModule,
+
+    
+   
+    ChambresModule
+
 
 
     HttpClientModule,
@@ -76,6 +97,7 @@ import {FormsModule} from "@angular/forms";
     ReactiveFormsModule,
 
    
+
 
 
 

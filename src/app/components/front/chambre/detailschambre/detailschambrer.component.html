@@ -1,0 +1,52 @@
+<body>
+<br><br><br>
+<section>
+<div *ngIf="chambre">
+
+  <ul style="color: black">
+
+    <li><strong>Numéro:</strong> {{ chambre.numeroChambre }}</li>
+    <li><strong>Type:</strong> {{ chambre.typeC }}</li>
+    <li><strong>Bloc:</strong> {{ chambre.blocchambre?.nomBloc }}</li>
+  </ul>
+</div>
+
+
+<div *ngIf="id==1">
+  <div style="margin-left: 10%">
+  <h1 style="color: #0d6efd"><strong>Chambre de type Simple</strong></h1>
+  <img style="width: 500px; height: 700px" src="assets/images/simple1.png" >
+  <img style="width: 500px; height: 700px" src="assets/images/simple2.png" >
+  <img style="width: 500px; height: 700px" src="assets/images/simple3.png" >
+</div>
+</div>
+<div *ngIf="id==2">
+  <div style="margin-left: 10%">
+  <h1 style="color: #0d6efd"><strong>Chambre de type Double</strong></h1>
+  <img style="width: 500px; height: 700px" src="assets/images/double1.png" >
+  <img style="width: 500px; height: 700px" src="assets/images/double2.png" >
+  <img style="width: 500px; height: 700px" src="assets/images/double3.png" >
+</div>
+</div>
+<div *ngIf="id==3">
+
+  <div style="margin-left: 20%">
+    <h1  style="color: #0d6efd"><strong>Chambre de type Triple</strong> </h1>
+  <img  style="width: 1300px; height: 700px"src="assets/images/triple1.jpg" >
+    <hr>
+  <img style="width: 1300px; height: 700px" src="assets/images/triple2.jpg" >
+    <hr>
+  <img style="width: 1300px; height: 700px" src="assets/images/triple3.jpg" >
+  </div>
+</div>
+
+
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+</section>
+
+</body>

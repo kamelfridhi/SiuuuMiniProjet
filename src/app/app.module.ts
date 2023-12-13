@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,6 +10,12 @@ import { FooterComponent } from './components/front/footer/footer.component';
 import { HeaderComponent } from './components/front/header/header.component';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+
+
+import { AfficherchambresComponent } from './components/front/chambre/afficherchambres/afficherchambres.component';
+import {DetailschambrerComponent} from "./components/front/chambre/detailschambre/detailschambrer.component";
+import { CartchambreComponent } from './components/front/chambre/cartchambre/cartchambre.component';
+
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AfficherFoyerComponent } from './components/front/foyer/afficher-foyer/afficher-foyer.component';
@@ -38,6 +45,7 @@ import { AdminModule } from './components/back/admin/admin.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +53,11 @@ import { AdminModule } from './components/back/admin/admin.module';
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
+
+    AfficherchambresComponent,
+    DetailschambrerComponent,
+    CartchambreComponent
+
 
     AfficherFoyerComponent,
     CardFoyerComponent,
@@ -71,11 +84,13 @@ UpdateloginComponent,
 
 
 
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+
 
 
    
@@ -87,6 +102,7 @@ UpdateloginComponent,
     FormsModule,
     ReactiveFormsModule,
     AdminModule
+
 
 
 

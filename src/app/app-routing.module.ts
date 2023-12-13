@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+
+import {AfficherchambresComponent} from "./components/front/chambre/afficherchambres/afficherchambres.component";
+import {DetailschambrerComponent} from "./components/front/chambre/detailschambre/detailschambrer.component";
+
 import {AfficherFoyerComponent} from "./components/front/foyer/afficher-foyer/afficher-foyer.component";
 import {FoyerDetailsComponent} from "./components/front/foyer/foyer-details/foyer-details.component";
 
@@ -18,6 +22,7 @@ import {RoleGuardGuard} from "./Authen/role-guard.guard";
 import {UpdateloginComponent} from "./components/front/login/updatelogin/updatelogin.component";
 
 
+
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
  { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
@@ -29,6 +34,10 @@ children: [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
 
+  { path: 'afficherchambres', component: AfficherchambresComponent },
+  { path: 'detailchambre/:id', component: DetailschambrerComponent },
+
+
   { path: 'Bloc', component: BlocComponent },
   { path: 'bloc/:blocId', component: DetailblocComponent },
 
@@ -37,6 +46,7 @@ children: [
   { path: 'Chambres', component: ListeChambreComponent},
 
   {path:"update_profile/:id",component:UpdateloginComponent},
+
 
 
 
