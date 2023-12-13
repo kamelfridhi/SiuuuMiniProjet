@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+import { BlocComponent } from './components/front/bloc/bloc/bloc.component';
+import { DetailblocComponent } from './components/front/bloc/detailbloc/detailbloc.component';
 
 import { ReserverChambreComponent } from './components/front/reserver-chambre/reserver-chambre.component';
 import { ListeChambreComponent } from './components/front/liste-chambre/liste-chambre.component';
@@ -23,10 +25,15 @@ children: [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
 
+  { path: 'Bloc', component: BlocComponent },
+  { path: 'bloc/:blocId', component: DetailblocComponent },
+
+
   { path: 'Reserver/:id', component: ReserverChambreComponent },
   { path: 'Chambres', component: ListeChambreComponent}
 
   {path:"update_profile/:id",component:UpdateloginComponent}
+
 
 
 

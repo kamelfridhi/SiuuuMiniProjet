@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { RouterModule, Routes } from '@angular/router';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/front/footer/footer.component';
 import { HeaderComponent } from './components/front/header/header.component';
 import { HomeComponent } from './components/front/home/home.component';
 import { UserTemplateComponent } from './components/front/user-template/user-template.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BlocComponent } from './components/front/bloc/bloc/bloc.component';
+import { DetailblocComponent } from './components/front/bloc/detailbloc/detailbloc.component';
+import { CouleurChambreDirective } from './components/front/couleur-chambre.directive';
+
 
 import { ReserverChambreComponent } from './components/front/reserver-chambre/reserver-chambre.component';
 import { CommonModule } from '@angular/common';
@@ -24,6 +32,7 @@ import { EmailDirective } from './components/front/login/email.directive';
 import { AdminModule } from './components/back/admin/admin.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +40,11 @@ import { AdminModule } from './components/back/admin/admin.module';
     FooterComponent,
     HomeComponent,
     UserTemplateComponent,
+
+    BlocComponent,
+    DetailblocComponent,
+    CouleurChambreDirective
+
 
     ReserverChambreComponent,
     ListeChambreComponent,
@@ -45,15 +59,23 @@ UpdateloginComponent,
 
 
 
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+
+   
+    
+ 
+    BrowserAnimationsModule
+
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AdminModule
+
 
   ],
   providers: [ ],
