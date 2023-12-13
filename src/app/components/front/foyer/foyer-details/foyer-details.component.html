@@ -1,0 +1,217 @@
+
+<br>
+<br>
+<br>
+<body>
+<section class="my-5">
+
+
+
+<!-- content -->
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5">
+      <aside class="col-lg-6">
+        <div class="border rounded-4 mb-3 d-flex justify-content-center">
+          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp">
+            <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="https://mmf.logic-immo.com/mmf/ads/photo-prop-640x480/c99/7/70132be0-ad74-4003-ad55-fff468d3a927.jpg" />
+          </a>
+        </div>
+
+      </aside>
+
+      <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h1 class="title text-dark" style="margin-top: 115px" >
+            {{foyer.nomFoyer}}
+
+          </h1>
+
+
+          <h4>
+         capacite : {{foyer.capaciteFoyer}}
+          </h4>
+
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+<!-- content -->
+
+<section class="bg-light border-top py-4">
+  <div class="container">
+    <div class="row gx-4">
+      <div class="col-lg-6">
+        <div class="px-0 border rounded-2 shadow-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Blocs of this foyer</h5>
+
+              <div *ngFor="let b of foyer.blocs" class="d-flex mb-3">
+                <a href="#" class="me-3">
+                  <img src="https://ijaa.tn/wp-content/uploads/2020/02/AF1QipPKnk0Vul73G-kiJpe76fmbB24FEkCQToHgoZxDw426-h240-k-no.jpeg" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
+                </a>
+                <div class="info mt-4">
+                  <strong class="text-dark">nom : {{b.nomBloc}}</strong><br>
+                  <strong class="text-dark">capacite : {{b.capaciteBloc}}</strong><br>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-lg-4 mb-4">
+        <h4>Restaurant liée</h4>
+        <div class="card">
+          <img src="https://images.thebusinessplanshop.com/ouvrir-un-restaurant/comment-ouvrir-un-restaurant.png" class="card-img-top" alt="image foyer">
+          <div class="card-body">
+            <h5 class="card-title">{{resto.nomResto}}</h5>
+            <p class="card-text">Tel : {{resto.telResto}}</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="text-center text-lg-start text-muted bg-primary mt-3">
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start pt-4 pb-4">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-12 col-lg-3 col-sm-12 mb-2">
+          <!-- Content -->
+          <a href="https://mdbootstrap.com/" target="_blank" class="text-white h2">
+            MDB
+          </a>
+          <p class="mt-1 text-white">
+            © 2023 Copyright: MDBootstrap.com
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <!-- Links -->
+          <h6 class="text-uppercase text-white fw-bold mb-2">
+            Store
+          </h6>
+          <ul class="list-unstyled mb-4">
+            <li><a class="text-white-50" href="#">About us</a></li>
+            <li><a class="text-white-50" href="#">Find store</a></li>
+            <li><a class="text-white-50" href="#">Categories</a></li>
+            <li><a class="text-white-50" href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <!-- Links -->
+          <h6 class="text-uppercase text-white fw-bold mb-2">
+            Information
+          </h6>
+          <ul class="list-unstyled mb-4">
+            <li><a class="text-white-50" href="#">Help center</a></li>
+            <li><a class="text-white-50" href="#">Money refund</a></li>
+            <li><a class="text-white-50" href="#">Shipping info</a></li>
+            <li><a class="text-white-50" href="#">Refunds</a></li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <!-- Links -->
+          <h6 class="text-uppercase text-white fw-bold mb-2">
+            Support
+          </h6>
+          <ul class="list-unstyled mb-4">
+            <li><a class="text-white-50" href="#">Help center</a></li>
+            <li><a class="text-white-50" href="#">Documents</a></li>
+            <li><a class="text-white-50" href="#">Account restore</a></li>
+            <li><a class="text-white-50" href="#">My orders</a></li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-12 col-sm-12 col-lg-3">
+          <!-- Links -->
+          <h6 class="text-uppercase text-white fw-bold mb-2">Newsletter</h6>
+          <p class="text-white">Stay in touch with latest updates about our products and offers</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />
+            <button class="btn btn-light border shadow-0" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+              Join
+            </button>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <div class="">
+    <div class="container">
+      <div class="d-flex justify-content-between py-4 border-top">
+        <!--- payment --->
+        <div>
+          <i class="fab fa-lg fa-cc-visa text-white"></i>
+          <i class="fab fa-lg fa-cc-amex text-white"></i>
+          <i class="fab fa-lg fa-cc-mastercard text-white"></i>
+          <i class="fab fa-lg fa-cc-paypal text-white"></i>
+        </div>
+        <!--- payment --->
+
+        <!--- language selector --->
+        <div class="dropdown dropup">
+          <a class="dropdown-toggle text-white" href="#" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"> <i class="flag-united-kingdom flag m-0 me-1"></i>English </a>
+
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-poland flag"></i>Polski</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-china flag"></i>中文</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-japan flag"></i>日本語</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-spain flag"></i>Español</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Português</a>
+            </li>
+          </ul>
+        </div>
+        <!--- language selector --->
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer -->
+
