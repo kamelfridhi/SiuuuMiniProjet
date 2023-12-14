@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs/internal/Observable';
 import {Universite} from "../_Models/universite";
 import {catchError, tap} from "rxjs";
-import {Foyer} from "../_Models/foyer";
+import {Foyer} from "../_Models/foyer/foyer";
 
 @Injectable({
   providedIn: 'root'

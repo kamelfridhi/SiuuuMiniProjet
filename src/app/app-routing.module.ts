@@ -27,7 +27,8 @@ import {UpdateloginComponent} from "./components/front/login/updatelogin/updatel
 
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
- { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
+ { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule)},
+  //canActivate:[RoleGuardGuard,AuthentificationGuard]
 
  {
   path: '',
@@ -37,7 +38,7 @@ children: [
   { path: 'Home', component: HomeComponent },
 
   { path: 'showuniversite', component: UniversitesComponent },
-  { path: 'showdetail/:id', component: DetailUnivComponent }
+  { path: 'showdetail/:id', component: DetailUnivComponent },
 
 
   { path: 'afficherchambres', component: AfficherchambresComponent },
@@ -66,10 +67,6 @@ children: [
   ]
  },
   { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule)},
-
-
-
-
 
 { path: 'login', component: LoginComponent },
 

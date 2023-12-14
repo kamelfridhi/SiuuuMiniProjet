@@ -8,10 +8,11 @@ export class Foyer {
   idFoyer!:number;
   nomFoyer!:string ;
   capaciteFoyer!:number;
-
   u!:Universite;
   resto!:Resto;
   blocs:Bloc[]=[];
+  etat!:number;
+
 }
 
 

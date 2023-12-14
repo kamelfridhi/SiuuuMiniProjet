@@ -109,7 +109,7 @@ export class AfficherBlocsComponent implements OnInit {
     this.blocService.deleteBlocById(id).subscribe({
       next: () => {
         console.log('Bloc deleted successfully');
-        this.blocs = this.blocs.filter(bloc => bloc.blocId !== id);
+        this.blocs = this.blocs.filter(bloc => bloc.idBloc !== id);
       },
       error: (error) => {
         console.error('Error deleting bloc:', error);
@@ -122,11 +122,11 @@ export class AfficherBlocsComponent implements OnInit {
       const newBloc: Bloc = {
         nomBloc: this.blocForm.value.nomBloc,
         capaciteBloc: this.blocForm.value.capaciteBloc,
-        blocId: 0,
+        idBloc: 0,
         foyer: null,
         chambres: []
       };
-  
+
       this.blocService.addBloc(newBloc).subscribe({
         next: (addedBloc: Bloc) => {
           console.log('Bloc added successfully:', addedBloc);
@@ -142,7 +142,7 @@ export class AfficherBlocsComponent implements OnInit {
       console.log('form is not valid:', this.blocForm )
     }
   }
-  
+
 
   updateBloc(): void {
 
@@ -157,7 +157,7 @@ export class AfficherBlocsComponent implements OnInit {
     const updatedBloc: Bloc = {
       nomBloc: nomBlocValue,
       capaciteBloc: capaciteBlocValue,
-      blocId: idBlocValue,
+      idBloc: idBlocValue,
       foyer: null,
       chambres: []
     };
@@ -199,7 +199,7 @@ export class AfficherBlocsComponent implements OnInit {
     this.blocForm2.setValue({
       UPDnomBloc: bloc.nomBloc,
       UPDcapaciteBloc: bloc.capaciteBloc,
-      UPDblocId: bloc.blocId
+      UPDblocId: bloc.idBloc
     });
     this.selectedBloc = bloc;
   }

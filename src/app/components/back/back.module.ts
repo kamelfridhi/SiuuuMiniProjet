@@ -12,7 +12,6 @@ import { AfficherchambreComponent } from './chambres/afficherchambre/affichercha
 import { ModifierchambreComponent } from './chambres/modifierchambre/modifierchambre.component';
 import { SupprimerchambreComponent } from './chambres/supprimerchambre/supprimerchambre.component';
 import { AjouterchambreComponent } from './chambres/ajouterchambre/ajouterchambre.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DetailschambreComponent } from './chambres/detailschambre/detailschambre.component';
 import {ChambresModule} from "./chambres/chambres.module";
 
@@ -31,7 +30,6 @@ import { PersoDirectiveDirective } from './foyer/directives/perso-directive.dire
 import { DeleteTableDirectiveDirective } from './foyer/directives/delete-table-directive.directive';
 
 import { AfficherBlocsComponent } from './afficher-blocs/afficher-blocs.component';
-import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -52,7 +50,7 @@ import {FormsModule} from "@angular/forms";
     DashboardComponent,
     TemplateComponent,
 
- 
+
 
     AfficherchambreComponent,
     ModifierchambreComponent,
@@ -87,14 +85,14 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     BackRoutingModule,
 
-    
-   
+
+
     ChambresModule,
 
 
 
     HttpClientModule,
-    
+
 
     MatTableModule,
     MatCheckboxModule,
@@ -103,7 +101,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     ReactiveFormsModule,
 
-   
+
 
 
 
@@ -111,7 +109,7 @@ import {FormsModule} from "@angular/forms";
   ]
 
 })
-export class BackModule { 
+export class BackModule {
   constructor() {
     this.loadScript('src/assets/Back/vendor/jquery/jquery.min.js');
     this.loadScript('src/assets/Back/vendor/bootstrap/js/bootstrap.bundle.min.js');

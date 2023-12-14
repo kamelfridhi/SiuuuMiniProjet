@@ -1,5 +1,5 @@
+import {Foyer} from "./foyer/foyer";
 
-import {Foyer} from "./foyer";
 
 export class Universite {
   idUniversite!: number;

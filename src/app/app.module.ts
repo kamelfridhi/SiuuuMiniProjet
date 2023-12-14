@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -24,8 +23,6 @@ import { AfficherchambresComponent } from './components/front/chambre/afficherch
 import {DetailschambrerComponent} from "./components/front/chambre/detailschambre/detailschambrer.component";
 import { CartchambreComponent } from './components/front/chambre/cartchambre/cartchambre.component';
 
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
 import { AfficherFoyerComponent } from './components/front/foyer/afficher-foyer/afficher-foyer.component';
 import { CardFoyerComponent } from './components/front/foyer/card-foyer/card-foyer.component';
 import { FoyerDetailsComponent } from './components/front/foyer/foyer-details/foyer-details.component';
@@ -41,15 +38,12 @@ import { CommonModule } from '@angular/common';
 import { ListeChambreComponent } from './components/front/liste-chambre/liste-chambre.component';
 
 import { LoginComponent } from './components/front/login/login.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { NotFoundComponent } from './components/front/not-found/not-found.component';
 import { LoginnameComponent } from './components/front/login/loginname/loginname.component';
 import { UpdatebuttonComponent } from './components/front/login/updateprofil/updatebutton.component';
 import {UpdateloginComponent} from "./components/front/login/updatelogin/updatelogin.component";
 import { EmailDirective } from './components/front/login/email.directive';
-import { AdminModule } from './components/back/admin/admin.module';
 
 
 
@@ -84,7 +78,7 @@ import { AdminModule } from './components/back/admin/admin.module';
 
     ReserverChambreComponent,
     ListeChambreComponent,
-    
+
 
     LoginComponent,
     NotFoundComponent,
@@ -105,16 +99,16 @@ UpdateloginComponent,
     BrowserModule,
     AppRoutingModule,
 
-   
-  
+
+
     UniversiteModule,
 
 
 
 
-   
-    
- 
+
+
+
     BrowserAnimationsModule,
 
     CommonModule,

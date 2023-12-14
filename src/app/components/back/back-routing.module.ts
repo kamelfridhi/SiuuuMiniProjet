@@ -38,7 +38,7 @@ const routes: Routes = [
     component: TemplateComponent,
     children: [
 
-   
+
       /*BEGIN FOYER*/
       {
         path: 'foyer',
@@ -76,13 +76,10 @@ const routes: Routes = [
       { path:"n",loadChildren:()=>import('./nejd-module/nejd-module.module').then(m=>m.NejdModuleModule)},
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
-<<<<<<< HEAD
-      /***bayoudh***/
+      /******/
 
-      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule)}
+      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule)},
 
-      /***bayoudh***/
-=======
 
       { path: 'afficherchambre', component: AfficherchambreComponent },
       { path: 'ajouterchambre', component: AjouterchambreComponent },
@@ -100,7 +97,6 @@ const routes: Routes = [
 
       { path:"admin",loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
 
->>>>>>> main
 
       // add your route for admin n3awed for admin
 

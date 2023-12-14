@@ -36,7 +36,7 @@ export class AfficherchambreComponent implements OnInit{
 
   ngOnInit() {
     this.loadChambres();
-    this.loadBlocs();
+    //this.loadBlocs();
     this.getBlocIdValue?.valueChanges.subscribe((selectedId: number) => {
       console.log(selectedId)
       this.selectedBlocId= selectedId;
@@ -60,6 +60,7 @@ export class AfficherchambreComponent implements OnInit{
       }
     );
   }
+  /*
   loadBlocs(): void {
     this.blocService.getAllBlocs().subscribe({
       next: (blocs: Bloc[]) => {
@@ -71,6 +72,8 @@ export class AfficherchambreComponent implements OnInit{
       }
     });
   }
+  */
+
   getChambresParNomBloc():void{
     this.chambreService.getChambresParNomBloc(this.nomBloc).subscribe(
       (response) => {
