@@ -28,6 +28,7 @@ import {UpdateloginComponent} from "./components/front/login/updatelogin/updatel
 const routes: Routes = [
  //{ path:"front",loadChildren:()=>import('./components/front/front.module').then(m=>m.FrontModule)},
  { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
+  // canActivate:[RoleGuardGuard,AuthentificationGuard]
 
  {
   path: '',
@@ -36,38 +37,25 @@ children: [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
 
-  { path: 'showuniversite', component: UniversitesComponent },
-  { path: 'showdetail/:id', component: DetailUnivComponent }
+  { path: 'showuniversite', component: UniversitesComponent ,canActivate:[AuthentificationGuard]},
+  { path: 'showdetail/:id', component: DetailUnivComponent ,canActivate:[AuthentificationGuard]},
 
 
-  { path: 'afficherchambres', component: AfficherchambresComponent },
-  { path: 'detailchambre/:id', component: DetailschambrerComponent },
+  { path: 'afficherchambres', component: AfficherchambresComponent ,canActivate:[AuthentificationGuard]},
+  { path: 'detailchambre/:id', component: DetailschambrerComponent,canActivate:[AuthentificationGuard] },
 
 
-  { path: 'Bloc', component: BlocComponent },
-  { path: 'bloc/:blocId', component: DetailblocComponent },
-
-
-  { path: 'Reserver/:id', component: ReserverChambreComponent },
-  { path: 'Chambres', component: ListeChambreComponent},
-
-  {path:"update_profile/:id",component:UpdateloginComponent},
-
-
-
-
-
-
-
+  { path: 'Bloc', component: BlocComponent,canActivate:[AuthentificationGuard] },
+  { path: 'bloc/:blocId', component: DetailblocComponent ,canActivate:[AuthentificationGuard]},
+  { path: 'Reserver/:id', component: ReserverChambreComponent,canActivate:[AuthentificationGuard] },
+  { path: 'Chambres', component: ListeChambreComponent,canActivate:[AuthentificationGuard]},
+  {path:"update_profile/:id",component:UpdateloginComponent,canActivate:[AuthentificationGuard]},
   // add your route for user n3awed lil user kahaw moch admin user kahaw !!!!!!!!
-  { path: 'foyer', component: AfficherFoyerComponent },
-  { path: 'details/:id', component: FoyerDetailsComponent },
+  { path: 'foyer', component: AfficherFoyerComponent ,canActivate:[AuthentificationGuard]},
+  { path: 'details/:id', component: FoyerDetailsComponent,canActivate:[AuthentificationGuard] },
 
   ]
  },
-  { path:"back",loadChildren:()=>import('./components/back/back.module').then(m=>m.BackModule)},
-
-
 
 
 

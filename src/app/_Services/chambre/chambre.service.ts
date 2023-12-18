@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Chambre } from 'src/app/_Models/chambre/chambre';
+import {Chambre} from "../../_Models/chambre2";
 
 
 @Injectable({
@@ -28,7 +28,7 @@ export class ChambreService {
     return this.http.delete<Chambre>(url);
   }
   getChambre(id : Number): Observable<Chambre> {
-    return this.http.get<Chambre>(this.apiUrl+'/getChambresParId/'+id);
+    return this.http.get<Chambre>(this.apiUrl+'/GetChambreById/'+id);
   }
 
   getChambresNonAffecter(): Observable<Chambre[]> {

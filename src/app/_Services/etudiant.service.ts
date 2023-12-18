@@ -12,7 +12,7 @@ export class EtudiantService {
       'Content-Type': 'application/json'
     })
   }
-  private APIURL = "http://localhost:6060/API/Springboot/Etudiant/";
+  private APIURL = "http://localhost:8081/api/Etudiant/";
 
 
   constructor(private http: HttpClient) {

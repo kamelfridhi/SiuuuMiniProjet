@@ -5,6 +5,9 @@ import { Observable, of } from 'rxjs';
 import { Chambre, ChambresPage } from 'src/app/_Models/chambre2';
 import { EtatReservation, Reservation, TypePayment, TypeRepat } from 'src/app/_Models/reservation';
 import { ReservationService } from 'src/app/_Services/reservation.service';
+import {EtudiantConnecteService} from "../../../_Services/etudiant-connecte.service";
+import {EtudiantService} from "../../../_Services/etudiant.service";
+import {HOME} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-reserver-chambre',
@@ -20,18 +23,25 @@ export class ReserverChambreComponent implements OnInit {
   reservationForm: FormGroup;
   selectedYear: Date;
   yearOptions: { value: Date, option: string }[];
- 
+  CinEtudaint!:Number
 
-  constructor(private fb: FormBuilder,private reservationservice: ReservationService, private router:Router,private route:ActivatedRoute) {}
-  
+
+  constructor(private fb: FormBuilder,private reservationservice: ReservationService, private router:Router,private route:ActivatedRoute,private etudiantconnecter:EtudiantConnecteService,private etudiantService:EtudiantService) {}
+
 
   ngOnInit(): void {
+
+    this.etudiantService.getEtudiant(this.etudiantconnecter.getData('id')).subscribe(value =>
+    this.CinEtudaint=value.cin)
+
+
+
     this.yearOptions = this.getYearOptions();
     // Initialiser selectedYear avec la première option si nécessaire
     this.selectedYear = this.yearOptions[0].value;
     this.route.params.subscribe(p=>{
       this.getChambre(p['id'])
-     
+
     })
     this.reservationForm = this.fb.group({
       email: ['', [Validators.required,Validators.email]],
@@ -43,11 +53,13 @@ export class ReserverChambreComponent implements OnInit {
       description: ['', Validators.required],
       anneeUniversitaire: ['', Validators.required],
     });
-  
+
 this.reservationForm.get('debuteAnneUniversite').setValidators([Validators.required, this.validateStartDate.bind(this)]);
 this.reservationForm.get('finAnneUniversite').setValidators([Validators.required, this.validateEndDate.bind(this)]);
 
-    
+
+
+
   }
 
   getYearOptions(): { value: Date, option: string }[] {
@@ -58,35 +70,35 @@ this.reservationForm.get('finAnneUniversite').setValidators([Validators.required
       year = year+i;
       const yearStart = new Date(year, 0, 1);
       const yearEnd = new Date(year + 1, 0, 1);
-  
+
       options.push({
         value: yearStart,
         option: year+" ->"+` ${year + 1}`
       });
-  
+
       options.push({
         value: yearEnd,
         option: year+1+" ->"+` ${year + 2}`
       });
-       
+
       year = year+1;
     }
-  
+
     return options;
   }
-  
+
 
   validateTunisianPhoneNumber(control: AbstractControl): ValidationErrors | null {
     const phoneNumberRegex = /^[2-9]\d{7}$/;
-  
+
     if (!control.value) {
       return null;  // Aucune erreur si la valeur est vide
     }
-  
+
     if (!phoneNumberRegex.test(control.value.toString())) {
       return { invalidTunisianPhoneNumber: true };
     }
-  
+
     return null;  // Aucune erreur
   }
 
@@ -114,7 +126,7 @@ this.reservationForm.get('finAnneUniversite').setValidators([Validators.required
   ajouterReservation(){
     if(this.reservationForm.valid){
       this.reservation= this.reservationForm.value
-      this.reservationservice.assignChambre(this.chambre.idChambre,14504445,this.reservation).subscribe((data)=>{
+      this.reservationservice.assignChambre(this.chambre.idChambre,this.CinEtudaint,this.reservation).subscribe((data)=>{
         if(data){
           this.reservation=data
           this.disabled=false
@@ -122,14 +134,14 @@ this.reservationForm.get('finAnneUniversite').setValidators([Validators.required
       },(err:any)=>{
 
       })
-    
+
     }
-    
-    
+
+
   }
 
   getReservationByCin(){
-    this.reservationservice.getReservationByCin(this.chambre.idChambre,14504445).subscribe((result)=>{
+    this.reservationservice.getReservationByCin(this.chambre.idChambre,this.CinEtudaint).subscribe((result)=>{
       if( !result){
         this.disabled=true
       }
@@ -138,17 +150,17 @@ this.reservationForm.get('finAnneUniversite').setValidators([Validators.required
         this.reservationForm.patchValue({
           email: this.reservation.email,
           phone: this.reservation.phone,
-          typeRepat:  this.reservation.typeRepat, 
-          typePayment:  this.reservation.typePayment, 
-          debuteAnneUniversite: this.reservation.debuteAnneUniversite, 
-          finAnneUniversite:  this.reservation.finAnneUniversite,  
-          description:  this.reservation.description, 
+          typeRepat:  this.reservation.typeRepat,
+          typePayment:  this.reservation.typePayment,
+          debuteAnneUniversite: this.reservation.debuteAnneUniversite,
+          finAnneUniversite:  this.reservation.finAnneUniversite,
+          description:  this.reservation.description,
         });
         if(this.reservation.etat!=EtatReservation.EN_ATTENTE ){
           this.disabled=true
         }
       }
-     
+
     },(err:any)=>{
       this.show=true
     })
@@ -165,11 +177,12 @@ this.reservationForm.get('finAnneUniversite').setValidators([Validators.required
   }
 
   delete(){
-    this.reservationservice.deleteReservation(this.reservation.idReservation,14504445).subscribe((data)=>{
+    this.reservationservice.deleteReservation(this.reservation.idReservation,this.CinEtudaint).subscribe((data)=>{
       this.reservation=new Reservation("","","",null,"",EtatReservation.NEW,"","","","",null)
     },(err:any)=>{
 
     })
   }
 
+  protected readonly HOME = HOME;
 }

@@ -1,7 +1,7 @@
 // chambre.model.ts
 
-import { Bloc } from "./bloc2";
 import { Reservation } from "./reservation";
+import {Bloc} from "./bloc/bloc";
 
 
 export interface ChambresPage {
@@ -10,14 +10,16 @@ export interface ChambresPage {
     last: boolean,
     number: number
   }
-  
-export interface Chambre {
+
+export class Chambre {
     idChambre?: number;
     numeroChambre: number;
     typeC: TypeChambre;
     reservations?: Reservation[];
-  }
-  
+    blocchambre?:Bloc;
+
+}
+
 
   export interface ChambreDTO {
     idChambre: number;
@@ -26,11 +28,10 @@ export interface Chambre {
     blocChambre: Bloc;
     numR: number;
   }
- 
-  
+
+
   export enum TypeChambre {
     Simple,
     Double,
     Triple
   }
-  

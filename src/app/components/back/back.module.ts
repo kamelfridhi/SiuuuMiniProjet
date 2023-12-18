@@ -31,8 +31,6 @@ import { PersoDirectiveDirective } from './foyer/directives/perso-directive.dire
 import { DeleteTableDirectiveDirective } from './foyer/directives/delete-table-directive.directive';
 
 import { AfficherBlocsComponent } from './afficher-blocs/afficher-blocs.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DetailblocComponent } from './detailbloc/detailbloc.component';
@@ -41,7 +39,8 @@ import { DetailblocComponent } from './detailbloc/detailbloc.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { UpdateuserComponent } from './admin/updateuser/updateuser.component';
-import {FormsModule} from "@angular/forms";
+import {AdminModule} from "./admin/admin.module";
+import {NejdModuleModule} from "./nejd-module/nejd-module.module";
 
 
 
@@ -51,8 +50,6 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     DashboardComponent,
     TemplateComponent,
-
- 
 
     AfficherchambreComponent,
     ModifierchambreComponent,
@@ -87,14 +84,12 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     BackRoutingModule,
 
-    
-   
     ChambresModule,
 
 
 
     HttpClientModule,
-    
+
 
     MatTableModule,
     MatCheckboxModule,
@@ -103,15 +98,13 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     ReactiveFormsModule,
 
-   
-
 
 
 
   ]
 
 })
-export class BackModule { 
+export class BackModule {
   constructor() {
     this.loadScript('src/assets/Back/vendor/jquery/jquery.min.js');
     this.loadScript('src/assets/Back/vendor/bootstrap/js/bootstrap.bundle.min.js');

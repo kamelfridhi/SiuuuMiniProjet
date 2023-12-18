@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Bloc } from 'src/app/_Models/bloc/bloc';
-import { Chambre } from 'src/app/_Models/chambre/chambre';
 import { Foyer } from 'src/app/_Models/foyer/foyer';
 import { BlocService } from 'src/app/_Services/bloc/bloc.service';
 import { FoyerService } from 'src/app/_Services/foyer/foyer.service';
@@ -9,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ChambreService } from 'src/app/_Services/chambre/chambre.service';
 import { Router } from '@angular/router';
+import {Chambre} from "../../../_Models/chambre2";
 
 @Component({
   selector: 'app-afficher-blocs',
@@ -109,7 +109,7 @@ export class AfficherBlocsComponent implements OnInit {
     this.blocService.deleteBlocById(id).subscribe({
       next: () => {
         console.log('Bloc deleted successfully');
-        this.blocs = this.blocs.filter(bloc => bloc.blocId !== id);
+        this.blocs = this.blocs.filter(bloc => bloc.idBloc !== id);
       },
       error: (error) => {
         console.error('Error deleting bloc:', error);
@@ -122,11 +122,11 @@ export class AfficherBlocsComponent implements OnInit {
       const newBloc: Bloc = {
         nomBloc: this.blocForm.value.nomBloc,
         capaciteBloc: this.blocForm.value.capaciteBloc,
-        blocId: 0,
+        idBloc: 0,
         foyer: null,
         chambres: []
       };
-  
+
       this.blocService.addBloc(newBloc).subscribe({
         next: (addedBloc: Bloc) => {
           console.log('Bloc added successfully:', addedBloc);
@@ -142,7 +142,7 @@ export class AfficherBlocsComponent implements OnInit {
       console.log('form is not valid:', this.blocForm )
     }
   }
-  
+
 
   updateBloc(): void {
 
@@ -157,7 +157,7 @@ export class AfficherBlocsComponent implements OnInit {
     const updatedBloc: Bloc = {
       nomBloc: nomBlocValue,
       capaciteBloc: capaciteBlocValue,
-      blocId: idBlocValue,
+      idBloc: idBlocValue,
       foyer: null,
       chambres: []
     };
@@ -199,7 +199,7 @@ export class AfficherBlocsComponent implements OnInit {
     this.blocForm2.setValue({
       UPDnomBloc: bloc.nomBloc,
       UPDcapaciteBloc: bloc.capaciteBloc,
-      UPDblocId: bloc.blocId
+      UPDblocId: bloc.idBloc
     });
     this.selectedBloc = bloc;
   }
@@ -243,12 +243,13 @@ export class AfficherBlocsComponent implements OnInit {
   affecterListChambreToBlock(event: Event){
     event.preventDefault();
     const selectedBloc = this.affecterListChambreToSelectedBloc;
-    const selectedChambres = this.selection.selected.map(chambre => chambre.idChambre) as number[];
+    const selectedChambres = this.selection.selected.map(chambre => chambre.numeroChambre) as number[];
     console.log('selectedBloc', selectedBloc);
     console.log('selectedChambres', selectedChambres);
     this.blocService.affecterChambresABloc(selectedChambres, selectedBloc).subscribe({
       next: response => {
         console.log(response);
+        this.getBlocs()
       },
       error: error => {
         console.error(error);
@@ -256,6 +257,7 @@ export class AfficherBlocsComponent implements OnInit {
       complete: () => {
       }
     });
+
   }
 
 

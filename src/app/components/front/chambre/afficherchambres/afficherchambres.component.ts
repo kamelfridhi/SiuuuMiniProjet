@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Chambre} from "../../../../_Models/chambre";
 import {ChambreService} from "../../../../_Services/chambre.service";
 import {Router} from "@angular/router";
+import {Chambre} from "../../../../_Models/chambre2";
 
 @Component({
   selector: 'app-afficherchambres',

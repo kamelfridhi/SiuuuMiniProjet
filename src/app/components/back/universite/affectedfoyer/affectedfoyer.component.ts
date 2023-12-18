@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UniversiteService} from "../../../../_Services/universite.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Foyer} from "../../../../_Models/foyer";
 import {Universite} from "../../../../_Models/universite";
+import {Foyer} from "../../../../_Models/foyer/foyer";
 
 @Component({
   selector: 'app-affectedfoyer',

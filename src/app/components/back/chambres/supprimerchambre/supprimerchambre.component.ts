@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import { ChambreService } from '../../../../_Services/chambre.service';
-import {Chambre} from "../../../../_Models/chambre";
 
 @Component({
   selector: 'app-supprimerchambre',

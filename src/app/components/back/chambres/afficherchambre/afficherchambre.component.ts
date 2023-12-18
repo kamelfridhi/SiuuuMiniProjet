@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ChambreService} from '../../../../_Services/chambre.service';
 import {BlocService} from '../../../../_Services/bloc/bloc.service';
-import {Chambre} from "../../../../_Models/chambre";
-import {Bloc} from "../../../../_Models/bloc";
 import {TypeChambre} from "../../../../_Models/TypeChambre.enum";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Bloc} from "../../../../_Models/bloc/bloc";
+import {Chambre} from "../../../../_Models/chambre2";
 
 
 @Component({
@@ -132,6 +132,6 @@ export class AfficherchambreComponent implements OnInit{
   get getBlocIdValue() { return this.ChambreForm.get('blocId'); }
 
 
-  protected readonly Chambre = Chambre;
+  protected readonly Chambre= Chambre;
   protected readonly TypeChambre = TypeChambre;
 }

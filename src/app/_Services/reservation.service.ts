@@ -30,9 +30,9 @@ export class ReservationService {
     let params = new HttpParams()
       .set('id', id.toString())
       .set('etat', etat);
-  
+
     const options = { params };
-  
+
     return this.http.post<Reservation>(`${this.apiUrl}/reservation/UpdateReservation`, {}, options);
   }
 
@@ -47,7 +47,7 @@ export class ReservationService {
     return this.http.get<number>(`${this.apiUrl}/reservation/getReservationParAnneeUniversitaire/${debutAnnee}/${finAnnee}`);
   }
 
-  assignChambre(id: number, cin: number,reservation:Reservation): Observable<Reservation> {
+  assignChambre(id: number, cin: Number,reservation:Reservation): Observable<Reservation> {
     reservation.etat=EtatReservation.EN_ATTENTE
     return this.http.post<Reservation>(`${this.apiUrl}/reservation/affecterChambre/${id}/${cin}`, reservation);
   }
@@ -74,7 +74,7 @@ export class ReservationService {
   }
 
   //////// chambre ////////////
- 
+
   getChambreFilter(nom: string | null, nomBloc: string | null, idFoyer: number | null, page: number, size: number): Observable<ChambresPage> {
     let params = new HttpParams()
       .set('page', page.toString())
@@ -82,7 +82,7 @@ export class ReservationService {
       .set('nom', nom?.trim() || '')
       .set('nomBloc', nomBloc?.trim() || '');
       params = idFoyer !== null ? params.set('idFoyer', idFoyer.toString()) : params;
-  
+
     return this.http.get<ChambresPage>(`${this.apiUrl}/chambre/GetChambreFilter`, { params });
   }
 
@@ -90,6 +90,6 @@ export class ReservationService {
     const url = `${this.apiUrl}/chambre/GetChambreById/${id}`;
     return this.http.get<Chambre>(url);
   }
- 
+
 
 }

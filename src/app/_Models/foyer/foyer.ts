@@ -12,6 +12,7 @@ export class Foyer {
   u!:Universite;
   resto!:Resto;
   blocs:Bloc[]=[];
+  etat!:number;
 }
 
 

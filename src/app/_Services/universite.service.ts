@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs/internal/Observable';
 import {Universite} from "../_Models/universite";
 import {catchError, tap} from "rxjs";
-import {Foyer} from "../_Models/foyer";
+import {Foyer} from "../_Models/foyer/foyer";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UniversiteService {
       'Content-Type': 'application/json'
     })
   }
-  readonly API_URL = "http://localhost:8080";
+  readonly API_URL = "http://localhost:8081";
   readonly ENDPOINT_GETOneUV = "/api/universite/getOne";
   readonly ENDPOINT_ADDUV = "/api/universite/add";
   readonly ENDPOINT_UPDATEUV = "/api/universite/update";
@@ -22,9 +22,9 @@ export class UniversiteService {
   private readonly apiUrl = 'https://graph.facebook.com';
 
   private readonly pageId = '101832652905293';
-  private readonly accessToken = 'EABN4S3PVPwwBOwo4WZCvQMkgiaDMflIZAoAzL8Vle3sZCOUwBSC2S7RwqwoDK4bBatsZBZBFHcQGZC2Pu765pAp8KlCASEtNWlZA7GB3cL6e2mUh8ZADMg9ZATfbE7nIZC3Q86ZCioaOhAk0CD0J1D5LHTZAtJFrdMORSVuU1NiQANOWhgkIyCWgtbAPFOXL8Mfgm8ylNZCibSaFRpsVukqfZAg3ouJwYZD';
-  api = 'http://localhost:8080/api/universite/'
-  apiallfoyer = 'http://localhost:8080/api/foyer/allfoyer'
+  private readonly accessToken = 'EABN4S3PVPwwBO8lfwyMC5jjFSY2VutSGfbK418zOxZAUoGMFL33Pfyd8PLSEGlFA4xzzheAQWnBEyibkMwp6qD4ckZBHsPOqpnhgHZAyR8UI4J2ibdOKvGT6ZBLirBEQWbTUiDve3zZBqWZAdMC0oRc0kZB0jweJnK93ff24rUs1SEzI1V2AbZBZBUNz0VPZAqH6SP54gcp6jn5KrPv53J0ndQwAcZD';
+  api = 'http://localhost:8081/api/universite/'
+  apiallfoyer = 'http://localhost:8081/api/foyer/all'
   constructor(private http: HttpClient) { }
 
   getAllUniversites(): Observable<Universite[]> {
@@ -46,11 +46,11 @@ export class UniversiteService {
     return this.http.post<Universite>(url, u);
   }
   affecterFoyerAUniversite(idFoyer:number,iduv:number): Observable<Universite> {
-    return this.http.put<Universite>(`http://localhost:8080/api/universite/affecterFoyerAUniversite/${idFoyer}/${iduv}`, null);
+    return this.http.put<Universite>(`http://localhost:8081/api/universite/affecterFoyerAUniversite/${idFoyer}/${iduv}`, null);
     //  return this.http.post<Universite>("http://localhost:8080/api/universite/add", u, this.httpOptions);
   }
   disaffecFoyerAUniversite(idFoyer:number,iduv:number): Observable<Universite> {
-    return this.http.put<Universite>(`http://localhost:8080/api/universite/desaffecterFoyerAUniversite/${idFoyer}/${iduv}`, null);
+    return this.http.put<Universite>(`http://localhost:8081/api/universite/desaffecterFoyerAUniversite/${idFoyer}/${iduv}`, null);
     //  return this.http.post<Universite>("http://localhost:8080/api/universite/add", u, this.httpOptions);
   }
 
@@ -60,7 +60,7 @@ export class UniversiteService {
   }
   getUniversiteById(iduniversite: number): Observable<Universite> {
 
-    return this.http.get<Universite>(`http://localhost:8080/api/universite/getOne/${iduniversite}`);
+    return this.http.get<Universite>(`http://localhost:8081/api/universite/getOne/${iduniversite}`);
 
   }
   postMessageToFeed(message: string, imageUrl: string): Observable<any> {

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Chambre} from "../../../../_Models/chambre";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-cartchambre',
@@ -12,7 +12,7 @@ export class CartchambreComponent {
   @Output() detailsEmitterDouble = new EventEmitter<number>();
   @Output() detailsEmitterTriple = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   goToDetailsChambreSimple() {
     this.detailsEmitterSimple.emit();
@@ -26,4 +26,7 @@ export class CartchambreComponent {
   }
 
 
+  rserver() {
+    this.router.navigate(['/Chambres']);
+  }
 }
