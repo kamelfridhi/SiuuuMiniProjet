@@ -2,8 +2,8 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {UniversiteService} from "../../../../_Services/universite.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Universite} from "../../../../_Models/universite";
-import {Foyer} from "../../../../_Models/foyer";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Foyer} from "../../../../_Models/foyer/foyer";
 
 @Component({
   selector: 'app-adduniversite',
@@ -58,7 +58,7 @@ export class AdduniversiteComponent implements OnInit{
     this.univservice.getAllUniversites().subscribe(value => {
       this.universties = value;
       this.universties.forEach(u => {
-        console.log("eeeeee"+u.foyer); // Log the foyer property for each Universite
+        console.log("eeeeee"+u.foyer.nomFoyer); // Log the foyer property for each Universite
       });
     });
 

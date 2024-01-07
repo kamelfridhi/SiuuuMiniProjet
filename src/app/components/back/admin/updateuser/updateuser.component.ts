@@ -29,7 +29,7 @@ export class UpdateuserComponent implements OnInit {
 
   updateEtudiant() {
     this.etudiantservice.updateEtudiant(this.etudiant).subscribe(data => {
-      this.router.navigate(['/back/admin'])
+      this.router.navigate(['back/admin/user'])
     })
   }
 }

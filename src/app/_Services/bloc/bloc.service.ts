@@ -15,8 +15,8 @@ export class BlocService {
   readonly ENDPOINT_UPDATEBLOC = "/api/bloc/update";
   readonly ENDPOINT_DELETEBLOCBYID = "/api/bloc/delete";
 
-  readonly ENDPOINT_AFFECTERBLOCAFOYER="/api/bloc/affecterBlocAFoyer"
-  readonly ENDPOINT_AFFECTERLISTCHAMBREABLOC="/api/bloc/affecteChambre"
+  readonly ENDPOINT_AFFECTERBLOCAFOYER="/api/bloc/affecterBlocAFoyerApi"
+  readonly ENDPOINT_AFFECTERLISTCHAMBREABLOC="/api/bloc/affecterChambresABloc"
 
 
   constructor(private http: HttpClient) { }
@@ -56,7 +56,7 @@ export class BlocService {
     const url = `${this.API_URL}/api/bloc/${blocId}`;
     return this.http.get<Bloc>(url);
   }
-  
+
   getBlocbyName(name: string): Observable<Bloc> {
     const url = `${this.API_URL}/api/bloc/getbyNom/${name}`;
     return this.http.get<Bloc>(url);

@@ -4,7 +4,7 @@ import { Directive, Input, ElementRef, Renderer2, OnInit } from '@angular/core';
   selector: '[appCouleurChambre]'
 })
 export class CouleurChambreDirective implements OnInit{
-  @Input() appCouleurChambre!: string; 
+  @Input() appCouleurChambre!: string;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
   ngOnInit() {
@@ -15,13 +15,13 @@ export class CouleurChambreDirective implements OnInit{
     let color: string;
 
     switch (this.appCouleurChambre) {
-      case 'Simple':
+      case 'SIMPLE':
         color = 'blue';
         break;
-      case 'Double':
+      case 'DOUBLE':
         color = 'green';
         break;
-      case 'Triple':
+      case 'TRIPLE':
         color = 'red';
         break;
       default:

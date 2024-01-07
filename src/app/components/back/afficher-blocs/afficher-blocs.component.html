@@ -37,7 +37,7 @@
                     </tfoot>
                     <tbody *ngFor="let bloc of blocs">
                         <tr>
-                            <td>{{ bloc.blocId }}</td>
+                            <td>{{ bloc.idBloc }}</td>
                             <td>{{ bloc.nomBloc }}</td>
                             <td>{{ bloc.capaciteBloc }}</td>
                             <td>{{bloc.foyer?.nomFoyer}}</td>
@@ -47,7 +47,7 @@
                             <!-- Button Delete -->
                             <td>
                                 <a href="" class="btn btn-danger btn-icon-split"
-                                    (click)="deleteBloc($event,bloc.blocId)">
+                                    (click)="deleteBloc($event,bloc.idBloc)">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-trash"></i>
                                     </span>
@@ -85,7 +85,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                   Nom Foyer: <select id="selectableList" [(ngModel)]="affecterSelectedFoyer"  
+                                   Nom Foyer: <select id="selectableList" [(ngModel)]="affecterSelectedFoyer"
                                         class="form-control">
                                         <option [value]="foyer.nomFoyer" *ngFor="let foyer of foyers">{{foyer.nomFoyer
                                             }}</option>

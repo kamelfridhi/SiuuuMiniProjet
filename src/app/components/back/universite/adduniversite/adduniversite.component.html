@@ -34,7 +34,7 @@
             <td>{{ u.nomUniversite }}</td>
             <td>{{ u.adresse }}</td>
             <td>
-              <ng-container *ngIf="u.foyer !== null; else noFoyer">
+              <ng-container *ngIf="u.foyer != null; else noFoyer">
                 <a>{{ u.foyer.nomFoyer }}</a>
                 <button (click)="desaffectfoyer(u.foyer.idFoyer, u.idUniversite); refreshPage()" style="background-color: #e74c3c; color: #fff; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; font-size: 14px;">
                   <i class="fas fa-times"></i> <!-- Font Awesome "X" icon -->

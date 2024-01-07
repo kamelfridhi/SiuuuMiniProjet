@@ -5,19 +5,25 @@ import { NejdModuleRoutingModule } from './nejd-module-routing.module';
 import { ListReservationComponent } from './reservation/list-reservation/list-reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectiveDirective } from './directive.directive';
+import {AppModule} from "../../../app.module";
+import {StatistiqueComponent} from "./reservation/statistique/statistique.component";
+import {CalculComponent} from "./reservation/calcul/calcul.component";
 
 
 @NgModule({
   declarations: [
     ListReservationComponent,
-    DirectiveDirective
+    DirectiveDirective,
+    StatistiqueComponent,
+    CalculComponent
+
   ],
   imports: [
     CommonModule,
     NejdModuleRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-   
+
   ]
 })
 export class NejdModuleModule {
@@ -39,5 +45,5 @@ export class NejdModuleModule {
   }
 
 
-  
+
  }

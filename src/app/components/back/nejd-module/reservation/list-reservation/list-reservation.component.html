@@ -2,7 +2,23 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-   
+
+  <div class="card shadow mb-4">
+
+    <div class="card-body">
+      <app-statistique [size2]="size2" ></app-statistique>
+      <div  class="input-group">
+        <select style="width: 1%;" (change)="onSelectChange2($event)" class="form-control bg-light border-0 small" >
+          <option value="EN_ATTENTE">En Attente</option>
+          <option value="ACCEPTE">Accepte</option>
+          <option value="REFUSE">Refuse</option>
+        </select>
+        <app-calcul [etatc]="etat2" (calculEmitter)="calculer($event)"></app-calcul>
+      </div>
+      {{calcul}} Reservation
+      </div>
+  </div>
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -22,7 +38,7 @@
               </select>
             </div>
           </div>
-           
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -46,7 +62,7 @@
                                     'btn-danger': reservation.etat === 'REFUSE'
                                   }" aria-disabled="true" class="btn">
                                     <span class="text">{{ reservation.etat }}</span>
-                                  </a>                                  
+                                  </a>
                             </td>
                             <td>
                                 <div style="display: flex;justify-content: center;" class="dropdown">
@@ -119,7 +135,7 @@
             Non
           </button>
           <button
-          (click)="reservation()" 
+          (click)="reservation()"
             class="btn btn-danger"
             data-dismiss="modal"
           >

@@ -38,7 +38,7 @@ const routes: Routes = [
     component: TemplateComponent,
     children: [
 
-   
+
       /*BEGIN FOYER*/
       {
         path: 'foyer',
@@ -73,16 +73,16 @@ const routes: Routes = [
       },
       /*END FOYER*/
 
-      { path:"n",loadChildren:()=>import('./nejd-module/nejd-module.module').then(m=>m.NejdModuleModule)},
+      { path:"n",loadChildren:()=>import('./nejd-module/nejd-module.module').then(m=>m.NejdModuleModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
-<<<<<<< HEAD
-      /***bayoudh***/
-
-      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule)}
 
       /***bayoudh***/
-=======
+
+      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
+
+      /***bayoudh***/
+
 
       { path: 'afficherchambre', component: AfficherchambreComponent },
       { path: 'ajouterchambre', component: AjouterchambreComponent },
@@ -99,8 +99,9 @@ const routes: Routes = [
       { path: 'detailbloc', component: DetailblocComponent },
 
       { path:"admin",loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
+      { path:"university",loadChildren:()=>import('./universite/universite.module').then(m=>m.UniversiteModule),canActivate:[RoleGuardGuard,AuthentificationGuard]},
 
->>>>>>> main
+      //canActivate:[RoleGuardGuard,AuthentificationGuard]
 
       // add your route for admin n3awed for admin
 

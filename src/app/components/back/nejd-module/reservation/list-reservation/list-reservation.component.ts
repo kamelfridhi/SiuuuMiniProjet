@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { EtatReservation, ReservationsDTOPage } from 'src/app/_Models/reservation';
-import { ReservationService } from 'src/app/_Services/reservation.service';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {EtatReservation, Reservation, ReservationsDTOPage} from 'src/app/_Models/reservation';
+import {ReservationService} from 'src/app/_Services/reservation.service';
 
 @Component({
   selector: 'app-list-reservation',
@@ -13,14 +13,18 @@ export class ListReservationComponent implements OnInit {
   etat: EtatReservation | null=null
   cinEtudiant: number | null=null
   page: number=0
-  size: number=5
+  size: number=2
   reservations:ReservationsDTOPage
   archive:boolean=false
   id:Number
   etatR:string
+  size2: number;
+  calcul:Number
+  etat2:EtatReservation=EtatReservation.EN_ATTENTE
   constructor(private reservationservice:ReservationService){}
   ngOnInit(): void {
     this.getAllreservation()
+    this.getReservation()
   }
 
   onInputChange(event: any){
@@ -40,14 +44,16 @@ export class ListReservationComponent implements OnInit {
       this.etat=event.target.value
     }else{
       this.etat=null
-    }  
+    }
     this.getAllreservation()
   }
-
+  onSelectChange2(event:any){
+      this.etat2=event.target.value
+  }
   getAllreservation(){
     this.reservationservice.getReservationFilter(this.numReservation,this.etat,this.cinEtudiant,this.page,this.size).subscribe((data)=>{
       this.reservations=data
-      
+
     })
   }
 
@@ -59,6 +65,18 @@ export class ListReservationComponent implements OnInit {
         this.reservations.content[index].etat=this.etatR
       }
     })
+  }
+
+  getReservation(): void {
+    this.reservationservice.getAllReservations().subscribe({
+      next: (data: Reservation[]) => {
+        this.size2 = data.length;
+        console.log(this.size2);
+      },
+      error: (error) => {
+        console.error('Error fetching foyers:', error);
+      }
+    });
   }
 
 public onOpenModal(id:Number,etat:string): void {
@@ -82,7 +100,7 @@ OpenDetails(id:Number){
     if (!this.reservations?.last) {
       this.page++
       this.getAllreservation()
-      
+
     }
   }
 
@@ -100,4 +118,8 @@ GetPage(i:number){
   this.page=i
   this.getAllreservation()
 }
+
+ calculer(calcul: Number) {
+    this.calcul = calcul;
+  }
 }
